@@ -173,7 +173,13 @@ code > span.in { color: #008000; } /* Information */
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="classification-methods.html"><a href="classification-methods.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="classification-accuracy.html"><a href="classification-accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a></li>
+<li class="chapter" data-level="8" data-path="classification-accuracy.html"><a href="classification-accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a><ul>
+<li class="chapter" data-level="8.1" data-path="classification-accuracy.html"><a href="classification-accuracy.html#classify-migratory-flapping-flight"><i class="fa fa-check"></i><b>8.1</b> Classify migratory flapping flight</a></li>
+<li class="chapter" data-level="8.2" data-path="classification-accuracy.html"><a href="classification-accuracy.html#setup-the-reference-dataset"><i class="fa fa-check"></i><b>8.2</b> Setup the reference dataset</a></li>
+<li class="chapter" data-level="8.3" data-path="classification-accuracy.html"><a href="classification-accuracy.html#classify-migration"><i class="fa fa-check"></i><b>8.3</b> Classify migration</a></li>
+<li class="chapter" data-level="8.4" data-path="classification-accuracy.html"><a href="classification-accuracy.html#compare-the-two-classifications"><i class="fa fa-check"></i><b>8.4</b> Compare the two classifications</a></li>
+<li class="chapter" data-level="8.5" data-path="classification-accuracy.html"><a href="classification-accuracy.html#create-a-confusion-matrix"><i class="fa fa-check"></i><b>8.5</b> Create a confusion Matrix</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Classifly flapping</a><ul>
 <li class="chapter" data-level="9.1" data-path="flapping.html"><a href="flapping.html#classifying-migratory-flapping-flight-in-hoopoes-the-dataset"><i class="fa fa-check"></i><b>9.1</b> Classifying migratory flapping flight in Hoopoes :The dataset</a></li>
 <li class="chapter" data-level="9.2" data-path="flapping.html"><a href="flapping.html#visualise-data"><i class="fa fa-check"></i><b>9.2</b> Visualise data</a></li>
@@ -214,7 +220,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-supervised-machine-learning"><i class="fa fa-check"></i><b>12.3</b> Using supervised machine learning</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/KiranLDA/PAMLr" target="_blank">Forum</a></li>
+<li><a href="https://github.com/KiranLDA/PAMLr" target="_blank">Install PAMLr from github</a></li>
 
 </ul>
 
@@ -319,7 +325,7 @@ varint =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quo
   <span class="kw">plot</span>(TOclassify<span class="op">$</span>date, TOclassify[,varint[i]], 
        <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Date&quot;</span>, <span class="dt">ylab =</span> varint[i])
 }</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-61-1.png" width="672" /><img src="PAMLrManual_files/figure-html/unnamed-chunk-61-2.png" width="672" /></p>
+<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-69-1.png" width="672" /><img src="PAMLrManual_files/figure-html/unnamed-chunk-69-2.png" width="672" /></p>
 </div>
 </div>
 <div id="classify-migration-using-a-hidden-markov-model" class="section level2">
@@ -380,7 +386,7 @@ twilights &lt;-<span class="st"> </span>GeoLight<span class="op">::</span><span 
        <span class="dt">col=</span> <span class="kw">ifelse</span>(twilights<span class="op">$</span>type <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,
                    <span class="st">&quot;grey&quot;</span>,<span class="st">&quot;black&quot;</span>),
        <span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">cex=</span><span class="fl">0.5</span>)</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-64-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-72-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
