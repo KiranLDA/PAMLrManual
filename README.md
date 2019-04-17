@@ -1,1 +1,1 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/ for how to compile this example.
+This is a manual for the [PAMLr package](https://github.com/KiranLDA/PAMLr) and can be viewed following this link https://kiranlda.github.io/PAMLrManual/.
