@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>9 Classifying migratory flight Alpine swifts | A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R</title>
+  <meta name="description" content="PAMLr Manual">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="9 Classifying migratory flight Alpine swifts | A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="PAMLr Manual" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Classifying migratory flight Alpine swifts | A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R" />
+  
+  <meta name="twitter:description" content="PAMLr Manual" />
+  
+
+<meta name="author" content="Kiran Dhanjal-Adams">
+
+
+<meta name="date" content="2019-04-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="soar.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PAMLr Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#index"><i class="fa fa-check"></i><b>1.1</b> Index</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba"><i class="fa fa-check"></i><b>3.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="import.html"><a href="import.html#import-your-own-data"><i class="fa fa-check"></i><b>3.3</b> Import your own data</a></li>
+<li class="chapter" data-level="3.4" data-path="import.html"><a href="import.html#data-details"><i class="fa fa-check"></i><b>3.4</b> Data details</a></li>
+<li class="chapter" data-level="3.5" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.5</b> Cropping the data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4.1" data-path="dataviz.html"><a href="dataviz.html#formatting-data"><i class="fa fa-check"></i><b>4.1</b> Formatting data</a></li>
+<li class="chapter" data-level="4.2" data-path="dataviz.html"><a href="dataviz.html#quick-multiplots"><i class="fa fa-check"></i><b>4.2</b> Quick multiplots</a></li>
+<li class="chapter" data-level="4.3" data-path="dataviz.html"><a href="dataviz.html#interactive-timeseries"><i class="fa fa-check"></i><b>4.3</b> Interactive timeseries</a></li>
+<li class="chapter" data-level="4.4" data-path="dataviz.html"><a href="dataviz.html#sensor-images"><i class="fa fa-check"></i><b>4.4</b> Sensor images</a></li>
+<li class="chapter" data-level="4.5" data-path="dataviz.html"><a href="dataviz.html#histograms-and-three-dimensional-scatterplots"><i class="fa fa-check"></i><b>4.5</b> Histograms and three-dimensional scatterplots</a></li>
+<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="dataviz.html"><a href="dataviz.html#g-sphere"><i class="fa fa-check"></i><b>4.6.1</b> g-sphere</a></li>
+<li class="chapter" data-level="4.6.2" data-path="dataviz.html"><a href="dataviz.html#m-sphere"><i class="fa fa-check"></i><b>4.6.2</b> m-sphere</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>5</b> Preparing data for analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>5.1</b> Merge sensor data together</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="dataprep.html"><a href="dataprep.html#interpolation"><i class="fa fa-check"></i><b>5.1.1</b> Interpolation</a></li>
+<li class="chapter" data-level="5.1.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation"><i class="fa fa-check"></i><b>5.1.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>5.2</b> Rolling window</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="dataprep.html"><a href="dataprep.html#interpolation-1"><i class="fa fa-check"></i><b>5.2.1</b> Interpolation</a></li>
+<li class="chapter" data-level="5.2.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation-1"><i class="fa fa-check"></i><b>5.2.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>5.3</b> Extracting statistics for specific data patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>6</b> How to choose a method for classification</a><ul>
+<li class="chapter" data-level="6.1" data-path="method.html"><a href="method.html#changepoint"><i class="fa fa-check"></i><b>6.1</b> Changepoint</a></li>
+<li class="chapter" data-level="6.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>6.2</b> Cluster Analysis</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="method.html"><a href="method.html#k-means-clustering"><i class="fa fa-check"></i><b>6.2.1</b> k-means clustering</a></li>
+<li class="chapter" data-level="6.2.2" data-path="method.html"><a href="method.html#hierarchical-clustering"><i class="fa fa-check"></i><b>6.2.2</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="6.2.3" data-path="method.html"><a href="method.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>6.2.3</b> Expectation-minimisation binary clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="method.html"><a href="method.html#hidden-markov-models"><i class="fa fa-check"></i><b>6.3</b> Hidden Markov Models</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>7</b> Classifying migratory flapping flight in Hoopoes</a><ul>
+<li class="chapter" data-level="7.1" data-path="flapping.html"><a href="flapping.html#the-dataset"><i class="fa fa-check"></i><b>7.1</b> The dataset</a></li>
+<li class="chapter" data-level="7.2" data-path="flapping.html"><a href="flapping.html#visualise-data"><i class="fa fa-check"></i><b>7.2</b> Visualise data</a></li>
+<li class="chapter" data-level="7.3" data-path="flapping.html"><a href="flapping.html#what-should-we-look-for"><i class="fa fa-check"></i><b>7.3</b> What should we look for?</a></li>
+<li class="chapter" data-level="7.4" data-path="flapping.html"><a href="flapping.html#performing-the-classification"><i class="fa fa-check"></i><b>7.4</b> Performing the classification</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>8</b> Classifying migratory flight in European bee-eaters</a><ul>
+<li class="chapter" data-level="8.1" data-path="soar.html"><a href="soar.html#the-dataset-1"><i class="fa fa-check"></i><b>8.1</b> The dataset</a></li>
+<li class="chapter" data-level="8.2" data-path="soar.html"><a href="soar.html#visualise-data-1"><i class="fa fa-check"></i><b>8.2</b> Visualise data</a></li>
+<li class="chapter" data-level="8.3" data-path="soar.html"><a href="soar.html#what-should-we-look-for-1"><i class="fa fa-check"></i><b>8.3</b> What should we look for?</a></li>
+<li class="chapter" data-level="8.4" data-path="soar.html"><a href="soar.html#what-variables-make-the-most-sense-for-classifying"><i class="fa fa-check"></i><b>8.4</b> What variables make the most sense for classifying?</a></li>
+<li class="chapter" data-level="8.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>8.5</b> Classify using HMM</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable"><i class="fa fa-check"></i><b>8.5.1</b> <em>Translate the classification events into something usable</em></a></li>
+<li class="chapter" data-level="8.5.2" data-path="soar.html"><a href="soar.html#plot-the-classification"><i class="fa fa-check"></i><b>8.5.2</b> <em>Plot the classification</em></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>8.6</b> Classify using pressure</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable-1"><i class="fa fa-check"></i><b>8.6.1</b> <em>Translate the classification events into something usable</em></a></li>
+<li class="chapter" data-level="8.6.2" data-path="soar.html"><a href="soar.html#plot-the-classification-1"><i class="fa fa-check"></i><b>8.6.2</b> <em>Plot the classification</em></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="soar.html"><a href="soar.html#classify-using-a-changepoint-analysis"><i class="fa fa-check"></i><b>8.7</b> Classify using a changepoint analysis</a></li>
+<li class="chapter" data-level="8.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>8.8</b> Compare the classifications</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="soar.html"><a href="soar.html#plot-the-agreement-between-the-migration-classifications"><i class="fa fa-check"></i><b>8.8.1</b> <em>Plot the agreement between the migration classifications</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wift.html"><a href="wift.html"><i class="fa fa-check"></i><b>9</b> Classifying migratory flight Alpine swifts</a><ul>
+<li class="chapter" data-level="9.1" data-path="wift.html"><a href="wift.html#the-dataset-2"><i class="fa fa-check"></i><b>9.1</b> The dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/KiranLDA/PAMLr" target="blank">install PAMLr</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="wift" class="section level1">
+<h1><span class="header-section-number">9</span> Classifying migratory flight Alpine swifts</h1>
+<div class="figure" style="text-align: center"><span id="fig:beenenfresser"></span>
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Tachymarptis_melba_-Spain_-collage-8.jpg" alt="Photograph by Pau Artigas, (c) creative commons" width="100%" />
+<p class="caption">
+Figure 9.1: Photograph by Pau Artigas, (c) creative commons
+</p>
+</div>
+<div id="the-dataset-2" class="section level2">
+<h2><span class="header-section-number">9.1</span> The dataset</h2>
+<p>Alpine swift (<em>Apus melba</em>) have been tracked on the their migrations from Switzerland to sub-Saharan Africa using SOI-GDL3pam loggers.</p>
+<ul>
+<li><strong>Pressure</strong> is recorded every 15 minutes</li>
+<li><strong>Light</strong> is recorded every 2 minutes</li>
+<li><strong>Activity</strong> is recorded every 5 minutes</li>
+<li><strong>Pitch</strong> is recorded every 5 minutes</li>
+<li><strong>Temperature</strong> is recorded every 15 minutes</li>
+<li><strong>Tri-axial acceleration</strong> is recorded every 4 hours</li>
+<li><strong>Tri-axial magnetic field</strong> is recorded every 4 hours</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;swift&quot;</span>)
+
+<span class="co"># make sure the cropping period is in the correct date format</span>
+start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-08-15&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
+end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
+
+<span class="co"># Crop the data</span>
+PAM_data=<span class="st"> </span><span class="kw">cutPAM</span>(swift,start,end)</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="soar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["PAMLrManual.pdf", "PAMLrManual.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

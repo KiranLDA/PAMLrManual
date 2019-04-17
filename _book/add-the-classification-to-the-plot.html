@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>12 Add the classification to the plot | A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R</title>
+  <meta name="description" content="PAMLr Manual">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="12 Add the classification to the plot | A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="PAMLr Manual" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12 Add the classification to the plot | A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R" />
+  
+  <meta name="twitter:description" content="PAMLr Manual" />
+  
+
+<meta name="author" content="Kiran Dhanjal-Adams">
+
+
+<meta name="date" content="2019-04-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="plot-a-subset-of-the-data.html">
+<link rel="next" href="add-a-legend-to-see-which-color-matches-which-classification.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PAMLr Manuals</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#index"><i class="fa fa-check"></i><b>1.1</b> Index</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba"><i class="fa fa-check"></i><b>3.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="import.html"><a href="import.html#import-your-own-data"><i class="fa fa-check"></i><b>3.3</b> Import your own data</a></li>
+<li class="chapter" data-level="3.4" data-path="import.html"><a href="import.html#data-details"><i class="fa fa-check"></i><b>3.4</b> Data details</a></li>
+<li class="chapter" data-level="3.5" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.5</b> Cropping the data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4.1" data-path="dataviz.html"><a href="dataviz.html#formatting-data"><i class="fa fa-check"></i><b>4.1</b> Formatting data</a></li>
+<li class="chapter" data-level="4.2" data-path="dataviz.html"><a href="dataviz.html#quick-multiplots"><i class="fa fa-check"></i><b>4.2</b> Quick multiplots</a></li>
+<li class="chapter" data-level="4.3" data-path="dataviz.html"><a href="dataviz.html#interactive-timeseries"><i class="fa fa-check"></i><b>4.3</b> Interactive timeseries</a></li>
+<li class="chapter" data-level="4.4" data-path="dataviz.html"><a href="dataviz.html#sensor-images"><i class="fa fa-check"></i><b>4.4</b> Sensor images</a></li>
+<li class="chapter" data-level="4.5" data-path="dataviz.html"><a href="dataviz.html#histograms-and-three-dimensional-scatterplots"><i class="fa fa-check"></i><b>4.5</b> Histograms and three-dimensional scatterplots</a></li>
+<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="dataviz.html"><a href="dataviz.html#g-sphere"><i class="fa fa-check"></i><b>4.6.1</b> g-sphere</a></li>
+<li class="chapter" data-level="4.6.2" data-path="dataviz.html"><a href="dataviz.html#m-sphere"><i class="fa fa-check"></i><b>4.6.2</b> m-sphere</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="patterns.html"><a href="patterns.html#migration"><i class="fa fa-check"></i><b>5.0.1</b> Migration</a></li>
+<li class="chapter" data-level="5.0.2" data-path="patterns.html"><a href="patterns.html#flap-gliding-birds"><i class="fa fa-check"></i><b>5.0.2</b> <em>Flap-gliding birds</em></a></li>
+<li class="chapter" data-level="5.0.3" data-path="patterns.html"><a href="patterns.html#soar-gliding-birds"><i class="fa fa-check"></i><b>5.0.3</b> <em>Soar-gliding birds</em></a></li>
+<li class="chapter" data-level="5.1" data-path="patterns.html"><a href="patterns.html#incubation"><i class="fa fa-check"></i><b>5.1</b> Incubation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="dataprep.html"><a href="dataprep.html#interpolation"><i class="fa fa-check"></i><b>6.1.1</b> Interpolation</a></li>
+<li class="chapter" data-level="6.1.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation"><i class="fa fa-check"></i><b>6.1.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="dataprep.html"><a href="dataprep.html#interpolation-1"><i class="fa fa-check"></i><b>6.2.1</b> Interpolation</a></li>
+<li class="chapter" data-level="6.2.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation-1"><i class="fa fa-check"></i><b>6.2.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>6.3</b> Extracting statistics for specific data patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="classification-methods.html"><a href="classification-methods.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a><ul>
+<li class="chapter" data-level="7.1" data-path="classification-methods.html"><a href="classification-methods.html#changepoint"><i class="fa fa-check"></i><b>7.1</b> Changepoint</a></li>
+<li class="chapter" data-level="7.2" data-path="classification-methods.html"><a href="classification-methods.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="classification-methods.html"><a href="classification-methods.html#k-means-clustering"><i class="fa fa-check"></i><b>7.2.1</b> k-means clustering</a></li>
+<li class="chapter" data-level="7.2.2" data-path="classification-methods.html"><a href="classification-methods.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.2.2</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="7.2.3" data-path="classification-methods.html"><a href="classification-methods.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>7.2.3</b> Expectation-minimisation binary clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="classification-methods.html"><a href="classification-methods.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>8</b> Classifying migratory flapping flight in Hoopoes</a><ul>
+<li class="chapter" data-level="8.1" data-path="flapping.html"><a href="flapping.html#the-dataset"><i class="fa fa-check"></i><b>8.1</b> The dataset</a></li>
+<li class="chapter" data-level="8.2" data-path="flapping.html"><a href="flapping.html#visualise-data"><i class="fa fa-check"></i><b>8.2</b> Visualise data</a></li>
+<li class="chapter" data-level="8.3" data-path="flapping.html"><a href="flapping.html#what-should-we-look-for"><i class="fa fa-check"></i><b>8.3</b> What should we look for?</a></li>
+<li class="chapter" data-level="8.4" data-path="flapping.html"><a href="flapping.html#performing-the-classification"><i class="fa fa-check"></i><b>8.4</b> Performing the classification</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>9</b> Classifying migratory flight in European bee-eaters</a><ul>
+<li class="chapter" data-level="9.1" data-path="soar.html"><a href="soar.html#the-dataset-1"><i class="fa fa-check"></i><b>9.1</b> The dataset</a></li>
+<li class="chapter" data-level="9.2" data-path="soar.html"><a href="soar.html#visualise-data-1"><i class="fa fa-check"></i><b>9.2</b> Visualise data</a></li>
+<li class="chapter" data-level="9.3" data-path="soar.html"><a href="soar.html#what-should-we-look-for-1"><i class="fa fa-check"></i><b>9.3</b> What should we look for?</a></li>
+<li class="chapter" data-level="9.4" data-path="soar.html"><a href="soar.html#what-variables-make-the-most-sense-for-classifying"><i class="fa fa-check"></i><b>9.4</b> What variables make the most sense for classifying?</a></li>
+<li class="chapter" data-level="9.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>9.5</b> Classify using HMM</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable"><i class="fa fa-check"></i><b>9.5.1</b> <em>Translate the classification events into something usable</em></a></li>
+<li class="chapter" data-level="9.5.2" data-path="soar.html"><a href="soar.html#plot-the-classification"><i class="fa fa-check"></i><b>9.5.2</b> <em>Plot the classification</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>9.6</b> Classify using pressure</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable-1"><i class="fa fa-check"></i><b>9.6.1</b> <em>Translate the classification events into something usable</em></a></li>
+<li class="chapter" data-level="9.6.2" data-path="soar.html"><a href="soar.html#plot-the-classification-1"><i class="fa fa-check"></i><b>9.6.2</b> <em>Plot the classification</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="soar.html"><a href="soar.html#classify-using-a-changepoint-analysis"><i class="fa fa-check"></i><b>9.7</b> Classify using a changepoint analysis</a></li>
+<li class="chapter" data-level="9.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>9.8</b> Compare the classifications</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="soar.html"><a href="soar.html#plot-the-agreement-between-the-migration-classifications"><i class="fa fa-check"></i><b>9.8.1</b> <em>Plot the agreement between the migration classifications</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>10</b> Classifying migratory flight Alpine swifts</a><ul>
+<li class="chapter" data-level="10.1" data-path="swift.html"><a href="swift.html#the-dataset-2"><i class="fa fa-check"></i><b>10.1</b> The dataset</a></li>
+<li class="chapter" data-level="10.2" data-path="swift.html"><a href="swift.html#visualise-data-2"><i class="fa fa-check"></i><b>10.2</b> Visualise data</a></li>
+<li class="chapter" data-level="10.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>10.3</b> What should we look for?</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifyers"><i class="fa fa-check"></i><b>10.3.1</b> Plot the classifyers</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>10.4</b> Classify migration using a hidden markov model</a></li>
+<li class="chapter" data-level="10.5" data-path="swift.html"><a href="swift.html#find-which-state-is-the-migratory-state"><i class="fa fa-check"></i><b>10.5</b> Find which state is the migratory state</a></li>
+<li class="chapter" data-level="10.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>10.6</b> Plot the classification as a sensor image</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="plot-a-subset-of-the-data.html"><a href="plot-a-subset-of-the-data.html"><i class="fa fa-check"></i><b>11</b> PLOT A SUBSET OF THE DATA</a></li>
+<li class="chapter" data-level="12" data-path="add-the-classification-to-the-plot.html"><a href="add-the-classification-to-the-plot.html"><i class="fa fa-check"></i><b>12</b> Add the classification to the plot</a></li>
+<li class="chapter" data-level="13" data-path="add-a-legend-to-see-which-color-matches-which-classification.html"><a href="add-a-legend-to-see-which-color-matches-which-classification.html"><i class="fa fa-check"></i><b>13</b> Add a legend to see which color matches which classification</a></li>
+<li class="chapter" data-level="14" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>14</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/KiranLDA/PAMLr" target="_blank">Forum</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="add-the-classification-to-the-plot" class="section level1">
+<h1><span class="header-section-number">12</span> Add the classification to the plot</h1>
+<p>points(PAM_data<span class="math inline">\(pressure\)</span>date[id], PAM_data<span class="math inline">\(pressure\)</span>obs[id], col=pressure_classification$colour[id], pch=16)</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="plot-a-subset-of-the-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="add-a-legend-to-see-which-color-matches-which-classification.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false,
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

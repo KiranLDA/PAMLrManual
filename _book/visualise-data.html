@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 8 Visualise data | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 8 Visualise data | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Visualise data | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie">
+
+
+<meta name="date" content="2019-04-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="classifying-flapping-behaviour-in-hoopoes.html">
+<link rel="next" href="applications.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites-1"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba"><i class="fa fa-check"></i><b>3.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="import.html"><a href="import.html#import-your-own-data"><i class="fa fa-check"></i><b>3.3</b> Import your own data</a></li>
+<li class="chapter" data-level="3.4" data-path="import.html"><a href="import.html#data-details"><i class="fa fa-check"></i><b>3.4</b> Data details</a></li>
+<li class="chapter" data-level="3.5" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.5</b> Cropping the data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="import.html"><a href="import.html#import"><i class="fa fa-check"></i><b>4</b> Importing data</a><ul>
+<li class="chapter" data-level="4.1" data-path="import.html"><a href="import.html#load-pamlr-1"><i class="fa fa-check"></i><b>4.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="4.2" data-path="import.html"><a href="import.html#use-existing-data-1"><i class="fa fa-check"></i><b>4.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops-1"><i class="fa fa-check"></i><b>4.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster-1"><i class="fa fa-check"></i><b>4.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba-1"><i class="fa fa-check"></i><b>4.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="import.html"><a href="import.html#import-your-own-data-1"><i class="fa fa-check"></i><b>4.3</b> Import your own data</a></li>
+<li class="chapter" data-level="4.4" data-path="import.html"><a href="import.html#data-details-1"><i class="fa fa-check"></i><b>4.4</b> Data details</a></li>
+<li class="chapter" data-level="4.5" data-path="import.html"><a href="import.html#cropping-the-data-1"><i class="fa fa-check"></i><b>4.5</b> Cropping the data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>5</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="5.1" data-path="dataviz.html"><a href="dataviz.html#formatting-data"><i class="fa fa-check"></i><b>5.1</b> Formatting data</a></li>
+<li class="chapter" data-level="5.2" data-path="dataviz.html"><a href="dataviz.html#quick-multiplots"><i class="fa fa-check"></i><b>5.2</b> Quick multiplots</a></li>
+<li class="chapter" data-level="5.3" data-path="dataviz.html"><a href="dataviz.html#interactive-timeseries"><i class="fa fa-check"></i><b>5.3</b> Interactive timeseries</a></li>
+<li class="chapter" data-level="5.4" data-path="dataviz.html"><a href="dataviz.html#sensor-images"><i class="fa fa-check"></i><b>5.4</b> Sensor images</a></li>
+<li class="chapter" data-level="5.5" data-path="dataviz.html"><a href="dataviz.html#histograms-and-three-dimensional-scatterplots"><i class="fa fa-check"></i><b>5.5</b> Histograms and three-dimensional scatterplots</a></li>
+<li class="chapter" data-level="5.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>5.6</b> Spherical projections</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="dataviz.html"><a href="dataviz.html#g-sphere"><i class="fa fa-check"></i><b>5.6.1</b> g-sphere</a></li>
+<li class="chapter" data-level="5.6.2" data-path="dataviz.html"><a href="dataviz.html#m-sphere"><i class="fa fa-check"></i><b>5.6.2</b> m-sphere</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="dataprep.html"><a href="dataprep.html#interpolation"><i class="fa fa-check"></i><b>6.1.1</b> Interpolation</a></li>
+<li class="chapter" data-level="6.1.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation"><i class="fa fa-check"></i><b>6.1.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="dataprep.html"><a href="dataprep.html#interpolation-1"><i class="fa fa-check"></i><b>6.2.1</b> Interpolation</a></li>
+<li class="chapter" data-level="6.2.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation-1"><i class="fa fa-check"></i><b>6.2.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>6.3</b> Extracting statistics for specific data patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="classifying-flapping-behaviour-in-hoopoes.html"><a href="classifying-flapping-behaviour-in-hoopoes.html"><i class="fa fa-check"></i><b>7</b> Classifying flapping behaviour in Hoopoes</a><ul>
+<li class="chapter" data-level="7.1" data-path="classifying-flapping-behaviour-in-hoopoes.html"><a href="classifying-flapping-behaviour-in-hoopoes.html#look-at-the-dataset"><i class="fa fa-check"></i><b>7.1</b> Look at the dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visualise-data.html"><a href="visualise-data.html"><i class="fa fa-check"></i><b>8</b> Visualise data</a></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a><ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="applications-1.html"><a href="applications-1.html"><i class="fa fa-check"></i><b>10</b> Applications</a><ul>
+<li class="chapter" data-level="10.1" data-path="applications-1.html"><a href="applications-1.html#example-one-1"><i class="fa fa-check"></i><b>10.1</b> Example one</a></li>
+<li class="chapter" data-level="10.2" data-path="applications-1.html"><a href="applications-1.html#example-two-1"><i class="fa fa-check"></i><b>10.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualise-data" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Visualise data</h1>
+<p>Sensor images are a good place to start when analysing data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>))
+
+
+<span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
+<span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">ploty=</span><span class="ot">FALSE</span>,
+          PAM_data<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,
+          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)
+
+<span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
+<span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">plotx=</span><span class="ot">TRUE</span>, <span class="dt">ploty=</span><span class="ot">FALSE</span>, <span class="dt">labely=</span><span class="ot">FALSE</span>,
+          PAM_data<span class="op">$</span>acceleration<span class="op">$</span>pit,  <span class="dt">main=</span><span class="st">&quot;Pitch&quot;</span>,
+          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)
+
+<span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
+<span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>pressure<span class="op">$</span>date, <span class="dt">plotx=</span><span class="ot">TRUE</span>, <span class="dt">ploty=</span><span class="ot">FALSE</span>, <span class="dt">labely=</span><span class="ot">FALSE</span>,
+          PAM_data<span class="op">$</span>pressure<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Pressure&quot;</span>,
+          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)
+
+<span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
+<span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>temperature<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,
+          PAM_data<span class="op">$</span>temperature<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Temperature&quot;</span>,
+          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="classifying-flapping-behaviour-in-hoopoes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["PAMLrManual.pdf", "PAMLrManual.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

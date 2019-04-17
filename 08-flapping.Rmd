@@ -1,0 +1,114 @@
+# Classifly flapping {#flapping}
+
+```{r piccie, out.width='100%', fig.show='hold', fig.align='center', echo=FALSE, fig.cap="Photograph by Frank Vassen, (c) creative commons"}
+knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/e/e3/Upupa_epops_-Lanzarote%2C_Canary_Islands%2C_Spain-8.jpg')
+
+```
+
+
+
+```{r echo=FALSE}
+library(PAMLr)
+```
+
+## Classifying migratory flapping flight in Hoopoes :The dataset
+
+Hoopoes (*Upupa epops*) have been tracked on the their migrations from Switzerland (to sub-Saharan Africa) using SOI-GDL3pam loggers. 
+
+* **Pressure** is recorded every 15 minutes
+* **Light** is recorded every 5 minutes
+* **Activity** is recorded every 5 minutes
+* **Pitch** is recorded every 5 minutes
+* **Temperature** is recorded every 15 minutes
+* **Tri-axial acceleration** is recorded every 4 hours
+* **Tri-axial magnetic field** is recorded every 4 hours
+
+```{r}
+data("hoopoe")
+# str(hoopoe)
+
+# make sure the cropping period is in the correct date format
+start = as.POSIXct("2016-07-01","%Y-%m-%d", tz="UTC")
+end = as.POSIXct("2017-06-01","%Y-%m-%d", tz="UTC")
+
+# Crop the data
+PAM_data= cutPAM(hoopoe,start,end)
+```
+
+## Visualise data
+
+Sensor images are a good place to start when analysing data, as they can give a rapid overview of the dataset. Darker colors represent lower values, and lighter colors (in this case yellow) represent higher values. Sensor images for **activity** (also known as an actogram), **pitch**, **pressure** and **temperature** are a good place to start. The following code plots this for us:
+
+```{r sensooor, out.width='100%', fig.show='hold', fig.align='center', cache = TRUE}
+par(mfrow= c(1,4), # number of panels
+    oma=c(0,2,0,6), # outer margin around all panels
+    mar =  c(4,1,4,1)) # inner margin around individual fivure
+
+sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
+          PAM_data$acceleration$act, main = "Activity",
+          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+
+sensorIMG(PAM_data$acceleration$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+          PAM_data$acceleration$pit,  main="Pitch",
+          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+
+sensorIMG(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+          PAM_data$pressure$obs,  main="Pressure",
+          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+
+sensorIMG(PAM_data$temperature$date, labely=FALSE,
+          PAM_data$temperature$obs,  main="Temperature",
+          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+```
+
+## What should we look for?
+
+Base on this plot, it is possible to see that nightime is the darker areas on the right and left sides of the plot, and daytime the "blob" in the middle. During the migratiory season (august/september and march), the nightime period is very different, with higher activity and pitch, and lower than usual temperature and pressure. These correspond to **migratory flight periods**.
+
+This can also be seen by cutting out a period in september are looking at the raw data.
+
+
+```{r out.width='100%', fig.show='hold', fig.align='center', cache = TRUE}
+dygraphPAM(dta = cutPAM(PAM_data, 
+                        as.POSIXct("2016-08-05","%Y-%m-%d", tz="UTC"),
+                        as.POSIXct("2016-08-12","%Y-%m-%d", tz="UTC")), 
+           toPLOT = c("pressure", "acceleration")) 
+```
+
+## Performing the classification
+
+Because flapping is widespread in birds, **PAMLr** integrates a pre-defined function `classifyFLAP()` to classify this behaviour.
+
+This function assumes that if the bird has displayed **high activity** for x number of consecutive minutes, then it is flapping. It is therefore important to think about what constitutes high activity and how long this period should be. At the moment, the function uses **k-means clustering** to identify the threshold between high and low activity. Using `toPLOT = TRUE` then allows the user to see where that threshold was drawn. The period of high activity is set by default to `period = 3`. This is because activity is recorded (on this logger) every 5 minutes and we assume that after an hour of high activity, the bird must be flapping. 
+
+Thus "high activity duration" / "data resolution" = "period" and 60 minutes / 5 minutes = period of 12.
+
+```{r out.width='100%', fig.align='center', cache = TRUE}
+# Classify behaviour
+behaviour = classifyFLAP(dta = PAM_data$acceleration, period = 12)
+str(behaviour)
+```
+
+This classification therefore provides different pieces of infomration.
+
+* **timetable** shows when a migratory flapping flight started and stopped, and how long it lasted (in hours)
+* **classification** is the output from the classification. In this case, each cluster/classs/state is represented by numbers between one 1 and 4. To find out what behaviour each of these numbers represent, we can refer to **low_movement**, **high_movement**, **migration** and **no_movement** 
+* **threshold** represents the threshold between high and low activity.
+
+Using these information, it's therefore possible to plot the classification:
+
+
+```{r out.width='100%', fig.align='center', cache = TRUE}
+
+# Plot behaviour
+col=col=c("brown","cyan4","gold","black")
+index= 6500:8000
+plot(PAM_data$acceleration$date[index],PAM_data$acceleration$act[index],
+  bg=col[behaviour$classification][index], 
+  type="o", pch=21, xlab="Date", ylab="Activity")
+legend( PAM_data$acceleration$date[index[1]],60 , 
+        c("No activity", "Low activity", "High activity", "Migration" ) ,
+        col = col[c(behaviour$no_movement, behaviour$low_movement,
+                    behaviour$high_movement, behaviour$migration)],
+        pch=20)
+```

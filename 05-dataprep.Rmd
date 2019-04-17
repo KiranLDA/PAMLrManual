@@ -1,0 +1,181 @@
+# Preparing data for analysis {#dataprep}
+
+```{r echo = FALSE}
+library(PAMLr)
+```
+
+There are multiple ways of preparing data for analysis. 
+
+* `reducePAM`: The most simple is to merge the data together (at the same resolution). 
+* `rollPAM`: It's also possible to derive summary statistics using a rolling window, which progresses across the timeseries to make calculations. 
+* `pamPREP`: Where there is a particular pattern that need to be extracted from the data such as sustained pressure change or activity, this function derives summary statistics for these periods
+
+
+## Merge sensor data together
+
+Because data from different sensors are collected at different temporal resolutions (e.g. 5 minutes, 30 mintues or4 hours), `reducePAM` formats data to the same time intervals as a specified variable (e.g. pressure) by summarising finer resolution data (median, sum or skip) and interpolating (or not) lower resolution data. 
+
+```{r}
+# Crop the data
+start = as.POSIXct("2015-08-01","%Y-%m-%d", tz="UTC")
+end = as.POSIXct("2016-06-21","%Y-%m-%d", tz="UTC")
+PAM_data = cutPAM(bee_eater, start, end)
+```
+
+### Interpolation
+
+Format it for every 30 mins and interpolate data with larger intervals, and provide median for data with smaller intervals.
+
+```{r cache = TRUE}
+TOclassify = reducePAM(PAM_data , "pressure", interp = TRUE, summary="median")
+
+```
+
+```{r echo=FALSE, warning=FALSE}
+library(kableExtra)
+knitr::kable(head(TOclassify),
+             caption = 'A table of the first 10 rows of a reducePAM dataset.',
+             align = "c")  %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(1, width = "5cm", bold=TRUE) %>%
+  scroll_box(width = "100%")
+```
+
+###  No interpolation
+
+Format it for every 5 minutes and don't interpolate anything
+
+```{r cache = TRUE}
+TOclassify = reducePAM(PAM_data , "acceleration", interp = FALSE)
+```
+
+
+## Rolling window
+
+Interpolation is not always advisable (especially linear), and another alternative for formatting data for analysis is to use a rolling window with `rollPAM`, which progresses across all the timeseries and creates summary statistics for the data contained within that window of a certain time. 
+
+Derived variables include:
+
+* **median** : Median
+* **sd** : Standard deviation
+* **sum** : Cumulative sum of values 
+* **min** : Minimum
+* **max** : Maximum
+* **range** : Range (i.e. maximum - minimum)
+* **cumu_diff** : Cumulative difference (i.e. sum of absolute differences)
+
+### Interpolation
+
+Create a 2h window with summary statistics every 15 minutes. Because sensors such as the magnetometer record every 4 hours, we can avoid spaces in the dataset by interpolating between points (linearly) and then calculating summary statistics for these interpolated points.
+
+```{r cache = TRUE}
+TOclassify = rollPAM(PAM_data,
+                     resolution_out = 15 ,
+                     window = 120)
+```
+
+```{r echo=FALSE, warning=FALSE}
+library(kableExtra)
+knitr::kable(head(TOclassify),
+             caption = 'A table of the first 10 rows of a reducePAM dataset.',
+             align = "c")  %>%
+  column_spec(1, width = "5cm", bold=TRUE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "100%")
+```
+
+### No interpolation
+
+However, there are many assumpations made with assumptions (i.e. is the data truly linear). One option is either to increase the window to be larger than the greatest data resolution (in this case more than 4 hours). Another is to simply leave the NAs in the data using `interp = FALSE`
+
+```{r cache = TRUE}
+TOclassify = rollPAM(PAM_data,
+                     resolution_out = 15 ,
+                     window = 120,
+                     interp = FALSE)
+```
+
+## Extracting statistics for specific data patterns
+
+If working with bird data, PAMLr offers some predefined functions for classifying behaviour. 
+
+* Flight bouts can be characterised by:
+
+    + continuous high activity which can be extracted from the data using `pamPREP( ... ,method = "flap")` 
+    + endurance activity using `pamPREP( ... ,method = "endurance")`
+    + a pressure change greater than the background pressure changes due to weather using `pamPREP( ... ,method = "pressure")`
+    + a period of continuous light using `pamPREP( ... ,method = "light")`
+  
+* Incubation bouts can be characterised by: 
+
+    + periods of darkness using `pamPREP( ... ,method = "darkness")`
+    + periods of resting using `pamPREP( ... ,method = "rest")`
+
+ 
+```{r cache =TRUE}
+twl = GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
+                             LightThreshold = 2, ask = FALSE)
+
+TOclassify = pamPREP(dta = PAM_data,
+                      method= "flap",
+                      twl = twl)
+```
+
+```{r echo=FALSE, warning=FALSE}
+library(kableExtra)
+knitr::kable(head(TOclassify),
+             caption = 'A table of the first 10 rows of a reducePAM dataset.',
+             align = "c")  %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(1, width = "5cm", bold=TRUE) %>%
+  scroll_box(width = "100%")
+```
+
+  
+These functions also calculate summary statistics for each event (e.g. flight bout). 
+
+These include:
+
+* **date** :  Date (without time)
+* **start** : Start time and date of the event, `POSIXct` format 
+* **end** :  Time and date that the event finished, `POSIXct` format 
+* **duration** : How long it lasted (in hours)
+* **total_daily_duration** : The total duration of all the events that occured that day (in hours)
+* **total_daily_event_number** : The total number of events which occured that day
+* **cum_pressure_change** : The cumulative change in atmospheric pressure during that event (in hectopascals)
+* **cum_altitude_change** : The cumulative change in altitude during that event (in metres)
+* **cum_altitude_up** : The cumulative number of metres that the bird went upwards during that event 
+* **total_daily_P_change** : The cumulative change in atmospheric pressure for all the events for that date (in hectopascals)
+* **P_dep_arr** : The difference between atmospheric pressure at the start of the event, and at the end (in hectopascals)
+* **pressure_range** : The total range of the atmospheric pressure during that event (maximum minus miniimum - in hectopascals)
+* **altitude_range** : The total altitude range during that event (maximum minus miniimum - in metres)
+* **mean_night_P** : The mean pressure during the night before the event took place (in hectopascals)
+* **sd_night_P** : The standard deviation of pressure the night before the event took place (in hectopascals)
+* **mean_nextnight_P** : The mean pressure the night after the event took place (in hectopascals)
+* **sd_nextnight_P** : The standard deviation of pressure the night after the event took place (in hectopascals)
+* **night_P_diff** : The difference between the mean pressures of the night before and the night after the event took place (in hectopascals)
+* **median_activity** : The median activity during that event
+* **sum_activity** : The sum of the activity during that event
+* **prop_resting** : The propotion of time during that event where activity = 0
+* **prop_active** : The propotion of time during that event where activity > 0
+* **mean_night_act** : The mean activity during the night before the event took place
+* **sd_night_act** : The standard deviation of activity the night before the event took place
+* **sum_night_act** : The summed activity during the night before the event took place
+* **mean_nextnight_act** :The mean activity the night after the event took place
+* **sd_nextnight_act** : The standard deviation of activity the night after the event took place
+* **sum_nextnight_act** : The summed activity the night after the event took place
+* **night_act_diff** : The difference between the mean activity of the night before and the night after the event took place 
+* **median_pitch** :  The median pitch during that event
+* **sd_pitch** : The standard deviation of pitch during that event
+* **median_light** :   The median light recordings during that event
+* **nightime** : Whether or not it was night during the majority of the event (1= night, 0 = day)
+* **median_gX** : Median raw acceledation on the x axis during the event
+* **median_gY** : Median raw acceledation on the y axis during the event
+* **median_gZ** : Median raw acceledation on the z axis during the event
+* **median_mX** : Median raw magnetic field on the x axis during the event
+* **median_mY** : Median raw magnetic field on the y axis during the event
+* **median_mZ** : Median raw magnetic field on the z axis
+* **median_temp** : Median temperature during the event (in celsius)
+* **sd_temp** : Standard deviation of temperature during the event (in celsius)
+* **cum_temp_change** : Cumulative absolute difference in temperature during the event (in celsius)  
+ 

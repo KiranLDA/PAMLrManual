@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>3 Importing data | PAMLr Manual</title>
+  <meta name="description" content="3 Importing data | PAMLr Manual">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="3 Importing data | PAMLr Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="3 Importing data | PAMLr Manual" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Importing data | PAMLr Manual" />
+  
+  <meta name="twitter:description" content="3 Importing data | PAMLr Manual" />
+  
+
+<meta name="author" content="Kiran Dhanjal-Adams">
+
+
+<meta name="date" content="2019-04-17">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="install.html">
+<link rel="next" href="dataviz.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
+<script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
+<script src="libs/dygraphs-1.1.1/shapes.js"></script>
+<script src="libs/moment-2.8.4/moment.js"></script>
+<script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
+<script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
+<script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
+<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
+<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
+<script src="libs/rglWebGL-binding-0.100.19/rglWebGL.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PAMLr Manuals</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#index"><i class="fa fa-check"></i><b>1.1</b> Index</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba"><i class="fa fa-check"></i><b>3.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="import.html"><a href="import.html#import-your-own-data"><i class="fa fa-check"></i><b>3.3</b> Import your own data</a></li>
+<li class="chapter" data-level="3.4" data-path="import.html"><a href="import.html#data-details"><i class="fa fa-check"></i><b>3.4</b> Data details</a></li>
+<li class="chapter" data-level="3.5" data-path="import.html"><a href="import.html#temporal-resolution-of-data"><i class="fa fa-check"></i><b>3.5</b> Temporal resolution of data</a></li>
+<li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.6</b> Cropping the data</a></li>
+<li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.7</b> Table references</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4.1" data-path="dataviz.html"><a href="dataviz.html#formatting-data"><i class="fa fa-check"></i><b>4.1</b> Formatting data</a></li>
+<li class="chapter" data-level="4.2" data-path="dataviz.html"><a href="dataviz.html#quick-multiplots"><i class="fa fa-check"></i><b>4.2</b> Quick multiplots</a></li>
+<li class="chapter" data-level="4.3" data-path="dataviz.html"><a href="dataviz.html#interactive-timeseries"><i class="fa fa-check"></i><b>4.3</b> Interactive timeseries</a></li>
+<li class="chapter" data-level="4.4" data-path="dataviz.html"><a href="dataviz.html#sensor-images"><i class="fa fa-check"></i><b>4.4</b> Sensor images</a></li>
+<li class="chapter" data-level="4.5" data-path="dataviz.html"><a href="dataviz.html#histograms-and-three-dimensional-scatterplots"><i class="fa fa-check"></i><b>4.5</b> Histograms and three-dimensional scatterplots</a></li>
+<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="dataviz.html"><a href="dataviz.html#g-sphere"><i class="fa fa-check"></i><b>4.6.1</b> g-sphere</a></li>
+<li class="chapter" data-level="4.6.2" data-path="dataviz.html"><a href="dataviz.html#m-sphere"><i class="fa fa-check"></i><b>4.6.2</b> m-sphere</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="patterns.html"><a href="patterns.html#migration"><i class="fa fa-check"></i><b>5.0.1</b> Migration</a></li>
+<li class="chapter" data-level="5.0.2" data-path="patterns.html"><a href="patterns.html#flap-gliding-birds"><i class="fa fa-check"></i><b>5.0.2</b> <em>Flap-gliding birds</em></a></li>
+<li class="chapter" data-level="5.0.3" data-path="patterns.html"><a href="patterns.html#soar-gliding-birds"><i class="fa fa-check"></i><b>5.0.3</b> <em>Soar-gliding birds</em></a></li>
+<li class="chapter" data-level="5.1" data-path="patterns.html"><a href="patterns.html#incubation"><i class="fa fa-check"></i><b>5.1</b> Incubation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="dataprep.html"><a href="dataprep.html#interpolation"><i class="fa fa-check"></i><b>6.1.1</b> Interpolation</a></li>
+<li class="chapter" data-level="6.1.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation"><i class="fa fa-check"></i><b>6.1.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="dataprep.html"><a href="dataprep.html#interpolation-1"><i class="fa fa-check"></i><b>6.2.1</b> Interpolation</a></li>
+<li class="chapter" data-level="6.2.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation-1"><i class="fa fa-check"></i><b>6.2.2</b> No interpolation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>6.3</b> Extracting statistics for specific data patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="classification-methods.html"><a href="classification-methods.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a><ul>
+<li class="chapter" data-level="7.1" data-path="classification-methods.html"><a href="classification-methods.html#changepoint"><i class="fa fa-check"></i><b>7.1</b> Changepoint</a></li>
+<li class="chapter" data-level="7.2" data-path="classification-methods.html"><a href="classification-methods.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="classification-methods.html"><a href="classification-methods.html#k-means-clustering"><i class="fa fa-check"></i><b>7.2.1</b> k-means clustering</a></li>
+<li class="chapter" data-level="7.2.2" data-path="classification-methods.html"><a href="classification-methods.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.2.2</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="7.2.3" data-path="classification-methods.html"><a href="classification-methods.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>7.2.3</b> Expectation-minimisation binary clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="classification-methods.html"><a href="classification-methods.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="classification-accuracy.html"><a href="classification-accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a></li>
+<li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Classifly flapping</a><ul>
+<li class="chapter" data-level="9.1" data-path="flapping.html"><a href="flapping.html#classifying-migratory-flapping-flight-in-hoopoes-the-dataset"><i class="fa fa-check"></i><b>9.1</b> Classifying migratory flapping flight in Hoopoes :The dataset</a></li>
+<li class="chapter" data-level="9.2" data-path="flapping.html"><a href="flapping.html#visualise-data"><i class="fa fa-check"></i><b>9.2</b> Visualise data</a></li>
+<li class="chapter" data-level="9.3" data-path="flapping.html"><a href="flapping.html#what-should-we-look-for"><i class="fa fa-check"></i><b>9.3</b> What should we look for?</a></li>
+<li class="chapter" data-level="9.4" data-path="flapping.html"><a href="flapping.html#performing-the-classification"><i class="fa fa-check"></i><b>9.4</b> Performing the classification</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>10</b> Classify soar-gliding</a><ul>
+<li class="chapter" data-level="10.1" data-path="soar.html"><a href="soar.html#classifying-migratory-flight-in-european-bee-eaters-the-dataset"><i class="fa fa-check"></i><b>10.1</b> Classifying migratory flight in European bee-eaters: the dataset</a></li>
+<li class="chapter" data-level="10.2" data-path="soar.html"><a href="soar.html#visualise-data-1"><i class="fa fa-check"></i><b>10.2</b> Visualise data</a></li>
+<li class="chapter" data-level="10.3" data-path="soar.html"><a href="soar.html#what-should-we-look-for-1"><i class="fa fa-check"></i><b>10.3</b> What should we look for?</a></li>
+<li class="chapter" data-level="10.4" data-path="soar.html"><a href="soar.html#what-variables-make-the-most-sense-for-classifying"><i class="fa fa-check"></i><b>10.4</b> What variables make the most sense for classifying?</a></li>
+<li class="chapter" data-level="10.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>10.5</b> Classify using HMM</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable"><i class="fa fa-check"></i><b>10.5.1</b> <em>Translate the classification events into something usable</em></a></li>
+<li class="chapter" data-level="10.5.2" data-path="soar.html"><a href="soar.html#plot-the-classification"><i class="fa fa-check"></i><b>10.5.2</b> <em>Plot the classification</em></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>10.6</b> Classify using pressure</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable-1"><i class="fa fa-check"></i><b>10.6.1</b> <em>Translate the classification events into something usable</em></a></li>
+<li class="chapter" data-level="10.6.2" data-path="soar.html"><a href="soar.html#plot-the-classification-1"><i class="fa fa-check"></i><b>10.6.2</b> <em>Plot the classification</em></a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="soar.html"><a href="soar.html#classify-using-a-changepoint-analysis"><i class="fa fa-check"></i><b>10.7</b> Classify using a changepoint analysis</a></li>
+<li class="chapter" data-level="10.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>10.8</b> Compare the classifications</a><ul>
+<li class="chapter" data-level="10.8.1" data-path="soar.html"><a href="soar.html#plot-the-agreement-between-the-migration-classifications"><i class="fa fa-check"></i><b>10.8.1</b> <em>Plot the agreement between the migration classifications</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>11</b> Classify flap-glide</a><ul>
+<li class="chapter" data-level="11.1" data-path="swift.html"><a href="swift.html#classifying-migratory-flight-alpine-swifts-the-dataset"><i class="fa fa-check"></i><b>11.1</b> Classifying migratory flight Alpine swifts: The dataset</a></li>
+<li class="chapter" data-level="11.2" data-path="swift.html"><a href="swift.html#visualise-data-2"><i class="fa fa-check"></i><b>11.2</b> Visualise data</a></li>
+<li class="chapter" data-level="11.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>11.3</b> What should we look for?</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
+<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#find-which-state-is-the-migratory-state"><i class="fa fa-check"></i><b>11.5</b> Find which state is the migratory state</a></li>
+<li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
+<li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.1</b> Using biologically meaningful patterns</a></li>
+<li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#data-resolution-and-interpolation"><i class="fa fa-check"></i><b>12.2</b> Data resolution and interpolation</a></li>
+<li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-supervised-machine-learning"><i class="fa fa-check"></i><b>12.3</b> Using supervised machine learning</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/KiranLDA/PAMLr" target="_blank">Forum</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PAMLr Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="import" class="section level1">
+<h1><span class="header-section-number">3</span> Importing data</h1>
+<div id="load-pamlr" class="section level2">
+<h2><span class="header-section-number">3.1</span> Load PAMLr</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(PAMLr)</code></pre></div>
+</div>
+<div id="use-existing-data" class="section level2">
+<h2><span class="header-section-number">3.2</span> Use existing data</h2>
+<p>PAMLr has three integrated datasets for exploring the code. These include:</p>
+<div id="hoopoe-upupa-epops" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Hoopoe (<em>Upupa epops</em>)</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:hoopoe"></span>
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Common_Hoopoe_%28Upupa_epops%29_Photograph_by_Shantanu_Kuveskar.jpg" alt="Photograph by Shantanu Kuveskar, (c) creative commons" width="40%" />
+<p class="caption">
+Figure 3.1: Photograph by Shantanu Kuveskar, (c) creative commons
+</p>
+</div>
+</div>
+<div id="european-bee-eater-merops-apiaster" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> European Bee-eater (<em>Merops apiaster</em>)</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;bee_eater&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:beeeater"></span>
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Gu%C3%AApier_d%27Europe_Merops_apiaster_-_European_Bee-eater_%28parc_national_de_l%27Ichkeul%29_02.jpg" alt="Photograph by El Golli Mohamed, (c) creative commons" width="40%" />
+<p class="caption">
+Figure 3.2: Photograph by El Golli Mohamed, (c) creative commons
+</p>
+</div>
+</div>
+<div id="alpine-swift-apus-melba" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Alpine Swift (<em>Apus melba</em>)</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;swift&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:swift"></span>
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Alpine_Swift-2719.jpg" alt="Photograph by Rudraksha Chodankar, (c) creative commons" width="40%" />
+<p class="caption">
+Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
+</p>
+</div>
+</div>
+</div>
+<div id="import-your-own-data" class="section level2">
+<h2><span class="header-section-number">3.3</span> Import your own data</h2>
+<p>Importing data is easy with PAMLr. All data files should be found within the same directory which can be accessed through the <code>pathname</code> argument. Currently there are a list of supported file types, which include:</p>
+<ul>
+<li>“.pressure”</li>
+<li>“.glf”</li>
+<li>“.gle”</li>
+<li>“.acceleration”</li>
+<li>“.temperature”</li>
+<li>“.magnetic”</li>
+</ul>
+<p>It’s therefore possible to decide which of these to import. By default, all are imported.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PAM_data =<span class="st"> </span><span class="kw">importPAM</span>(<span class="dt">pathname =</span> <span class="st">&quot;C:/Put/your/path/here&quot;</span>,
+                     <span class="dt">measurements =</span> <span class="kw">c</span>(<span class="st">&quot;.pressure&quot;</span>, 
+                                      <span class="st">&quot;.glf&quot;</span>,
+                                      <span class="st">&quot;.acceleration&quot;</span>, 
+                                      <span class="st">&quot;.temperature&quot;</span>, 
+                                      <span class="st">&quot;.magnetic&quot;</span>)<span class="st">`</span></code></pre></div>
+</div>
+<div id="data-details" class="section level2">
+<h2><span class="header-section-number">3.4</span> Data details</h2>
+<p>Once the PAM data are imported, they are stored as a nested list - with each element in the list containing a dataframe of measurements per date. For more details on the format of the data, use:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PAM_data =<span class="st"> </span>hoopoe
+<span class="kw">str</span>(PAM_data)</code></pre></div>
+<pre><code>## List of 6
+##  $ id          : chr &quot;16AJ&quot;
+##  $ pressure    :&#39;data.frame&#39;:    37412 obs. of  2 variables:
+##   ..$ date: POSIXct[1:37412], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ obs : int [1:37412] 969 969 969 969 969 969 969 969 969 969 ...
+##  $ light       :&#39;data.frame&#39;:    112401 obs. of  2 variables:
+##   ..$ date: POSIXct[1:112401], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ obs : int [1:112401] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ acceleration:&#39;data.frame&#39;:    111900 obs. of  3 variables:
+##   ..$ date: POSIXct[1:111900], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ pit : int [1:111900] 10 10 10 10 10 10 11 11 11 11 ...
+##   ..$ act : int [1:111900] 0 0 0 0 0 0 2 0 0 0 ...
+##  $ temperature :&#39;data.frame&#39;:    36818 obs. of  2 variables:
+##   ..$ date: POSIXct[1:36818], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ obs : int [1:36818] 33 33 33 33 33 33 33 33 33 33 ...
+##  $ magnetic    :&#39;data.frame&#39;:    1559 obs. of  7 variables:
+##   ..$ date: POSIXct[1:1559], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ gX  : int [1:1559] 849 -487 211 505 725 -2048 454 -126 919 -886 ...
+##   ..$ gY  : int [1:1559] -2035 -2182 -2601 -2581 -2507 -1847 -2582 -2650 -2437 -2574 ...
+##   ..$ gZ  : int [1:1559] -1642 -1962 351 -20 118 -1626 41 -76 -152 -1327 ...
+##   ..$ mX  : int [1:1559] -1600 -947 -2779 7 -1852 5844 1061 -118 -2196 2493 ...
+##   ..$ mY  : int [1:1559] 15645 15610 15259 15549 15561 14545 16631 14548 15195 10924 ...
+##   ..$ mZ  : int [1:1559] 5559 4627 6374 6147 5887 10881 5177 9000 6810 13793 ...</code></pre>
+<ul>
+<li><p><strong>Pressure</strong> data are recorded in hectopascals, generally every 15/30 minutes</p></li>
+<li><p><strong>Light</strong> data are recorded in an arbitrary unit, generally every 2/5 minutes</p></li>
+<li><strong>Acceledation</strong> data are summarised into two variables:</li>
+<li><code>act</code> which is short for “activity”“, and is the sum of the difference in acceleration on the z-axis (i.e.”jiggle“). It is recoreded every 5 minutes (summarised from 32 measurements - 10Hz)</li>
+<li><p><code>pit</code> which is short for “pitch”, and is the relative position of the bird’s body relative to the z axis. It is an average over 32 measurements and is summarised every 5 minutes.</p></li>
+<li><p><strong>Temperature</strong> data are recorded in degrees Celsius, generally every 15/30 minutes</p></li>
+<li><strong>Magnetic</strong> data are in fact the combined recordings from a tri-axial accelerometer and magnetometer.</li>
+<li><code>gX</code>, <code>gY</code> and <code>gZ</code> are snapshot tri-axial acceleration data, recorded every 4 hours.</li>
+<li><p><code>mX</code>, <code>mY</code> and <code>mZ</code> are snapshot tri-axial magentic field data, recorded every 4 hours.</p></li>
+</ul>
+</div>
+<div id="temporal-resolution-of-data" class="section level2">
+<h2><span class="header-section-number">3.5</span> Temporal resolution of data</h2>
+<blockquote>
+<p><strong>Note that different sensors and loggers often collect data at different time intervals</strong></p>
+</blockquote>
+<table>
+<caption><span id="tab:loggeres">Table 3.1: </span> Temporal resolution of difference multisensor loggers</caption>
+<thead>
+<tr class="header">
+<th align="left">Sensor</th>
+<th align="right">Logger</th>
+<th align="right">Developper</th>
+<th align="right">Resolution</th>
+<th align="right">Life</th>
+<th align="right">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Pressure</strong></td>
+<td align="right">PAM-logger</td>
+<td align="right">SOI</td>
+<td align="right">15/30 min</td>
+<td align="right">1 year</td>
+<td align="right">Dhanjal-Adams et al. (2018)</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">activity logger</td>
+<td align="right">CAMR</td>
+<td align="right">1h</td>
+<td align="right">1 year</td>
+<td align="right">Sjöberg et al.(2018)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">OS barologgers</td>
+<td align="right">CLA</td>
+<td align="right">1 min</td>
+<td align="right">13 days</td>
+<td align="right">Shipley et al. (2017)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Temperature</strong></td>
+<td align="right">PAM-logger</td>
+<td align="right">SOI</td>
+<td align="right">15/30 min</td>
+<td align="right">1 year</td>
+<td align="right">Liechti et al. (2018)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">activity logger</td>
+<td align="right">CAMR</td>
+<td align="right">1 h</td>
+<td align="right">1 year</td>
+<td align="right">Sjöberg et al.(2018)</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">OS barologgers</td>
+<td align="right">CLA</td>
+<td align="right">1 min</td>
+<td align="right">13 days</td>
+<td align="right">Dreelin et al. (2018)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Acceleration</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">activity</td>
+<td align="right">PAM-logger</td>
+<td align="right">SOI</td>
+<td align="right">5 min</td>
+<td align="right">1 year</td>
+<td align="right">Meier et al. (2018)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">activity logger</td>
+<td align="right">CAMR</td>
+<td align="right">1h</td>
+<td align="right">1 year</td>
+<td align="right">Bäckman et al. (2017)</td>
+</tr>
+<tr class="even">
+<td align="left">pitch</td>
+<td align="right">PAM-logger</td>
+<td align="right">SOI</td>
+<td align="right">5 min</td>
+<td align="right">1 year</td>
+<td align="right">Liechti et al. (2018)</td>
+</tr>
+<tr class="odd">
+<td align="left">tri-axial</td>
+<td align="right">PAM-logger</td>
+<td align="right">SOI</td>
+<td align="right">4 h</td>
+<td align="right">1 year</td>
+<td align="right">Liechti et al. (2018)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Magnetic</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">tri-axial</td>
+<td align="right">PAM-logger</td>
+<td align="right">SOI</td>
+<td align="right">4 h</td>
+<td align="right">1 year</td>
+<td align="right">Liechti et al. (2018)</td>
+</tr>
+</tbody>
+</table>
+<p>SOI = Swiss Ornithological Institute</p>
+<p>CAMR = Centre for Animal Movement Research</p>
+<p>CLA = Cornell Laboratory of Ornithology</p>
+</div>
+<div id="cropping-the-data" class="section level2">
+<h2><span class="header-section-number">3.6</span> Cropping the data</h2>
+<p>Note that very often, a logger continues to record data before and after it is removed from a bird. For example, it might be transported in a rucksack or left in a laboratory until data are downloaded. It’s therefore important to remove these incorrect datapoints. This can be done using <code>cutPAM</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make sure the cropping period is in the correct date format</span>
+start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
+end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
+
+<span class="co"># Crop the data</span>
+PAM_data=<span class="st"> </span><span class="kw">cutPAM</span>(hoopoe,start,end)</code></pre></div>
+</div>
+<div id="table-references" class="section level2">
+<h2><span class="header-section-number">3.7</span> Table references</h2>
+<p>Bäckman, J., Andersson, A., Alerstam, T., Pedersen, L., Sjöberg, S., Thorup, K., &amp; Tøttrup, A. P. (2017). Activity and migratory flights of individual free-flying songbirds throughout the annual cycle: method and first case study. Journal of Avian Biology, 48(2), 309–319. <a href="doi:10.1111/jav.01068" class="uri">doi:10.1111/jav.01068</a></p>
+<p>Dhanjal-Adams, K. L., Bauer, S., Emmenegger, T., Hahn, S., Lisovski, S., &amp; Liechti, F. (2018). Spatiotemporal Group Dynamics in a Long-Distance Migratory Bird. Current Biology, 28(17), 2824–2830.e3. <a href="doi:10.1016/j.cub.2018.06.054" class="uri">doi:10.1016/j.cub.2018.06.054</a></p>
+<p>Dreelin, R. A., Shipley, J. R., &amp; Winkler, D. W. (2018). Flight Behavior of Individual Aerial Insectivores Revealed by Novel Altitudinal Dataloggers. Frontiers in Ecology and Evolution, 6, 182. <a href="doi:10.3389/fevo.2018.00182" class="uri">doi:10.3389/fevo.2018.00182</a></p>
+<p>Hedenström, A., Norevik, G., Warfvinge, K., Andersson, A., Bäckman, J., &amp; Åkesson, S. (2016). Annual 10-Month Aerial Life Phase in the Common Swift Apus apus. Current Biology, 26(22), 3066–3070. <a href="doi:10.1016/J.CUB.2016.09.014" class="uri">doi:10.1016/J.CUB.2016.09.014</a></p>
+<p>Liechti, F., Bauer, S., Dhanjal-Adams, K. L., Emmenegger, T., Zehtindjiev, P., &amp; Hahn, S. (2018). Miniaturized multi-sensor loggers provide new insight into year-round flight behaviour of small trans-Sahara avian migrants. Movement Ecology, 6(1), 19. <a href="doi:10.1186/s40462-018-0137-1" class="uri">doi:10.1186/s40462-018-0137-1</a></p>
+<p>Meier, C. M., Karaardıç, H., Aymí, R., Peev, S. G., Bächler, E., Weber, R., … Liechti, F. (2018). What makes Alpine swift ascend at twilight? Novel geolocators reveal year-round flight behaviour. Behavioral Ecology and Sociobiology, 72(3), 45. <a href="doi:10.1007/s00265-017-2438-6" class="uri">doi:10.1007/s00265-017-2438-6</a></p>
+<p>Shipley, JR, Kapoor, J, Dreelin, RA, Winkler, DW. (2018) An open‐source sensor‐logger for recording vertical movement in free‐living organisms. Methods in Ecol Evol.; 9: 465– 471. <a href="doi:10.1111/2041-210X.12893" class="uri">doi:10.1111/2041-210X.12893</a></p>
+<p>Sjöberg, S., Pedersen, L., Malmiga, G., Alerstam, T., Hansson, B., Hasselquist, D., … Bäckman, J. (2018). Barometer logging reveals new dimensions of individual songbird migration. Journal of Avian Biology, 49(9), e01821. <a href="doi:10.1111/jav.01821" class="uri">doi:10.1111/jav.01821</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="install.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dataviz.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false,
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>
