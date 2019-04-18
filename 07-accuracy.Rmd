@@ -1,4 +1,4 @@
-# Classification accuracy
+# Classification accuracy {#accuracy}
 
 
 ```{r echo=FALSE}
@@ -61,7 +61,7 @@ reference = classification2PAM(from = classification$timetable$start,
 reference = ifelse(reference == 1, "Migration", "Other")
 ```
 
-##  Classify migration 
+##  Setup the prediction data 
 
 Hoopoes seems to perform large altitudinal changes during migratory flight, so we preform a very rough classification by specifying that any altitude change greater than 2 hPa is equivalent to a migratory flight (this is for illustrative purposes only, and should not be used as a definite classification method).
 

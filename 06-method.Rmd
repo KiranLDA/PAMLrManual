@@ -1,4 +1,4 @@
-# Classification methods
+# Classification methods {#method}
 
 Once a behavioural pattern has been identified, there are a number of methods available for separating them from the data. Not all these methods should be used exclusively. Some can be used to complement each other, while others can be used interchangeably. Here we highlight changepoint analyses, principle component analyses, cluster analyses, hidden Markov models,
 

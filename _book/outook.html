@@ -25,7 +25,7 @@
 <meta name="author" content="Kiran Dhanjal-Adams">
 
 
-<meta name="date" content="2019-04-17">
+<meta name="date" content="2019-04-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,8 +48,55 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
+<script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
+<script src="libs/dygraphs-1.1.1/shapes.js"></script>
+<script src="libs/moment-2.8.4/moment.js"></script>
+<script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
+<script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
+<script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
+<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
+<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
+<script src="libs/rglWebGL-binding-0.100.19/rglWebGL.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -117,21 +164,21 @@
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>6.3</b> Extracting statistics for specific data patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="classification-methods.html"><a href="classification-methods.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a><ul>
-<li class="chapter" data-level="7.1" data-path="classification-methods.html"><a href="classification-methods.html#changepoint"><i class="fa fa-check"></i><b>7.1</b> Changepoint</a></li>
-<li class="chapter" data-level="7.2" data-path="classification-methods.html"><a href="classification-methods.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="classification-methods.html"><a href="classification-methods.html#k-means-clustering"><i class="fa fa-check"></i><b>7.2.1</b> k-means clustering</a></li>
-<li class="chapter" data-level="7.2.2" data-path="classification-methods.html"><a href="classification-methods.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.2.2</b> Hierarchical clustering</a></li>
-<li class="chapter" data-level="7.2.3" data-path="classification-methods.html"><a href="classification-methods.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>7.2.3</b> Expectation-minimisation binary clustering</a></li>
+<li class="chapter" data-level="7" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a><ul>
+<li class="chapter" data-level="7.1" data-path="method.html"><a href="method.html#changepoint"><i class="fa fa-check"></i><b>7.1</b> Changepoint</a></li>
+<li class="chapter" data-level="7.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="method.html"><a href="method.html#k-means-clustering"><i class="fa fa-check"></i><b>7.2.1</b> k-means clustering</a></li>
+<li class="chapter" data-level="7.2.2" data-path="method.html"><a href="method.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.2.2</b> Hierarchical clustering</a></li>
+<li class="chapter" data-level="7.2.3" data-path="method.html"><a href="method.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>7.2.3</b> Expectation-minimisation binary clustering</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="classification-methods.html"><a href="classification-methods.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
+<li class="chapter" data-level="7.3" data-path="method.html"><a href="method.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="classification-accuracy.html"><a href="classification-accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a><ul>
-<li class="chapter" data-level="8.1" data-path="classification-accuracy.html"><a href="classification-accuracy.html#classify-migratory-flapping-flight"><i class="fa fa-check"></i><b>8.1</b> Classify migratory flapping flight</a></li>
-<li class="chapter" data-level="8.2" data-path="classification-accuracy.html"><a href="classification-accuracy.html#setup-the-reference-dataset"><i class="fa fa-check"></i><b>8.2</b> Setup the reference dataset</a></li>
-<li class="chapter" data-level="8.3" data-path="classification-accuracy.html"><a href="classification-accuracy.html#classify-migration"><i class="fa fa-check"></i><b>8.3</b> Classify migration</a></li>
-<li class="chapter" data-level="8.4" data-path="classification-accuracy.html"><a href="classification-accuracy.html#compare-the-two-classifications"><i class="fa fa-check"></i><b>8.4</b> Compare the two classifications</a></li>
-<li class="chapter" data-level="8.5" data-path="classification-accuracy.html"><a href="classification-accuracy.html#create-a-confusion-matrix"><i class="fa fa-check"></i><b>8.5</b> Create a confusion Matrix</a></li>
+<li class="chapter" data-level="8" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a><ul>
+<li class="chapter" data-level="8.1" data-path="accuracy.html"><a href="accuracy.html#classify-migratory-flapping-flight"><i class="fa fa-check"></i><b>8.1</b> Classify migratory flapping flight</a></li>
+<li class="chapter" data-level="8.2" data-path="accuracy.html"><a href="accuracy.html#setup-the-reference-dataset"><i class="fa fa-check"></i><b>8.2</b> Setup the reference dataset</a></li>
+<li class="chapter" data-level="8.3" data-path="accuracy.html"><a href="accuracy.html#setup-the-prediction-data"><i class="fa fa-check"></i><b>8.3</b> Setup the prediction data</a></li>
+<li class="chapter" data-level="8.4" data-path="accuracy.html"><a href="accuracy.html#compare-the-two-classifications"><i class="fa fa-check"></i><b>8.4</b> Compare the two classifications</a></li>
+<li class="chapter" data-level="8.5" data-path="accuracy.html"><a href="accuracy.html#create-a-confusion-matrix"><i class="fa fa-check"></i><b>8.5</b> Create a confusion Matrix</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Classifly flapping</a><ul>
 <li class="chapter" data-level="9.1" data-path="flapping.html"><a href="flapping.html#classifying-migratory-flapping-flight-in-hoopoes-the-dataset"><i class="fa fa-check"></i><b>9.1</b> Classifying migratory flapping flight in Hoopoes :The dataset</a></li>
@@ -164,12 +211,15 @@
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
-<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
+<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#find-which-state-is-the-migratory-state"><i class="fa fa-check"></i><b>11.5</b> Find which state is the migratory state</a></li>
+<li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
-<li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.1</b> Using biologically meaningful patterns</a></li>
-<li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#data-resolution-and-interpolation"><i class="fa fa-check"></i><b>12.2</b> Data resolution and interpolation</a></li>
-<li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-supervised-machine-learning"><i class="fa fa-check"></i><b>12.3</b> Using supervised machine learning</a></li>
+<li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data data</a></li>
+<li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#clock-drift"><i class="fa fa-check"></i><b>12.2</b> Clock drift</a></li>
+<li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.3</b> Using biologically meaningful patterns</a></li>
+<li class="chapter" data-level="12.4" data-path="outook.html"><a href="outook.html#data-resolution-and-interpolation"><i class="fa fa-check"></i><b>12.4</b> Data resolution and interpolation</a></li>
+<li class="chapter" data-level="12.5" data-path="outook.html"><a href="outook.html#using-supervised-machine-learning"><i class="fa fa-check"></i><b>12.5</b> Using supervised machine learning</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/KiranLDA/PAMLr" target="_blank">Install PAMLr from github</a></li>
@@ -193,8 +243,16 @@
             <section class="normal" id="section-">
 <div id="outook" class="section level1">
 <h1><span class="header-section-number">12</span> A few last things to think about</h1>
+<div id="cutting-the-data-data" class="section level2">
+<h2><span class="header-section-number">12.1</span> Cutting the data data</h2>
+<p>Never forget that loggers can record data, even when it is not mounted on an animal - it can be in acar, rucksack or in a box in a lab waiting for data download. Make sure the analysis starts and stops when the logger was on the bird. The function <code>cutPAM</code> is specifically setup for getting rid of these unwanted periods.</p>
+</div>
+<div id="clock-drift" class="section level2">
+<h2><span class="header-section-number">12.2</span> Clock drift</h2>
+<p>As the battery runs out throughout the year, the clock on a logger can get gradually become slower and slower. There are a number of methods for correcting for this. The bird/animal will always be caught at a known location. It’s best therefore to find the sunset and sunrise times for the known location, and to see by how many minutes the sunrise and sunset estimated from the light sensor differ from the true sunrise and sunset. It’s then possible to linearly interpolate the timeseries by the known number of minutes. This can be implemented in using the function <code>clockDRIFT</code>.</p>
+</div>
 <div id="using-biologically-meaningful-patterns" class="section level2">
-<h2><span class="header-section-number">12.1</span> Using biologically meaningful patterns</h2>
+<h2><span class="header-section-number">12.3</span> Using biologically meaningful patterns</h2>
 <p>The analysis of multisensor geolocator data can be approached from many angles. It’s therefore important to use measures which are translatable into behaviour and to think carefully about the ecology of a species. Here are a few important points to keep in mind:</p>
 <ul>
 <li><strong>Pressure can change as a result of weather, not just flight</strong>. Think about the data resolution and use a weather station to investigate background pressure changes over the same time periods as the data are collected.</li>
@@ -207,7 +265,7 @@
 </blockquote>
 </div>
 <div id="data-resolution-and-interpolation" class="section level2">
-<h2><span class="header-section-number">12.2</span> Data resolution and interpolation</h2>
+<h2><span class="header-section-number">12.4</span> Data resolution and interpolation</h2>
 <p>The temporal resolution of the data <strong>vary between sensors</strong>. It’s important to think about what resolution the analysis should be carried out at. For instance, with tri-axial measurements taken every 4 hours, it’s impossible to perform dead reckoning, or to look at an individual flight event.</p>
 <blockquote>
 <p><strong>If there are missing data, be aware that some methods will not work for classifying behaviour</strong></p>
@@ -215,7 +273,7 @@
 <p>If data are infrequent, refrain from using them for classification. If they are absolutely necessary, it’s possible to interpolate linearly between two values. However, a better alternative would be to use a rolling window to derive statistics . See <a href="dataprep.html#dataprep">data preparation</a> for more information.</p>
 </div>
 <div id="using-supervised-machine-learning" class="section level2">
-<h2><span class="header-section-number">12.3</span> Using supervised machine learning</h2>
+<h2><span class="header-section-number">12.5</span> Using supervised machine learning</h2>
 <p>Here, the examples are geared towards migratory birds with tags recording less frequently over long periods. However, with an increase in data resolution over a shorter period, and on-ground observations, it’s also possible to develop supervised learning techniques, look at dead reckoning, turning point classification, and much more, not just for birds. There are many possibilities.</p>
 
 </div>
