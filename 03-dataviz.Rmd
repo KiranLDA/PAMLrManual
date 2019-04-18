@@ -96,8 +96,7 @@ pam3D(PAM_data$magnetic$gX, PAM_data$magnetic$gY, PAM_data$magnetic$gZ,
 ```{r echo = FALSE}
 knitr::knit_hooks$set(webgl = rgl::hook_webgl)
 pam3D(PAM_data$magnetic$gX, PAM_data$magnetic$gY, PAM_data$magnetic$gZ,
-       xlab= "X", ylab= "Y", zlab= "Z",
-      xlim=c(-5000,5000), ylim=c(-5000,5000), zlim=c(-5000,5000))
+       xlab= "X", ylab= "Y", zlab= "Z")
 rgl::rglwidget()
 ```
 

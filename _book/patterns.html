@@ -111,7 +111,7 @@ code > span.in { color: #008000; } /* Information */
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">PAMLr Manuals</a></li>
+<li><a href="./">PAMLr Manual</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
@@ -215,7 +215,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
-<li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data data</a></li>
+<li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
 <li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#clock-drift"><i class="fa fa-check"></i><b>12.2</b> Clock drift</a></li>
 <li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.3</b> Using biologically meaningful patterns</a></li>
 <li class="chapter" data-level="12.4" data-path="outook.html"><a href="outook.html#data-resolution-and-interpolation"><i class="fa fa-check"></i><b>12.4</b> Data resolution and interpolation</a></li>
@@ -256,7 +256,7 @@ code > span.in { color: #008000; } /* Information */
 <span class="kw">sensorIMG</span>(hoopoe<span class="op">$</span>acceleration<span class="op">$</span>date,
           hoopoe<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,
           <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-24-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="04-patterns_files/figure-html/unnamed-chunk-2-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="flap-gliding-birds" class="section level3">
@@ -267,7 +267,7 @@ code > span.in { color: #008000; } /* Information */
 <span class="kw">sensorIMG</span>(swift<span class="op">$</span>acceleration<span class="op">$</span>date,
           swift<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,
           <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-25-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="04-patterns_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="soar-gliding-birds" class="section level3">
 <h3><span class="header-section-number">5.0.3</span> <em>Soar-gliding birds</em></h3>
@@ -287,7 +287,7 @@ code > span.in { color: #008000; } /* Information */
 <span class="kw">sensorIMG</span>(bee_eater<span class="op">$</span>light<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,
           bee_eater<span class="op">$</span>light<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Light&quot;</span>,
           <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="04-patterns_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="incubation" class="section level2">
 <h2><span class="header-section-number">5.1</span> Incubation</h2>
@@ -307,7 +307,7 @@ PAM_data =<span class="st"> </span><span class="kw">cutPAM</span>(bee_eater,
 <span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>light<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,
           PAM_data<span class="op">$</span>light<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Light&quot;</span>,
           <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-27-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="04-patterns_files/figure-html/unnamed-chunk-5-1.png" width="960" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

@@ -111,7 +111,7 @@ code > span.in { color: #008000; } /* Information */
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">PAMLr Manuals</a></li>
+<li><a href="./">PAMLr Manual</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
@@ -215,7 +215,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
-<li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data data</a></li>
+<li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
 <li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#clock-drift"><i class="fa fa-check"></i><b>12.2</b> Clock drift</a></li>
 <li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.3</b> Using biologically meaningful patterns</a></li>
 <li class="chapter" data-level="12.4" data-path="outook.html"><a href="outook.html#data-resolution-and-interpolation"><i class="fa fa-check"></i><b>12.4</b> Data resolution and interpolation</a></li>
@@ -292,7 +292,7 @@ PAM_data=<span class="st"> </span><span class="kw">cutPAM</span>(swift,start,end
 <span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>temperature<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,
           PAM_data<span class="op">$</span>temperature<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Temperature&quot;</span>,
           <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/sensooor3-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="10-swift_files/figure-html/sensooor3-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="what-should-we-look-for-2" class="section level2">
 <h2><span class="header-section-number">11.3</span> What should we look for?</h2>
@@ -327,7 +327,7 @@ varint =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quo
   <span class="kw">plot</span>(TOclassify<span class="op">$</span>date, TOclassify[,varint[i]], 
        <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Date&quot;</span>, <span class="dt">ylab =</span> varint[i])
 }</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-69-1.png" width="672" /><img src="PAMLrManual_files/figure-html/unnamed-chunk-69-2.png" width="672" /></p>
+<p><img src="10-swift_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="10-swift_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 </div>
 </div>
 <div id="classify-migration-using-a-hidden-markov-model" class="section level2">
@@ -340,7 +340,7 @@ predictor =<span class="st"> </span>TOclassify[, varint]
 classification =<span class="st"> </span><span class="kw">classifyPAM</span>(predictor,
                              <span class="dt">states =</span> <span class="dv">7</span>,
                              <span class="dt">method =</span> <span class="st">&quot;hmm&quot;</span>)</code></pre></div>
-<pre><code>## converged at iteration 50 with logLik: -404653.1</code></pre>
+<pre><code>## converged at iteration 35 with logLik: -404282.7</code></pre>
 </div>
 <div id="find-which-state-is-the-migratory-state" class="section level2">
 <h2><span class="header-section-number">11.5</span> Find which state is the migratory state</h2>
@@ -388,7 +388,7 @@ twilights &lt;-<span class="st"> </span>GeoLight<span class="op">::</span><span 
        <span class="dt">col=</span> <span class="kw">ifelse</span>(twilights<span class="op">$</span>type <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,
                    <span class="st">&quot;grey&quot;</span>,<span class="st">&quot;black&quot;</span>),
        <span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">cex=</span><span class="fl">0.5</span>)</code></pre></div>
-<p><img src="PAMLrManual_files/figure-html/unnamed-chunk-72-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="10-swift_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
