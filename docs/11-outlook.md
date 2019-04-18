@@ -1,8 +1,8 @@
 # A few last things to think about {#outook}
 
-## Cutting the data data
+## Cutting the data
 
-Never forget that loggers can record data, even when it is not mounted on an animal - it can be in acar,  rucksack or in a box in a lab waiting for data download. Make sure the analysis starts and stops when the logger was on the bird. The function `cutPAM` is specifically setup for getting rid of these unwanted periods.
+Never forget that loggers can record data **even when when they are not attached to an animal**. Often the logger is taken off, stored in a backpack, driven home or posted to a lab for download. Always make sure the analysis starts and stops when the logger was on the bird. The function `cutPAM` is specifically setup for getting rid of these unwanted periods.
 
 ## Clock drift
 
