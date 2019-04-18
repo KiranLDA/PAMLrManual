@@ -1,4 +1,4 @@
-# Classifly flapping {#flapping}
+# Example 1: Flapping {#flapping}
 
 <div class="figure" style="text-align: center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Upupa_epops_-Lanzarote%2C_Canary_Islands%2C_Spain-8.jpg" alt="Photograph by Frank Vassen, (c) creative commons" width="100%" />

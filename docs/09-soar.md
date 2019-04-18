@@ -1,4 +1,4 @@
-# Classify soar-gliding {#soar}
+# Example 2: soar-gliding {#soar}
 
 
 <div class="figure" style="text-align: center">

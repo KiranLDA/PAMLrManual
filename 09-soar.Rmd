@@ -1,4 +1,4 @@
-# Classify soar-gliding {#soar}
+# Example 2: soar-gliding {#soar}
 
 
 ```{r beenenfresser, out.width='100%', fig.show='hold', fig.align='center', echo=FALSE, fig.cap="Photograph by El Golli Mohamed, (c) creative commons"}

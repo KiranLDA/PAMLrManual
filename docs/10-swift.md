@@ -1,4 +1,4 @@
-# Classify flap-glide {#swift}
+# Example 3: flap-glide {#swift}
 
 
 
