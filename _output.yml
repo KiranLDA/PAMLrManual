@@ -6,7 +6,7 @@ bookdown::gitbook:
       collapse: section
       scroll_highlight: true
       before: |
-        <li><a href="./">PAMLr Manuals</a></li>
+        <li><a href="./">PAMLr Manual</a></li>
       after: |
         <li><a href="https://github.com/KiranLDA/PAMLr" target="_blank">Install PAMLr from github</a></li>
     download: no
@@ -21,4 +21,3 @@ bookdown::gitbook:
     fontsettings:
       theme: white
       family: sans
-

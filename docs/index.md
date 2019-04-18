@@ -22,7 +22,7 @@ This is a user manual accompanying the R package **PAMLr**, which provides a set
 
 
 <div class="figure" style="text-align: center">
-<img src="_bookdown_files/PAMLrManual_files/figure-html/PAM-logger.png" alt="SOI-GDL3pam logger, (c) Marcel Burkhardt,  Swiss Ornithological Institute" width="60%" />
+<img src="images/PAM-logger.png" alt="SOI-GDL3pam logger, (c) Marcel Burkhardt,  Swiss Ornithological Institute" width="60%" />
 <p class="caption">(\#fig:unnamed-chunk-1)SOI-GDL3pam logger, (c) Marcel Burkhardt,  Swiss Ornithological Institute</p>
 </div>
 
