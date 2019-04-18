@@ -80,8 +80,8 @@ str(PAM_data)
 
 * __Light__ data are recorded in an arbitrary unit, generally every 2/5 minutes
 
-* __Acceledation__ data are summarised  into two variables: 
-  + `act` which is short for "activity"", and is the sum of the difference in acceleration on the z-axis (i.e. "jiggle"). It is recoreded every 5 minutes (summarised from 32 measurements - 10Hz)
+* __Acceleration__ data are summarised into two variables: 
+  + `act` which is short for "activity"", and is the sum of the difference in acceleration on the z-axis (i.e. "jiggle"). It is recorded every 5 minutes (summarised from 32 measurements - 10Hz)
   + `pit` which is short for "pitch", and is the relative position of the bird's body relative to the z axis. It is an average over 32 measurements and is summarised every 5 minutes.
 
 * __Temperature__ data are recorded in degrees Celsius, generally every 15/30 minutes
