@@ -131,16 +131,55 @@ Using these information, it's therefore possible to plot the classification:
 
 ```r
 # Plot behaviour
-col=col=c("brown","cyan4","gold","black")
-index= 6500:8000
+col=col=c("black","royalblue4","brown","gold")
+index= 7300:8000
 plot(PAM_data$acceleration$date[index],PAM_data$acceleration$act[index],
-  bg=col[behaviour$classification][index], 
-  type="o", pch=21, xlab="Date", ylab="Activity")
+  type="l", xlab="Date", ylab="Activity")
+points(PAM_data$acceleration$date[index],PAM_data$acceleration$act[index],
+  col=col[behaviour$classification+1][index], 
+  pch=16,)
 legend( PAM_data$acceleration$date[index[1]],60 , 
         c("No activity", "Low activity", "High activity", "Migration" ) ,
         col = col[c(behaviour$no_movement, behaviour$low_movement,
-                    behaviour$high_movement, behaviour$migration)],
+                    behaviour$high_movement, behaviour$migration)+1],
         pch=20)
 ```
 
 <img src="08-flapping_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" />
+
+
+## Plot the classification as a sensor image
+
+Another way of looking at a classification is to use a sensor image of the results and to plot it side by side with the raw data to see if the same patterns are being picked out. We can also add (for instance sunset and sunrise events)
+
+
+```r
+par(mfrow= c(1,3), # number of panels
+    oma=c(0,2,0,6), # outer margin around all panels
+    mar =  c(4,1,4,1)) # inner margin around individual fivure
+
+sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
+          PAM_data$acceleration$act, main = "Activity",
+          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+legend("bottomright",cex=1.2,
+   c("No Activity", "Low Activity", "High Activity" ) , fill = c("black","royalblue3", "orange"), xpd = NA)
+
+
+sensorIMG(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+          PAM_data$pressure$obs,  main="Pressure",
+          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+legend("bottomright",cex=1.2,
+   c("Low Pressure", "High Pressure" ) , fill = c("royalblue3", "orange"), xpd = NA)
+
+
+sensorIMG(PAM_data$acceleration$date, labely=FALSE,
+          behaviour$classification, 
+          main="Classification",
+          col=col,
+          cex=1.2, cex.main = 2)
+legend("bottomright",cex=1.2,
+  # grconvertX(1, "device"), grconvertY(1, "device"),
+   c("Resting", "Active", "Flapping", "Migrating" ) , fill = col, xpd = NA)
+```
+
+<img src="08-flapping_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
