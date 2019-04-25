@@ -1,5 +1,7 @@
 # Classification accuracy {#accuracy}
 
+To illustrate classification accuracy, here we compare two classifications of flapping migration. The first is using the inbuilt `classifyFLAP` function, the second is using pressure change. Both are then compared using `compareCLASS` and `confusionMAT`.
+
 
 ```{r echo=FALSE}
 library(PAMLr)
@@ -123,5 +125,7 @@ knitr::kable(mat,
   column_spec(1, width = "5cm", bold=TRUE)  %>%
   scroll_box(width = "100%")
 ```
+
+# Overall accuracy
 
 The total accuracy is 99.4% which is not bad. Most of the error comes from  the omission of some migration periods by the prediction i.e. there are periods where the bird is performing a migratory flight, but remains at the same altitude and are therefore missed by the classification. However, this is only for 1.25% of the points.
