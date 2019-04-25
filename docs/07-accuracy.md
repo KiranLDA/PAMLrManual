@@ -298,6 +298,6 @@ mat = confusionMAT(reference, prediction)
 </tbody>
 </table></div>
 
-# Overall accuracy
+## Overall accuracy
 
 The total accuracy is 99.4% which is not bad. Most of the error comes from  the omission of some migration periods by the prediction i.e. there are periods where the bird is performing a migratory flight, but remains at the same altitude and are therefore missed by the classification. However, this is only for 1.25% of the points.
