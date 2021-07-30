@@ -1,4 +1,4 @@
-# Installing PAMLr {#install}
+# Installing pamlr {#install}
 
 
 ## Prerequisites
@@ -14,15 +14,15 @@ install.packages("devtools")
 ## Installing
 
 
-_PAMLr_ can then be installed from github using the following code:
+_pamlr_ can then be installed from github using the following code:
 
 
 ```r
-devtools::install_github("KiranLDA/PAMLr")
+devtools::install_github("KiranLDA/pamlr")
 ```
 
 
-Note that if there are any problems with installing _PAMLr_, it is worth checking that the packages that _PAMLr_ relies on are correctly installed (using `install.packages()`). These include:
+Note that if there are any problems with installing _pamlr_, it is worth checking that the packages that _pamlr_ relies on are correctly installed (using `install.packages()`). These include:
 
 * changepoint 
 * cluster 

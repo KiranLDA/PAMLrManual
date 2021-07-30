@@ -1,39 +1,38 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>5 Common data patterns | PAMLr Manual</title>
-  <meta name="description" content="5 Common data patterns | PAMLr Manual">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Common data patterns | pamlr Manual</title>
+  <meta name="description" content="5 Common data patterns | pamlr Manual" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Common data patterns | PAMLr Manual" />
+  <meta property="og:title" content="5 Common data patterns | pamlr Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="5 Common data patterns | PAMLr Manual" />
+  <meta property="og:description" content="5 Common data patterns | pamlr Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Common data patterns | PAMLr Manual" />
+  <meta name="twitter:title" content="5 Common data patterns | pamlr Manual" />
   
-  <meta name="twitter:description" content="5 Common data patterns | PAMLr Manual" />
+  <meta name="twitter:description" content="5 Common data patterns | pamlr Manual" />
   
 
-<meta name="author" content="Kiran Dhanjal-Adams">
+<meta name="author" content="Kiran Dhanjal-Adams" />
 
 
-<meta name="date" content="2019-04-25">
+<meta name="date" content="2021-07-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dataviz.html">
-<link rel="next" href="dataprep.html">
+<link rel="prev" href="dataviz.html"/>
+<link rel="next" href="dataprep.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,7 +48,11 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
 <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
 <script src="libs/dygraphs-1.1.1/shapes.js"></script>
@@ -59,44 +63,71 @@
 <link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
 <script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
 <script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.19/rglWebGL.js"></script>
+<script src="libs/rglWebGL-binding-0.100.50/rglWebGL.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #0000ff; } /* Keyword */
-code > span.ch { color: #008080; } /* Char */
-code > span.st { color: #008080; } /* String */
-code > span.co { color: #008000; } /* Comment */
-code > span.ot { color: #ff4000; } /* Other */
-code > span.al { color: #ff0000; } /* Alert */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #008000; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #008080; } /* SpecialChar */
-code > span.vs { color: #008080; } /* VerbatimString */
-code > span.ss { color: #008080; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #0000ff; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #ff4000; } /* Preprocessor */
-code > span.do { color: #008000; } /* Documentation */
-code > span.an { color: #008000; } /* Annotation */
-code > span.cv { color: #008000; } /* CommentVar */
-code > span.at { } /* Attribute */
-code > span.in { color: #008000; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -119,12 +150,12 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a><ul>
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
-<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load pamlr</a></li>
 <li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
 <li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
@@ -213,8 +244,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
-<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#find-which-state-is-the-migratory-state"><i class="fa fa-check"></i><b>11.5</b> Find which state is the migratory state</a></li>
-<li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
+<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
 <li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
@@ -235,7 +265,7 @@ code > span.in { color: #008000; } /* Information */
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PAMLr Manual</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pamlr Manual</a>
           </h1>
         </div>
 
@@ -253,62 +283,62 @@ code > span.in { color: #008000; } /* Information */
 <h4><span class="header-section-number">5.0.1.1</span> <em>Flapping birds</em></h4>
 <p>Firstly, <strong>flapping birds</strong> exert high amounts of energy to maintain their wings in constant movement. This migratory strategy is most common in passerines and therefore small birds. Because of this, birds with this flapping migratory strategy tend to avoid turbulence which is highest during the day, instead preferring to fly at night. Therefore, the pattern of interest for migratory flapping birds is a high and sustained night-time activity.</p>
 <p><strong>In the figure below, this represents the yellow periods in september and march</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>))
-<span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
-<span class="kw">sensorIMG</span>(hoopoe<span class="op">$</span>acceleration<span class="op">$</span>date,
-          hoopoe<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,
-          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>))</a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="kw">plot_sensorimage</span>(hoopoe<span class="op">$</span>acceleration<span class="op">$</span>date,</a>
+<a class="sourceLine" id="cb21-4" title="4">                 hoopoe<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,</a>
+<a class="sourceLine" id="cb21-5" title="5">                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="04-patterns_files/figure-html/unnamed-chunk-2-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="flap-gliding-birds" class="section level3">
 <h3><span class="header-section-number">5.0.2</span> <em>Flap-gliding birds</em></h3>
 <p>Secondly, <strong>flap-gliding birds</strong> remain airborne for long periods of time (often months) without resting. This migratory strategy is most common in swifts and swallows. Such birds do not show any big changes in behaviour between night and day, or between migration and non-breeding residency. However, during migration they can fly at higher altitudes than at other times of the year, rest less often with longer periods of sustained activity, display a constant pitch, and experience lower temperatures (because of the altitude) – some or all of these patterns can be used to classify such behaviour.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>))
-<span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
-<span class="kw">sensorIMG</span>(swift<span class="op">$</span>acceleration<span class="op">$</span>date,
-          swift<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,
-          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>))</a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="kw">plot_sensorimage</span>(swift<span class="op">$</span>acceleration<span class="op">$</span>date,</a>
+<a class="sourceLine" id="cb22-4" title="4">                 swift<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,</a>
+<a class="sourceLine" id="cb22-5" title="5">                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="04-patterns_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="soar-gliding-birds" class="section level3">
 <h3><span class="header-section-number">5.0.3</span> <em>Soar-gliding birds</em></h3>
 <p>Finally, <strong>soar-gliding birds</strong> take advantage of thermal updrafts to remain airborne and avoid using too much energy beating their wings. This strategy is most commonly observed in raptors, cranes and storks, but also bee-eaters. Because thermal updrafts are only present during the day, such species only migrate during the day. Therefore, patterns of interest include rapid changes in daytime altitude, as well as decreases in resting time and continuous sunlight (particularly for a species which might otherwise spend time under tree canopy).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="co"># number of panels</span>
-    <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span>
-    <span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span>
-
-<span class="kw">sensorIMG</span>(bee_eater<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">ploty=</span><span class="ot">FALSE</span>,
-          bee_eater<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,
-          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)
-
-<span class="kw">sensorIMG</span>(bee_eater<span class="op">$</span>pressure<span class="op">$</span>date, <span class="dt">plotx=</span><span class="ot">TRUE</span>, <span class="dt">ploty=</span><span class="ot">FALSE</span>, <span class="dt">labely=</span><span class="ot">FALSE</span>,
-          bee_eater<span class="op">$</span>pressure<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Pressure&quot;</span>,
-          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)
-
-<span class="kw">sensorIMG</span>(bee_eater<span class="op">$</span>light<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,
-          bee_eater<span class="op">$</span>light<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Light&quot;</span>,
-          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="co"># number of panels</span></a>
+<a class="sourceLine" id="cb23-2" title="2">    <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></a>
+<a class="sourceLine" id="cb23-3" title="3">    <span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></a>
+<a class="sourceLine" id="cb23-4" title="4"></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="kw">plot_sensorimage</span>(bee_eater<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">ploty=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb23-6" title="6">                 bee_eater<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,</a>
+<a class="sourceLine" id="cb23-7" title="7">                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb23-8" title="8"></a>
+<a class="sourceLine" id="cb23-9" title="9"><span class="kw">plot_sensorimage</span>(bee_eater<span class="op">$</span>pressure<span class="op">$</span>date, <span class="dt">plotx=</span><span class="ot">TRUE</span>, <span class="dt">ploty=</span><span class="ot">FALSE</span>, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb23-10" title="10">                 bee_eater<span class="op">$</span>pressure<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Pressure&quot;</span>,</a>
+<a class="sourceLine" id="cb23-11" title="11">                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb23-12" title="12"></a>
+<a class="sourceLine" id="cb23-13" title="13"><span class="kw">plot_sensorimage</span>(bee_eater<span class="op">$</span>light<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb23-14" title="14">                 bee_eater<span class="op">$</span>light<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Light&quot;</span>,</a>
+<a class="sourceLine" id="cb23-15" title="15">                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="04-patterns_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="incubation" class="section level2">
 <h2><span class="header-section-number">5.1</span> Incubation</h2>
 <p>Patterns are often easy to distinguish in cavity nesting birds. Most commonly, darkness can be used to determine when birds are entering or exiting the cavity. However, for species which are not cavity nesters, extended periods of inactivity, combined with remaining at the same altitude, can also be used to find when the bird is sitting on the nest.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>))
-<span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
-
-<span class="co">#Subset the data to only the breeding season</span>
-PAM_data =<span class="st"> </span><span class="kw">cutPAM</span>(bee_eater,
-                  <span class="dt">start =</span> <span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-05-15&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>),
-                  <span class="dt">end =</span> <span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-07-15&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>))
-
-<span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">ploty=</span><span class="ot">FALSE</span>,
-          <span class="kw">log</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>act<span class="op">+</span><span class="fl">0.001</span>), <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,
-          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)
-
-<span class="kw">sensorIMG</span>(PAM_data<span class="op">$</span>light<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,
-          PAM_data<span class="op">$</span>light<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Light&quot;</span>,
-          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>))</a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="kw">par</span>(<span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb24-3" title="3"></a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="co">#Subset the data to only the breeding season</span></a>
+<a class="sourceLine" id="cb24-5" title="5">PAM_data =<span class="st"> </span><span class="kw">create_crop</span>(bee_eater,</a>
+<a class="sourceLine" id="cb24-6" title="6">                       <span class="dt">start =</span> <span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-05-15&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>),</a>
+<a class="sourceLine" id="cb24-7" title="7">                       <span class="dt">end =</span> <span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-07-15&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>))</a>
+<a class="sourceLine" id="cb24-8" title="8"></a>
+<a class="sourceLine" id="cb24-9" title="9"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">ploty=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb24-10" title="10">                 <span class="kw">log</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>act<span class="fl">+0.001</span>), <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,</a>
+<a class="sourceLine" id="cb24-11" title="11">                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb24-12" title="12"></a>
+<a class="sourceLine" id="cb24-13" title="13"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>light<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb24-14" title="14">                 PAM_data<span class="op">$</span>light<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Light&quot;</span>,</a>
+<a class="sourceLine" id="cb24-15" title="15">                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="04-patterns_files/figure-html/unnamed-chunk-5-1.png" width="960" style="display: block; margin: auto;" /></p>
 
 </div>
@@ -324,11 +354,13 @@ PAM_data =<span class="st"> </span><span class="kw">cutPAM</span>(bee_eater,
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -336,12 +368,13 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": false,
+"google": false,
 "instapper": false
 },
 "fontsettings": {
@@ -354,6 +387,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

@@ -4,9 +4,9 @@
 
 There are multiple ways of preparing data for analysis. 
 
-* `reducePAM`: The most simple is to merge the data together (at the same resolution). 
-* `rollPAM`: It's also possible to derive summary statistics using a rolling window, which progresses across the timeseries to make calculations. 
-* `pamPREP`: Where there is a particular pattern that need to be extracted from the data such as sustained pressure change or activity, this function derives summary statistics for these periods
+* `create_custom_interpolation`: The most simple is to merge the data together (at a specified time resolution) and interpolated or not.
+* `create_rolling_window`: It's also possible to derive summary statistics using a rolling window, which progresses across the timeseries to make calculations. 
+* `create_summary_statistics`: Where there is a particular pattern that need to be extracted from the data such as sustained pressure change or activity, this function derives summary statistics for these periods
 
 
 ## Merge sensor data together
@@ -18,7 +18,7 @@ Because data from different sensors are collected at different temporal resoluti
 # Crop the data
 start = as.POSIXct("2015-08-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2016-06-21","%Y-%m-%d", tz="UTC")
-PAM_data = cutPAM(bee_eater, start, end)
+PAM_data = create_crop(bee_eater, start, end)
 ```
 
 ### Interpolation
@@ -27,7 +27,7 @@ Format it for every 30 mins and interpolate data with larger intervals, and prov
 
 
 ```r
-TOclassify = reducePAM(PAM_data , "pressure", interp = TRUE, summary="median")
+TOclassify = create_custom_interpolation(PAM_data , "pressure", interp = TRUE, summary="median")
 ```
 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -142,13 +142,13 @@ Format it for every 5 minutes and don't interpolate anything
 
 
 ```r
-TOclassify = reducePAM(PAM_data , "acceleration", interp = FALSE)
+TOclassify = create_custom_interpolation(PAM_data , "acceleration", interp = FALSE)
 ```
 
 
 ## Rolling window
 
-Interpolation is not always advisable (especially linear), and another alternative for formatting data for analysis is to use a rolling window with `rollPAM`, which progresses across all the timeseries and creates summary statistics for the data contained within that window of a certain time. 
+Interpolation is not always advisable (especially linear), and another alternative for formatting data for analysis is to use a rolling window with `create_rolling_window`, which progresses across all the timeseries and creates summary statistics for the data contained within that window of a certain time. 
 
 Derived variables include:
 
@@ -166,9 +166,9 @@ Create a 2h window with summary statistics every 15 minutes. Because sensors suc
 
 
 ```r
-TOclassify = rollPAM(PAM_data,
-                     resolution_out = 15 ,
-                     window = 120)
+TOclassify = create_rolling_window(PAM_data,
+                                   resolution_out = 15 ,
+                                   window = 120)
 ```
 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -822,27 +822,27 @@ However, there are many assumpations made with assumptions (i.e. is the data tru
 
 
 ```r
-TOclassify = rollPAM(PAM_data,
-                     resolution_out = 15 ,
-                     window = 120,
-                     interp = FALSE)
+TOclassify = create_rolling_window(PAM_data,
+                                   resolution_out = 15,
+                                   window = 120,
+                                   interp = FALSE)
 ```
 
 ## Extracting statistics for specific data patterns
 
-If working with bird data, PAMLr offers some predefined functions for classifying behaviour. 
+If working with bird data, pamlr offers some predefined functions for classifying behaviour. 
 
 * Flight bouts can be characterised by:
 
-    + continuous high activity which can be extracted from the data using `pamPREP( ... ,method = "flap")` 
-    + endurance activity using `pamPREP( ... ,method = "endurance")`
-    + a pressure change greater than the background pressure changes due to weather using `pamPREP( ... ,method = "pressure")`
-    + a period of continuous light using `pamPREP( ... ,method = "light")`
+    + continuous high activity which can be extracted from the data using `create_summary_statistics( ... ,method = "flap")` 
+    + endurance activity using `create_summary_statistics( ... ,method = "endurance")`
+    + a pressure change greater than the background pressure changes due to weather using `create_summary_statistics( ... ,method = "pressure")`
+    + a period of continuous light using `create_summary_statistics( ... ,method = "light")`
   
 * Incubation bouts can be characterised by: 
 
-    + periods of darkness using `pamPREP( ... ,method = "darkness")`
-    + periods of resting using `pamPREP( ... ,method = "rest")`
+    + periods of darkness using `create_summary_statistics( ... ,method = "darkness")`
+    + periods of resting using `create_summary_statistics( ... ,method = "rest")`
 
  
 
@@ -850,9 +850,9 @@ If working with bird data, PAMLr offers some predefined functions for classifyin
 twl = GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
                              LightThreshold = 2, ask = FALSE)
 
-TOclassify = pamPREP(dta = PAM_data,
-                      method= "flap",
-                      twl = twl)
+TOclassify = create_summary_statistics(dta = PAM_data,
+                                       method= "flap",
+                                       twl = twl)
 ```
 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">

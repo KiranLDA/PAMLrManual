@@ -4,25 +4,25 @@ Once a behavioural pattern has been identified, there are a number of methods av
 
 ## Changepoint
 
-Changepoint analyses can be used to find points in the data series which delineate a difference in variance, in mean or in both. There are a number of available methods for doing this and it is possible to constrain the number of changepoints allowed in the data. In PAMLr, the default setting in `changePAM()` are set for finding differences between migratory and non-migratory periods, but the user can customise these to fit their needs.
+Changepoint analyses can be used to find points in the data series which delineate a difference in variance, in mean or in both. There are a number of available methods for doing this and it is possible to constrain the number of changepoints allowed in the data. In pamlr, the default setting in `classify_changepoint()` are set for finding differences between migratory and non-migratory periods, but the user can customise these to fit their needs.
 
 ## Cluster Analysis
 
-Clustering algorithms aim to partition a set of points into a k number of groups. Points are grouped (or clustered) together in a way that all the points in one cluster are more similar with each other, than with points in other clusters. PAMLr integrates three types of clustering algorithms, **k-means**, **hierarchical**  and **expectation-minimisation binary clustering**. 
+Clustering algorithms aim to partition a set of points into a k number of groups. Points are grouped (or clustered) together in a way that all the points in one cluster are more similar with each other, than with points in other clusters. pamlr integrates three types of clustering algorithms, **k-means**, **hierarchical**  and **expectation-minimisation binary clustering**. 
 
 ### k-means clustering
 
-k-means clustering minimises the within-cluster sum of squares of the points and is one of the commonly used clustering algorithms (Hartigan & Wong, 1979). It can be implemented by using `classifyPAM( … , method= “kmeans”)`. 
+k-means clustering minimises the within-cluster sum of squares of the points and is one of the commonly used clustering algorithms (Hartigan & Wong, 1979). It can be implemented by using `classify_summary_statistics( … , method= “kmeans”)`. 
 
 ###	Hierarchical clustering
 
-Hierarchical clustering analyses can either be agglomerative or divisive. The first relies on putting each datapoint in a single cluster and successively merging them until a stopping criterion is satisfied and can be implemented in PAMLr using `classifyPAM( … , method= “agnes”)`. The divisive hierarchical clustering method starts by allocating all datapoints to the same cluster and splitting each cluster until a stopping criterion is met. This can be implemented using `classifyPAM( … , method= “diana”)`.
+Hierarchical clustering analyses can either be agglomerative or divisive. The first relies on putting each datapoint in a single cluster and successively merging them until a stopping criterion is satisfied and can be implemented in pamlr using `classify_summary_statistics( … , method= “agnes”)`. The divisive hierarchical clustering method starts by allocating all datapoints to the same cluster and splitting each cluster until a stopping criterion is met. This can be implemented using `classify_summary_statistics( … , method= “diana”)`.
 
 ###	Expectation-minimisation binary clustering
 
-Expectation-minimisation binary clustering (EMbC), clusters data based on geometry alone. More specifically binary delimiters are used to segregate the data along an axis, forcing centroids to lie within these binary regions. Analysis was undertaken using `classifyPAM( … , method= “embc”)`.
+Expectation-minimisation binary clustering (EMbC), clusters data based on geometry alone. More specifically binary delimiters are used to segregate the data along an axis, forcing centroids to lie within these binary regions. Analysis was undertaken using `classify_summary_statistics( … , method= “embc”)`.
 
 
 ##	Hidden Markov Models
 
-Hidden Markov Models (HMMs) are stochastic time-series models which assume that the observed time series (such as the measured acceleration, temperature or pressure) is driven by an unobservable state process (such as flying or resting behaviour). The unobserved states are allocated in a way that captures as much as possible of the marginal distribution of the observations, while also accounting for the correlation structure of the data. Thus, the probability of the system being in a state at time t depends on the state at time t-1, but is otherwise independent of any previous state. HMMs can be implemented in PAMLr using the function `classifyPAM( … , method= “hmm”)`.
+Hidden Markov Models (HMMs) are stochastic time-series models which assume that the observed time series (such as the measured acceleration, temperature or pressure) is driven by an unobservable state process (such as flying or resting behaviour). The unobserved states are allocated in a way that captures as much as possible of the marginal distribution of the observations, while also accounting for the correlation structure of the data. Thus, the probability of the system being in a state at time t depends on the state at time t-1, but is otherwise independent of any previous state. HMMs can be implemented in pamlr using the function `classify_summary_statistics( … , method= “hmm”)`.

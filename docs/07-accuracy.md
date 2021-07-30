@@ -1,13 +1,13 @@
 # Classification accuracy {#accuracy}
 
-To illustrate classification accuracy, here we compare two classifications of flapping migration. The first is using the inbuilt `classifyFLAP` function, the second is using pressure change. Both are then compared using `compareCLASS` and `confusionMAT`.
+To illustrate classification accuracy, here we compare two classifications of flapping migration. The first is using the inbuilt `classify_flap` function, the second is using pressure change. Both are then compared using `compare_classifications` and `compare_confusion_matrix`.
 
 
 
 
 ## Classify migratory flapping flight
 
-Once a classification has been performed (here we use the example of a hoopoe, as it's migratory flight can be prediction using `classifyFLAP`)
+Once a classification has been performed (here we use the example of a hoopoe, as it's migratory flight can be prediction using `classify_flap`)
 
 
 ```r
@@ -19,11 +19,11 @@ start = as.POSIXct("2016-07-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2017-06-01","%Y-%m-%d", tz="UTC")
 
 # Crop the data
-PAM_data= cutPAM(hoopoe,start,end)
+PAM_data= create_crop(hoopoe,start,end)
 
 
-# perform one classification using classifyFLAP
-classification = classifyFLAP(dta = PAM_data$acceleration, period = 12, toPLOT = FALSE)
+# perform one classification using classify_flap
+classification = classify_flap(dta = PAM_data$acceleration, period = 12, to_plot = FALSE)
 ```
 
 
@@ -90,15 +90,15 @@ This classification is pretty accurate and we will use this as a reference datas
 
 ## Setup the reference dataset
 
-Because the second classification is done using pressure (30 minute data resolution) compared to this classification which was done using activity (5 minute resolution), the activity classification is set to the same resolution as pressure using the `classification2PAM` function.
+Because the second classification is done using pressure (30 minute data resolution) compared to this classification which was done using activity (5 minute resolution), the activity classification is set to the same resolution as pressure using the `create_merged_classification` function.
 
 
 ```r
 # Put the classification in the same resolution as pressure
-reference = classification2PAM(from = classification$timetable$start,
+reference = create_merged_classification(from = classification$timetable$start,
                                to = classification$timetable$end,
                                classification = rep_len(1,length(classification$timetable$end)),
-                               addTO = PAM_data$pressure,
+                               add_to = PAM_data$pressure,
                                missing = 0)
 
 # Convert to categories
@@ -117,7 +117,7 @@ prediction = c("Other",ifelse(abs(diff(PAM_data$pressure$obs))>2, "Migration", "
 
 ## Compare the two classifications
 
-We can then compare the two classifications point by point using the `compareCLASS` function.
+We can then compare the two classifications point by point using the `compare_classifications` function.
 
 
 ```r
@@ -128,7 +128,7 @@ date = PAM_data$pressure$date
 classifications = data.frame(reference= reference, # flapping classification
                              prediction = prediction) # pressure difference classification
 
-class_comparison = compareCLASS(date=date,
+class_comparison = compare_classifications(date=date,
                                 classifications=classifications)
 ```
 
@@ -206,7 +206,7 @@ A confusion matrix uses predicted and reference points and estimate:
 
 
 ```r
-mat = confusionMAT(reference, prediction)
+mat = compare_confusion_matrix(reference, prediction)
 ```
 
 

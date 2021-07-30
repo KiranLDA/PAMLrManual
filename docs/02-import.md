@@ -1,15 +1,15 @@
 # Importing data {#import}
 
-## Load PAMLr
+## Load pamlr
 
 
 ```r
-library(PAMLr)
+library(pamlr)
 ```
 
 ## Use existing data
 
-PAMLr has three integrated datasets for exploring the code. These include:
+pamlr has three integrated datasets for exploring the code. These include:
 
 ### Hoopoe (_Upupa epops_) 
 
@@ -51,7 +51,7 @@ data("swift")
 
 ## Import your own data
 
-Importing data is easy with PAMLr. All data files should be found within the same directory which can be accessed through the `pathname` argument. Currently there are a list of supported file types, which include:
+Importing data is easy with pamlr. All data files should be found within the same directory which can be accessed through the `pathname` argument. Currently there are a list of supported file types, which include:
 
 * ".pressure"
 * ".glf"
@@ -64,7 +64,7 @@ It's therefore possible to decide which of these to import. By default, all are 
 
 
 ```r
-PAM_data = importPAM(pathname = "C:/Put/your/path/here",
+PAM_data = create_import(pathname = "C:/Put/your/path/here",
                      measurements = c(".pressure", 
                                       ".glf",
                                       ".acceleration", 
@@ -86,20 +86,20 @@ str(PAM_data)
 ## List of 6
 ##  $ id          : chr "16AJ"
 ##  $ pressure    :'data.frame':	37412 obs. of  2 variables:
-##   ..$ date: POSIXct[1:37412], format: "2016-07-15 00:00:00" ...
+##   ..$ date: POSIXct[1:37412], format: "2016-07-15 00:00:00" "2016-07-15 00:15:00" ...
 ##   ..$ obs : int [1:37412] 969 969 969 969 969 969 969 969 969 969 ...
 ##  $ light       :'data.frame':	112401 obs. of  2 variables:
-##   ..$ date: POSIXct[1:112401], format: "2016-07-15 00:00:00" ...
+##   ..$ date: POSIXct[1:112401], format: "2016-07-15 00:00:00" "2016-07-15 00:05:00" ...
 ##   ..$ obs : int [1:112401] 0 0 0 0 0 0 0 0 0 0 ...
 ##  $ acceleration:'data.frame':	111900 obs. of  3 variables:
-##   ..$ date: POSIXct[1:111900], format: "2016-07-15 00:00:00" ...
+##   ..$ date: POSIXct[1:111900], format: "2016-07-15 00:00:00" "2016-07-15 00:05:00" ...
 ##   ..$ pit : int [1:111900] 10 10 10 10 10 10 11 11 11 11 ...
 ##   ..$ act : int [1:111900] 0 0 0 0 0 0 2 0 0 0 ...
 ##  $ temperature :'data.frame':	36818 obs. of  2 variables:
-##   ..$ date: POSIXct[1:36818], format: "2016-07-15 00:00:00" ...
+##   ..$ date: POSIXct[1:36818], format: "2016-07-15 00:00:00" "2016-07-15 00:15:00" ...
 ##   ..$ obs : int [1:36818] 33 33 33 33 33 33 33 33 33 33 ...
 ##  $ magnetic    :'data.frame':	1559 obs. of  7 variables:
-##   ..$ date: POSIXct[1:1559], format: "2016-07-15 00:00:00" ...
+##   ..$ date: POSIXct[1:1559], format: "2016-07-15 00:00:00" "2016-07-15 06:00:00" ...
 ##   ..$ gX  : int [1:1559] 849 -487 211 505 725 -2048 454 -126 919 -886 ...
 ##   ..$ gY  : int [1:1559] -2035 -2182 -2601 -2581 -2507 -1847 -2582 -2650 -2437 -2574 ...
 ##   ..$ gZ  : int [1:1559] -1642 -1962 351 -20 118 -1626 41 -76 -152 -1327 ...
@@ -166,7 +166,7 @@ start = as.POSIXct("2016-07-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2017-06-01","%Y-%m-%d", tz="UTC")
 
 # Crop the data
-PAM_data= cutPAM(hoopoe,start,end)
+PAM_data= create_crop(hoopoe,start,end)
 ```
 
 

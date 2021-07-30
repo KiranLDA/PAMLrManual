@@ -8,7 +8,7 @@ knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/7/77/Gu%
 
 
 ```{r echo=FALSE}
-library(PAMLr)
+library(pamlr)
 ```
 
 ## Classifying migratory flight in European bee-eaters: the dataset
@@ -31,31 +31,31 @@ start = as.POSIXct("2015-08-20","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2016-06-01","%Y-%m-%d", tz="UTC")
 
 # Crop the data
-PAM_data= cutPAM(bee_eater,start,end)
+PAM_data= create_crop(bee_eater,start,end)
 ```
 
 ## Visualise data
 
 Sensor images are a good place to start when analysing data, as they can give a rapid overview of the dataset. Darker colors represent lower values, and lighter colors (in this case yellow) represent higher values. Sensor images for **activity** (also known as an actogram), **pitch**, **pressure** and **temperature** are a good place to start. The following code plots this for us:
 
-```{r sensooor2, out.width='100%', fig.show='hold', fig.align='center', cache = TRUE}
+```{r sensooor2, out.width='100%', fig.show='hold', fig.align='center', cache = FALSE}
 par(mfrow= c(1,4), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
 
-sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, ploty=FALSE,
           PAM_data$acceleration$act, main = "Activity",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$acceleration$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$acceleration$pit,  main="Pitch",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$pressure$obs,  main="Pressure",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$temperature$date, labely=FALSE,
+plot_sensorimage(PAM_data$temperature$date, labely=FALSE,
           PAM_data$temperature$obs,  main="Temperature",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 ```
@@ -72,7 +72,7 @@ Compared to the hoopoe, the activity patterns are less clear. However, there are
 * During the migration period, **pitch is constant**
 
 ```r
-dygraphPAM(dta = PAM_data,
+plot_interactive_timeseries(dta = PAM_data,
                  toPLOT = "pressure")
 ```
 
@@ -90,20 +90,20 @@ dygraph(xts::xts(x = PAM_data$pressure$obs,
 ```
 
 
-Some, if not all of these can therefore be used to identify migratory flight in European bee-eaters. We could for instance use `pamPREP(..., method="endurance")` or `pamPREP(..., method="pressure")` based on these data patterns. However, because these species **soar-glide** and are therefore in sunlight while thermalling (as opposed to hidden under leaves), periods of constant sunshine could also be used to identify migratory soar-gliding using`pamPREP(..., method="light")`.
+Some, if not all of these can therefore be used to identify migratory flight in European bee-eaters. We could for instance use `create_summary_statistics(..., method="endurance")` or `create_summary_statistics(..., method="pressure")` based on these data patterns. However, because these species **soar-glide** and are therefore in sunlight while thermalling (as opposed to hidden under leaves), periods of constant sunshine could also be used to identify migratory soar-gliding using`create_summary_statistics(..., method="light")`.
 
 
 ## What variables make the most sense for classifying?
 
 We start with endurance flights. These can be extracted from the data using the following code.
 
-```{r cache = TRUE}
+```{r cache = FALSE}
 # get twilights (general geolocator method)
 twl = GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
                              LightThreshold = 2, 
                              ask = FALSE)
 
-TOclassify = pamPREP(dta = PAM_data,
+TOclassify = create_summary_statistics(dta = PAM_data,
                      method= "endurance",
                      light_thld = 2, 
                      twl = twl,
@@ -143,7 +143,7 @@ plot(TOclassify$date, TOclassify$median_pitch, type = "l",
 
 ## Classify using HMM
 
-There are two options for performing the classification of the data. One is to include multiple variables as is (see predictor 1 below). The other is to combine them into one metric (see predictor 2 below). The "hmm" method in `classifyPAM` relies on the package `depmixS4`, and by default `classifyPAM` treats each variable (i.e. a data column) with the formula `variable ~ 1` with `family = gaussian()`. Family can easily be changed, however for a more complicated model, it is recommended to  implement directly using the `depmixS4` package.
+There are two options for performing the classification of the data. One is to include multiple variables as is (see predictor 1 below). The other is to combine them into one metric (see predictor 2 below). The "hmm" method in `classify_summary_statistics` relies on the package `depmixS4`, and by default `classify_summary_statistics` treats each variable (i.e. a data column) with the formula `variable ~ 1` with `family = gaussian()`. Family can easily be changed, however for a more complicated model, it is recommended to  implement directly using the `depmixS4` package.
 
 > Beware - some methods do not allow any NAs in the dataset
 
@@ -160,7 +160,7 @@ predictor = TOclassify[, c("duration",
 
 
 # Perform the classification
-classification = classifyPAM(predictor,
+classification = classify_summary_statistics(predictor,
                              states=2, 
                              method = "hmm")
 ```
@@ -169,15 +169,15 @@ classification = classifyPAM(predictor,
 
 The classification results in a series of numbers which can be accessed under `classification$cluster`. These indicate the states of the individual during a given event, in this case "migrating" and "not migrating". However, we still need to figure out which number corresponds to which state, because these can be allocated randomly by the classification algorithm. 
 
-First, we start by taking the classification, and adding the data from the flight events to the same resolution of the data that we want to plot, using `classification2PAM()`. For example, we use pressure, as this displays soar-gliding behaviour quite well.
+First, we start by taking the classification, and adding the data from the flight events to the same resolution of the data that we want to plot, using `create_merged_classification()`. For example, we use pressure, as this displays soar-gliding behaviour quite well.
 
 
 ```{r}
 # Convert the events to data
-pressure_classification = classification2PAM(from = TOclassify$start,
+pressure_classification = create_merged_classification(from = TOclassify$start,
                                              to = TOclassify$end,
                                              classification = classification$cluster,
-                                             addTO = PAM_data$pressure)
+                                             add_to = PAM_data$pressure)
 
 pressure_classification = data.frame(cluster=pressure_classification)
 ```
@@ -267,7 +267,7 @@ Note from the previous classification where the pressure is very low, and theref
 #                              LightThreshold = 2, 
 #                              ask = FALSE)
 
-TOclassify = pamPREP(dta = PAM_data,
+TOclassify = create_summary_statistics(dta = PAM_data,
                      method= "pressure",
                      Pdiff_thld = 2,
                      light_thld = 2, 
@@ -286,7 +286,7 @@ predictor = TOclassify[, c("duration",
 
 
 # Perform the classification
-classification = classifyPAM(predictor,
+classification = classify_summary_statistics(predictor,
                              states=2, 
                              method = "hmm")
 
@@ -296,10 +296,10 @@ classification = classifyPAM(predictor,
 
 ```{r}
 # Convert the events to data
-pressure_classification = classification2PAM(from = TOclassify$start,
+pressure_classification = create_merged_classification(from = TOclassify$start,
                                              to = TOclassify$end,
                                              classification = classification$cluster,
-                                             addTO = PAM_data$pressure)
+                                             add_to = PAM_data$pressure)
 
 pressure_classification = data.frame(cluster=pressure_classification)
 
@@ -381,11 +381,11 @@ legend( PAM_data$pressure$date[id[length(id)-700]],800 ,
 
 ## Classify using a changepoint analysis
 
-The changepoint analysis looks for changes in the mean and/or variance in the data, and can be implemented in **PAMLr** using `changePAM`. We can perform this and compare with the previous classification seen above. It seems like `changePAM` overclassifies migration within the migratory period, which `classifyPAM` overclassifies migration during the non-breeding season in Africa.
+The changepoint analysis looks for changes in the mean and/or variance in the data, and can be implemented in **pamlr** using `classify_changepoint`. We can perform this and compare with the previous classification seen above. It seems like `classify_changepoint` overclassifies migration within the migratory period, which `classify_summary_statistics` overclassifies migration during the non-breeding season in Africa.
 
 
 ```{r out.width='100%', fig.show='hold', fig.align='center'}
-changepoints = changePAM(PAM_data$pressure$obs)
+changepoints = classify_changepoint(PAM_data$pressure$obs)
 
 # plot the timeseries 
 plot(PAM_data$pressure$date, PAM_data$pressure$obs, 
@@ -416,7 +416,7 @@ abline(v=PAM_data$pressure$date[changepoints$changepoints],
 ## Compare the classifications
 
 ```{r}
-results = compareCLASS(date=PAM_data$pressure$date,
+results = compare_classifications(date=PAM_data$pressure$date,
                        classifications = data.frame(class1 = endurance_classification$states,
                                                 class2 = pressure_classification$states))
 ```

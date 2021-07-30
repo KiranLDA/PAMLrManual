@@ -1,39 +1,38 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>3 Importing data | PAMLr Manual</title>
-  <meta name="description" content="3 Importing data | PAMLr Manual">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Importing data | pamlr Manual</title>
+  <meta name="description" content="3 Importing data | pamlr Manual" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Importing data | PAMLr Manual" />
+  <meta property="og:title" content="3 Importing data | pamlr Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="3 Importing data | PAMLr Manual" />
+  <meta property="og:description" content="3 Importing data | pamlr Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Importing data | PAMLr Manual" />
+  <meta name="twitter:title" content="3 Importing data | pamlr Manual" />
   
-  <meta name="twitter:description" content="3 Importing data | PAMLr Manual" />
+  <meta name="twitter:description" content="3 Importing data | pamlr Manual" />
   
 
-<meta name="author" content="Kiran Dhanjal-Adams">
+<meta name="author" content="Kiran Dhanjal-Adams" />
 
 
-<meta name="date" content="2019-04-25">
+<meta name="date" content="2021-07-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="install.html">
-<link rel="next" href="dataviz.html">
+<link rel="prev" href="install.html"/>
+<link rel="next" href="dataviz.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,7 +48,11 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
 <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
 <script src="libs/dygraphs-1.1.1/shapes.js"></script>
@@ -59,44 +63,71 @@
 <link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
 <script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
 <script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.19/rglWebGL.js"></script>
+<script src="libs/rglWebGL-binding-0.100.50/rglWebGL.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #0000ff; } /* Keyword */
-code > span.ch { color: #008080; } /* Char */
-code > span.st { color: #008080; } /* String */
-code > span.co { color: #008000; } /* Comment */
-code > span.ot { color: #ff4000; } /* Other */
-code > span.al { color: #ff0000; } /* Alert */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #008000; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #008080; } /* SpecialChar */
-code > span.vs { color: #008080; } /* VerbatimString */
-code > span.ss { color: #008080; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #0000ff; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #ff4000; } /* Preprocessor */
-code > span.do { color: #008000; } /* Documentation */
-code > span.an { color: #008000; } /* Annotation */
-code > span.cv { color: #008000; } /* CommentVar */
-code > span.at { } /* Attribute */
-code > span.in { color: #008000; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -119,12 +150,12 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a><ul>
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
-<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load pamlr</a></li>
 <li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
 <li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
@@ -213,8 +244,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
-<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#find-which-state-is-the-migratory-state"><i class="fa fa-check"></i><b>11.5</b> Find which state is the migratory state</a></li>
-<li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
+<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
 <li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
@@ -235,7 +265,7 @@ code > span.in { color: #008000; } /* Information */
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PAMLr Manual</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pamlr Manual</a>
           </h1>
         </div>
 
@@ -246,15 +276,15 @@ code > span.in { color: #008000; } /* Information */
 <div id="import" class="section level1">
 <h1><span class="header-section-number">3</span> Importing data</h1>
 <div id="load-pamlr" class="section level2">
-<h2><span class="header-section-number">3.1</span> Load PAMLr</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(PAMLr)</code></pre></div>
+<h2><span class="header-section-number">3.1</span> Load pamlr</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">library</span>(pamlr)</a></code></pre></div>
 </div>
 <div id="use-existing-data" class="section level2">
 <h2><span class="header-section-number">3.2</span> Use existing data</h2>
-<p>PAMLr has three integrated datasets for exploring the code. These include:</p>
+<p>pamlr has three integrated datasets for exploring the code. These include:</p>
 <div id="hoopoe-upupa-epops" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Hoopoe (<em>Upupa epops</em>)</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:hoopoe"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Common_Hoopoe_%28Upupa_epops%29_Photograph_by_Shantanu_Kuveskar.jpg" alt="Photograph by Shantanu Kuveskar, (c) creative commons" width="40%" />
 <p class="caption">
@@ -264,7 +294,7 @@ Figure 3.1: Photograph by Shantanu Kuveskar, (c) creative commons
 </div>
 <div id="european-bee-eater-merops-apiaster" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> European Bee-eater (<em>Merops apiaster</em>)</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;bee_eater&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">data</span>(<span class="st">&quot;bee_eater&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:beeeater"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Gu%C3%AApier_d%27Europe_Merops_apiaster_-_European_Bee-eater_%28parc_national_de_l%27Ichkeul%29_02.jpg" alt="Photograph by El Golli Mohamed, (c) creative commons" width="40%" />
 <p class="caption">
@@ -274,7 +304,7 @@ Figure 3.2: Photograph by El Golli Mohamed, (c) creative commons
 </div>
 <div id="alpine-swift-apus-melba" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Alpine Swift (<em>Apus melba</em>)</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;swift&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">data</span>(<span class="st">&quot;swift&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:swift"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Alpine_Swift-2719.jpg" alt="Photograph by Rudraksha Chodankar, (c) creative commons" width="40%" />
 <p class="caption">
@@ -285,7 +315,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 </div>
 <div id="import-your-own-data" class="section level2">
 <h2><span class="header-section-number">3.3</span> Import your own data</h2>
-<p>Importing data is easy with PAMLr. All data files should be found within the same directory which can be accessed through the <code>pathname</code> argument. Currently there are a list of supported file types, which include:</p>
+<p>Importing data is easy with pamlr. All data files should be found within the same directory which can be accessed through the <code>pathname</code> argument. Currently there are a list of supported file types, which include:</p>
 <ul>
 <li>“.pressure”</li>
 <li>“.glf”</li>
@@ -295,35 +325,35 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <li>“.magnetic”</li>
 </ul>
 <p>It’s therefore possible to decide which of these to import. By default, all are imported.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PAM_data =<span class="st"> </span><span class="kw">importPAM</span>(<span class="dt">pathname =</span> <span class="st">&quot;C:/Put/your/path/here&quot;</span>,
-                     <span class="dt">measurements =</span> <span class="kw">c</span>(<span class="st">&quot;.pressure&quot;</span>, 
-                                      <span class="st">&quot;.glf&quot;</span>,
-                                      <span class="st">&quot;.acceleration&quot;</span>, 
-                                      <span class="st">&quot;.temperature&quot;</span>, 
-                                      <span class="st">&quot;.magnetic&quot;</span>)<span class="st">`</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">PAM_data =<span class="st"> </span><span class="kw">create_import</span>(<span class="dt">pathname =</span> <span class="st">&quot;C:/Put/your/path/here&quot;</span>,</a>
+<a class="sourceLine" id="cb9-2" title="2">                     <span class="dt">measurements =</span> <span class="kw">c</span>(<span class="st">&quot;.pressure&quot;</span>, </a>
+<a class="sourceLine" id="cb9-3" title="3">                                      <span class="st">&quot;.glf&quot;</span>,</a>
+<a class="sourceLine" id="cb9-4" title="4">                                      <span class="st">&quot;.acceleration&quot;</span>, </a>
+<a class="sourceLine" id="cb9-5" title="5">                                      <span class="st">&quot;.temperature&quot;</span>, </a>
+<a class="sourceLine" id="cb9-6" title="6">                                      <span class="st">&quot;.magnetic&quot;</span>)<span class="st">`</span></a></code></pre></div>
 </div>
 <div id="data-details" class="section level2">
 <h2><span class="header-section-number">3.4</span> Data details</h2>
 <p>Once the PAM data are imported, they are stored as a nested list - with each element in the list containing a dataframe of measurements per date. For more details on the format of the data, use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PAM_data =<span class="st"> </span>hoopoe
-<span class="kw">str</span>(PAM_data)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">PAM_data =<span class="st"> </span>hoopoe</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">str</span>(PAM_data)</a></code></pre></div>
 <pre><code>## List of 6
 ##  $ id          : chr &quot;16AJ&quot;
 ##  $ pressure    :&#39;data.frame&#39;:    37412 obs. of  2 variables:
-##   ..$ date: POSIXct[1:37412], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ date: POSIXct[1:37412], format: &quot;2016-07-15 00:00:00&quot; &quot;2016-07-15 00:15:00&quot; ...
 ##   ..$ obs : int [1:37412] 969 969 969 969 969 969 969 969 969 969 ...
 ##  $ light       :&#39;data.frame&#39;:    112401 obs. of  2 variables:
-##   ..$ date: POSIXct[1:112401], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ date: POSIXct[1:112401], format: &quot;2016-07-15 00:00:00&quot; &quot;2016-07-15 00:05:00&quot; ...
 ##   ..$ obs : int [1:112401] 0 0 0 0 0 0 0 0 0 0 ...
 ##  $ acceleration:&#39;data.frame&#39;:    111900 obs. of  3 variables:
-##   ..$ date: POSIXct[1:111900], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ date: POSIXct[1:111900], format: &quot;2016-07-15 00:00:00&quot; &quot;2016-07-15 00:05:00&quot; ...
 ##   ..$ pit : int [1:111900] 10 10 10 10 10 10 11 11 11 11 ...
 ##   ..$ act : int [1:111900] 0 0 0 0 0 0 2 0 0 0 ...
 ##  $ temperature :&#39;data.frame&#39;:    36818 obs. of  2 variables:
-##   ..$ date: POSIXct[1:36818], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ date: POSIXct[1:36818], format: &quot;2016-07-15 00:00:00&quot; &quot;2016-07-15 00:15:00&quot; ...
 ##   ..$ obs : int [1:36818] 33 33 33 33 33 33 33 33 33 33 ...
 ##  $ magnetic    :&#39;data.frame&#39;:    1559 obs. of  7 variables:
-##   ..$ date: POSIXct[1:1559], format: &quot;2016-07-15 00:00:00&quot; ...
+##   ..$ date: POSIXct[1:1559], format: &quot;2016-07-15 00:00:00&quot; &quot;2016-07-15 06:00:00&quot; ...
 ##   ..$ gX  : int [1:1559] 849 -487 211 505 725 -2048 454 -126 919 -886 ...
 ##   ..$ gY  : int [1:1559] -2035 -2182 -2601 -2581 -2507 -1847 -2582 -2650 -2437 -2574 ...
 ##   ..$ gZ  : int [1:1559] -1642 -1962 351 -20 118 -1626 41 -76 -152 -1327 ...
@@ -333,13 +363,17 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <ul>
 <li><p><strong>Pressure</strong> data are recorded in hectopascals, generally every 15/30 minutes</p></li>
 <li><p><strong>Light</strong> data are recorded in an arbitrary unit, generally every 2/5 minutes</p></li>
-<li><strong>Acceleration</strong> data are summarised into two variables:</li>
-<li><code>act</code> which is short for “activity”“, and is the sum of the difference in acceleration on the z-axis (i.e.”jiggle“). It is recorded every 5 minutes (summarised from 32 measurements - 10Hz)</li>
-<li><p><code>pit</code> which is short for “pitch”, and is the relative position of the bird’s body relative to the z axis. It is an average over 32 measurements and is summarised every 5 minutes.</p></li>
+<li><p><strong>Acceleration</strong> data are summarised into two variables:</p>
+<ul>
+<li><code>act</code> which is short for “activity”“, and is the sum of the difference in acceleration on the z-axis (i.e. ”jiggle"). It is recorded every 5 minutes (summarised from 32 measurements - 10Hz)</li>
+<li><code>pit</code> which is short for “pitch”, and is the relative position of the bird’s body relative to the z axis. It is an average over 32 measurements and is summarised every 5 minutes.</li>
+</ul></li>
 <li><p><strong>Temperature</strong> data are recorded in degrees Celsius, generally every 15/30 minutes</p></li>
-<li><strong>Magnetic</strong> data are in fact the combined recordings from a tri-axial accelerometer and magnetometer.</li>
+<li><p><strong>Magnetic</strong> data are in fact the combined recordings from a tri-axial accelerometer and magnetometer.</p>
+<ul>
 <li><code>gX</code>, <code>gY</code> and <code>gZ</code> are snapshot tri-axial acceleration data, recorded every 4 hours.</li>
-<li><p><code>mX</code>, <code>mY</code> and <code>mZ</code> are snapshot tri-axial magentic field data, recorded every 4 hours.</p></li>
+<li><code>mX</code>, <code>mY</code> and <code>mZ</code> are snapshot tri-axial magentic field data, recorded every 4 hours.</li>
+</ul></li>
 </ul>
 </div>
 <div id="temporal-resolution-of-data" class="section level2">
@@ -366,7 +400,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">SOI</td>
 <td align="right">15/30 min</td>
 <td align="right">1 year</td>
-<td align="right">Dhanjal-Adams et al. (2018)</td>
+<td align="right">Dhanjal-Adams et al. (2018)</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -382,7 +416,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">CLA</td>
 <td align="right">1 min</td>
 <td align="right">13 days</td>
-<td align="right">Shipley et al. (2017)</td>
+<td align="right">Shipley et al. (2017)</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Temperature</strong></td>
@@ -390,7 +424,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">SOI</td>
 <td align="right">15/30 min</td>
 <td align="right">1 year</td>
-<td align="right">Liechti et al. (2018)</td>
+<td align="right">Liechti et al. (2018)</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -406,7 +440,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">CLA</td>
 <td align="right">1 min</td>
 <td align="right">13 days</td>
-<td align="right">Dreelin et al. (2018)</td>
+<td align="right">Dreelin et al. (2018)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Acceleration</strong></td>
@@ -422,7 +456,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">SOI</td>
 <td align="right">5 min</td>
 <td align="right">1 year</td>
-<td align="right">Meier et al. (2018)</td>
+<td align="right">Meier et al. (2018)</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -430,7 +464,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">CAMR</td>
 <td align="right">1h</td>
 <td align="right">1 year</td>
-<td align="right">Bäckman et al. (2017)</td>
+<td align="right">Bäckman et al. (2017)</td>
 </tr>
 <tr class="even">
 <td align="left">pitch</td>
@@ -438,7 +472,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">SOI</td>
 <td align="right">5 min</td>
 <td align="right">1 year</td>
-<td align="right">Liechti et al. (2018)</td>
+<td align="right">Liechti et al. (2018)</td>
 </tr>
 <tr class="odd">
 <td align="left">tri-axial</td>
@@ -446,7 +480,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">SOI</td>
 <td align="right">4 h</td>
 <td align="right">1 year</td>
-<td align="right">Liechti et al. (2018)</td>
+<td align="right">Liechti et al. (2018)</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Magnetic</strong></td>
@@ -462,7 +496,7 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <td align="right">SOI</td>
 <td align="right">4 h</td>
 <td align="right">1 year</td>
-<td align="right">Liechti et al. (2018)</td>
+<td align="right">Liechti et al. (2018)</td>
 </tr>
 </tbody>
 </table>
@@ -473,12 +507,12 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <div id="cropping-the-data" class="section level2">
 <h2><span class="header-section-number">3.6</span> Cropping the data</h2>
 <p>Note that very often, a logger continues to record data before and after it is removed from a bird. For example, it might be transported in a rucksack or left in a laboratory until data are downloaded. It’s therefore important to remove these incorrect datapoints. This can be done using <code>cutPAM</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make sure the cropping period is in the correct date format</span>
-start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
-end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
-
-<span class="co"># Crop the data</span>
-PAM_data=<span class="st"> </span><span class="kw">cutPAM</span>(hoopoe,start,end)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># make sure the cropping period is in the correct date format</span></a>
+<a class="sourceLine" id="cb12-2" title="2">start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
+<a class="sourceLine" id="cb12-3" title="3">end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
+<a class="sourceLine" id="cb12-4" title="4"></a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="co"># Crop the data</span></a>
+<a class="sourceLine" id="cb12-6" title="6">PAM_data=<span class="st"> </span><span class="kw">create_crop</span>(hoopoe,start,end)</a></code></pre></div>
 </div>
 <div id="table-references" class="section level2">
 <h2><span class="header-section-number">3.7</span> Table references</h2>
@@ -504,11 +538,13 @@ PAM_data=<span class="st"> </span><span class="kw">cutPAM</span>(hoopoe,start,en
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -516,12 +552,13 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": false,
+"google": false,
 "instapper": false
 },
 "fontsettings": {
@@ -534,6 +571,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

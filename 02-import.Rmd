@@ -1,14 +1,14 @@
 # Importing data {#import}
 
-## Load PAMLr
+## Load pamlr
 
 ```{r}
-library(PAMLr)
+library(pamlr)
 ```
 
 ## Use existing data
 
-PAMLr has three integrated datasets for exploring the code. These include:
+pamlr has three integrated datasets for exploring the code. These include:
 
 ### Hoopoe (_Upupa epops_) 
 
@@ -47,7 +47,7 @@ knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/c/c1/Alp
 
 ## Import your own data
 
-Importing data is easy with PAMLr. All data files should be found within the same directory which can be accessed through the `pathname` argument. Currently there are a list of supported file types, which include:
+Importing data is easy with pamlr. All data files should be found within the same directory which can be accessed through the `pathname` argument. Currently there are a list of supported file types, which include:
 
 * ".pressure"
 * ".glf"
@@ -59,7 +59,7 @@ Importing data is easy with PAMLr. All data files should be found within the sam
 It's therefore possible to decide which of these to import. By default, all are imported.
 
 ```{r eval = FALSE}
-PAM_data = importPAM(pathname = "C:/Put/your/path/here",
+PAM_data = create_import(pathname = "C:/Put/your/path/here",
                      measurements = c(".pressure", 
                                       ".glf",
                                       ".acceleration", 
@@ -134,7 +134,7 @@ start = as.POSIXct("2016-07-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2017-06-01","%Y-%m-%d", tz="UTC")
 
 # Crop the data
-PAM_data= cutPAM(hoopoe,start,end)
+PAM_data= create_crop(hoopoe,start,end)
 ```
 
 

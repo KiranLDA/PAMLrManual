@@ -32,7 +32,7 @@ start = as.POSIXct("2016-09-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2017-04-10","%Y-%m-%d", tz="UTC")
 
 # Crop the data
-PAM_data= cutPAM(swift,start,end)
+PAM_data= create_crop(swift,start,end)
 ```
 
 ## Visualise data
@@ -45,19 +45,19 @@ par(mfrow= c(1,4), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
 
-sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, ploty=FALSE,
           PAM_data$acceleration$act, main = "Activity",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$acceleration$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$acceleration$pit,  main="Pitch",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$pressure$obs,  main="Pressure",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$temperature$date, labely=FALSE,
+plot_sensorimage(PAM_data$temperature$date, labely=FALSE,
           PAM_data$temperature$obs,  main="Temperature",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 ```
@@ -76,7 +76,7 @@ Some pattern start to stick out.
 
 
 ```r
-TOclassify = rollPAM(PAM_data,
+TOclassify = create_rolling_window(PAM_data,
                      resolution_out = 30 ,
                      window = 24*60,
                      interp = FALSE)
@@ -119,13 +119,13 @@ One of the most difficult aspects of creating a classification is determining ho
 predictor = TOclassify[, varint]
 
 # Perform the classification
-classification = classifyPAM(predictor,
+classification = classify_summary_statistics(predictor,
                              states = 7,
                              method = "hmm")
 ```
 
 ```
-## converged at iteration 35 with logLik: -404282.7
+## converged at iteration 45 with logLik: -405139.8
 ```
 
 ##Find which state is the migratory state
@@ -157,15 +157,15 @@ par(mfrow= c(1,3), # number of panels
 
 col=c("royalblue3", "orange")
 
-sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, ploty=FALSE,
           PAM_data$acceleration$act, main = "Activity",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$pressure$obs,  main="Pressure",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(TOclassify$date, labely=FALSE,
+plot_sensorimage(TOclassify$date, labely=FALSE,
           mig_classification, 
           main="Classification",
           col=col,
@@ -176,7 +176,7 @@ twilights <- GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
                                     LightThreshold = 2, ask = FALSE)
 
 # Add sunrises and sunsets
-addTWL(twilights$tFirst,
+plot_sensorimage_twilight(twilights$tFirst,
        offset=0,
        col= ifelse(twilights$type == 1,
                    "grey","black"),

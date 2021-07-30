@@ -2,11 +2,11 @@
 
 ## Cutting the data
 
-Never forget that loggers can record data **even when they are not attached to an animal**. Often the logger is taken off, stored in a backpack, driven home or posted to a lab for download. Always make sure the analysis starts and stops when the logger was on the bird. The function `cutPAM` is specifically setup for getting rid of these unwanted periods.
+Never forget that loggers can record data **even when they are not attached to an animal**. Often the logger is taken off, stored in a backpack, driven home or posted to a lab for download. Always make sure the analysis starts and stops when the logger was on the bird. The function `create_crop` is specifically setup for getting rid of these unwanted periods.
 
 ## Clock drift
 
-As the battery runs out throughout the year, the clock on a logger can get gradually become slower and slower. There are a number of methods for correcting for this. The bird/animal will always be caught at a known location. It's best therefore to find the sunset and sunrise times for the known location, and to see by how many minutes the sunrise and sunset estimated from the light sensor differ from the true sunrise and sunset. It's then possible to linearly interpolate the timeseries by the known number of minutes. This can be implemented in using the function `clockDRIFT`.
+As the battery runs out throughout the year, the clock on a logger can get gradually become slower and slower. There are a number of methods for correcting for this. The bird/animal will always be caught at a known location. It's best therefore to find the sunset and sunrise times for the known location, and to see by how many minutes the sunrise and sunset estimated from the light sensor differ from the true sunrise and sunset. It's then possible to linearly interpolate the timeseries by the known number of minutes. This can be implemented in using the function `calculate_clockdrift`.
 
 ## Using biologically meaningful patterns
 

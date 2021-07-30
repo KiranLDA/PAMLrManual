@@ -1,39 +1,38 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>8 Classification accuracy | PAMLr Manual</title>
-  <meta name="description" content="8 Classification accuracy | PAMLr Manual">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Classification accuracy | pamlr Manual</title>
+  <meta name="description" content="8 Classification accuracy | pamlr Manual" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Classification accuracy | PAMLr Manual" />
+  <meta property="og:title" content="8 Classification accuracy | pamlr Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="8 Classification accuracy | PAMLr Manual" />
+  <meta property="og:description" content="8 Classification accuracy | pamlr Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Classification accuracy | PAMLr Manual" />
+  <meta name="twitter:title" content="8 Classification accuracy | pamlr Manual" />
   
-  <meta name="twitter:description" content="8 Classification accuracy | PAMLr Manual" />
+  <meta name="twitter:description" content="8 Classification accuracy | pamlr Manual" />
   
 
-<meta name="author" content="Kiran Dhanjal-Adams">
+<meta name="author" content="Kiran Dhanjal-Adams" />
 
 
-<meta name="date" content="2019-04-25">
+<meta name="date" content="2021-07-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="method.html">
-<link rel="next" href="flapping.html">
+<link rel="prev" href="method.html"/>
+<link rel="next" href="flapping.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,7 +48,11 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
 <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
 <script src="libs/dygraphs-1.1.1/shapes.js"></script>
@@ -59,44 +63,71 @@
 <link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
 <script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
 <script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.19/rglWebGL.js"></script>
+<script src="libs/rglWebGL-binding-0.100.50/rglWebGL.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #0000ff; } /* Keyword */
-code > span.ch { color: #008080; } /* Char */
-code > span.st { color: #008080; } /* String */
-code > span.co { color: #008000; } /* Comment */
-code > span.ot { color: #ff4000; } /* Other */
-code > span.al { color: #ff0000; } /* Alert */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #008000; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #008080; } /* SpecialChar */
-code > span.vs { color: #008080; } /* VerbatimString */
-code > span.ss { color: #008080; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #0000ff; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #ff4000; } /* Preprocessor */
-code > span.do { color: #008000; } /* Documentation */
-code > span.an { color: #008000; } /* Annotation */
-code > span.cv { color: #008000; } /* CommentVar */
-code > span.at { } /* Attribute */
-code > span.in { color: #008000; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -119,12 +150,12 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a><ul>
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
-<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load pamlr</a></li>
 <li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
 <li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
@@ -213,8 +244,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
-<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#find-which-state-is-the-migratory-state"><i class="fa fa-check"></i><b>11.5</b> Find which state is the migratory state</a></li>
-<li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
+<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
 <li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
@@ -235,7 +265,7 @@ code > span.in { color: #008000; } /* Information */
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PAMLr Manual</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pamlr Manual</a>
           </h1>
         </div>
 
@@ -245,23 +275,23 @@ code > span.in { color: #008000; } /* Information */
             <section class="normal" id="section-">
 <div id="accuracy" class="section level1">
 <h1><span class="header-section-number">8</span> Classification accuracy</h1>
-<p>To illustrate classification accuracy, here we compare two classifications of flapping migration. The first is using the inbuilt <code>classifyFLAP</code> function, the second is using pressure change. Both are then compared using <code>compareCLASS</code> and <code>confusionMAT</code>.</p>
+<p>To illustrate classification accuracy, here we compare two classifications of flapping migration. The first is using the inbuilt <code>classify_flap</code> function, the second is using pressure change. Both are then compared using <code>compare_classifications</code> and <code>compare_confusion_matrix</code>.</p>
 <div id="classify-migratory-flapping-flight" class="section level2">
 <h2><span class="header-section-number">8.1</span> Classify migratory flapping flight</h2>
-<p>Once a classification has been performed (here we use the example of a hoopoe, as it’s migratory flight can be prediction using <code>classifyFLAP</code>)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;hoopoe&quot;</span>)
-<span class="co"># str(hoopoe)</span>
-
-<span class="co"># make sure the cropping period is in the correct date format</span>
-start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
-end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
-
-<span class="co"># Crop the data</span>
-PAM_data=<span class="st"> </span><span class="kw">cutPAM</span>(hoopoe,start,end)
-
-
-<span class="co"># perform one classification using classifyFLAP</span>
-classification =<span class="st"> </span><span class="kw">classifyFLAP</span>(<span class="dt">dta =</span> PAM_data<span class="op">$</span>acceleration, <span class="dt">period =</span> <span class="dv">12</span>, <span class="dt">toPLOT =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Once a classification has been performed (here we use the example of a hoopoe, as it’s migratory flight can be prediction using <code>classify_flap</code>)</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="co"># str(hoopoe)</span></a>
+<a class="sourceLine" id="cb31-3" title="3"></a>
+<a class="sourceLine" id="cb31-4" title="4"><span class="co"># make sure the cropping period is in the correct date format</span></a>
+<a class="sourceLine" id="cb31-5" title="5">start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
+<a class="sourceLine" id="cb31-6" title="6">end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
+<a class="sourceLine" id="cb31-7" title="7"></a>
+<a class="sourceLine" id="cb31-8" title="8"><span class="co"># Crop the data</span></a>
+<a class="sourceLine" id="cb31-9" title="9">PAM_data=<span class="st"> </span><span class="kw">create_crop</span>(hoopoe,start,end)</a>
+<a class="sourceLine" id="cb31-10" title="10"></a>
+<a class="sourceLine" id="cb31-11" title="11"></a>
+<a class="sourceLine" id="cb31-12" title="12"><span class="co"># perform one classification using classify_flap</span></a>
+<a class="sourceLine" id="cb31-13" title="13">classification =<span class="st"> </span><span class="kw">classify_flap</span>(<span class="dt">dta =</span> PAM_data<span class="op">$</span>acceleration, <span class="dt">period =</span> <span class="dv">12</span>, <span class="dt">to_plot =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p>This creates a timetable of migratory flight events which can be visualised using <code>classification$timetable</code>, as seen below:</p>
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -373,35 +403,35 @@ Duration (h)
 </div>
 <div id="setup-the-reference-dataset" class="section level2">
 <h2><span class="header-section-number">8.2</span> Setup the reference dataset</h2>
-<p>Because the second classification is done using pressure (30 minute data resolution) compared to this classification which was done using activity (5 minute resolution), the activity classification is set to the same resolution as pressure using the <code>classification2PAM</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Put the classification in the same resolution as pressure</span>
-reference =<span class="st"> </span><span class="kw">classification2PAM</span>(<span class="dt">from =</span> classification<span class="op">$</span>timetable<span class="op">$</span>start,
-                               <span class="dt">to =</span> classification<span class="op">$</span>timetable<span class="op">$</span>end,
-                               <span class="dt">classification =</span> <span class="kw">rep_len</span>(<span class="dv">1</span>,<span class="kw">length</span>(classification<span class="op">$</span>timetable<span class="op">$</span>end)),
-                               <span class="dt">addTO =</span> PAM_data<span class="op">$</span>pressure,
-                               <span class="dt">missing =</span> <span class="dv">0</span>)
-
-<span class="co"># Convert to categories</span>
-reference =<span class="st"> </span><span class="kw">ifelse</span>(reference <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>)</code></pre></div>
+<p>Because the second classification is done using pressure (30 minute data resolution) compared to this classification which was done using activity (5 minute resolution), the activity classification is set to the same resolution as pressure using the <code>create_merged_classification</code> function.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># Put the classification in the same resolution as pressure</span></a>
+<a class="sourceLine" id="cb32-2" title="2">reference =<span class="st"> </span><span class="kw">create_merged_classification</span>(<span class="dt">from =</span> classification<span class="op">$</span>timetable<span class="op">$</span>start,</a>
+<a class="sourceLine" id="cb32-3" title="3">                               <span class="dt">to =</span> classification<span class="op">$</span>timetable<span class="op">$</span>end,</a>
+<a class="sourceLine" id="cb32-4" title="4">                               <span class="dt">classification =</span> <span class="kw">rep_len</span>(<span class="dv">1</span>,<span class="kw">length</span>(classification<span class="op">$</span>timetable<span class="op">$</span>end)),</a>
+<a class="sourceLine" id="cb32-5" title="5">                               <span class="dt">add_to =</span> PAM_data<span class="op">$</span>pressure,</a>
+<a class="sourceLine" id="cb32-6" title="6">                               <span class="dt">missing =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb32-7" title="7"></a>
+<a class="sourceLine" id="cb32-8" title="8"><span class="co"># Convert to categories</span></a>
+<a class="sourceLine" id="cb32-9" title="9">reference =<span class="st"> </span><span class="kw">ifelse</span>(reference <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>)</a></code></pre></div>
 </div>
 <div id="setup-the-prediction-data" class="section level2">
 <h2><span class="header-section-number">8.3</span> Setup the prediction data</h2>
 <p>Hoopoes seems to perform large altitudinal changes during migratory flight, so we preform a very rough classification by specifying that any altitude change greater than 2 hPa is equivalent to a migratory flight (this is for illustrative purposes only, and should not be used as a definite classification method).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Perform another classification using pressure difference</span>
-prediction =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="kw">ifelse</span>(<span class="kw">abs</span>(<span class="kw">diff</span>(PAM_data<span class="op">$</span>pressure<span class="op">$</span>obs))<span class="op">&gt;</span><span class="dv">2</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># Perform another classification using pressure difference</span></a>
+<a class="sourceLine" id="cb33-2" title="2">prediction =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="kw">ifelse</span>(<span class="kw">abs</span>(<span class="kw">diff</span>(PAM_data<span class="op">$</span>pressure<span class="op">$</span>obs))<span class="op">&gt;</span><span class="dv">2</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>))</a></code></pre></div>
 </div>
 <div id="compare-the-two-classifications" class="section level2">
 <h2><span class="header-section-number">8.4</span> Compare the two classifications</h2>
-<p>We can then compare the two classifications point by point using the <code>compareCLASS</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># both classes have been converted to the same time intervals as pressure, so use those dates</span>
-date =<span class="st"> </span>PAM_data<span class="op">$</span>pressure<span class="op">$</span>date
-
-<span class="co"># Combine the classifications into a dataframe</span>
-classifications =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">reference=</span> reference, <span class="co"># flapping classification</span>
-                             <span class="dt">prediction =</span> prediction) <span class="co"># pressure difference classification</span>
-
-class_comparison =<span class="st"> </span><span class="kw">compareCLASS</span>(<span class="dt">date=</span>date,
-                                <span class="dt">classifications=</span>classifications)</code></pre></div>
+<p>We can then compare the two classifications point by point using the <code>compare_classifications</code> function.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># both classes have been converted to the same time intervals as pressure, so use those dates</span></a>
+<a class="sourceLine" id="cb34-2" title="2">date =<span class="st"> </span>PAM_data<span class="op">$</span>pressure<span class="op">$</span>date</a>
+<a class="sourceLine" id="cb34-3" title="3"></a>
+<a class="sourceLine" id="cb34-4" title="4"><span class="co"># Combine the classifications into a dataframe</span></a>
+<a class="sourceLine" id="cb34-5" title="5">classifications =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">reference=</span> reference, <span class="co"># flapping classification</span></a>
+<a class="sourceLine" id="cb34-6" title="6">                             <span class="dt">prediction =</span> prediction) <span class="co"># pressure difference classification</span></a>
+<a class="sourceLine" id="cb34-7" title="7"></a>
+<a class="sourceLine" id="cb34-8" title="8">class_comparison =<span class="st"> </span><span class="kw">compare_classifications</span>(<span class="dt">date=</span>date,</a>
+<a class="sourceLine" id="cb34-9" title="9">                                <span class="dt">classifications=</span>classifications)</a></code></pre></div>
 <p>This puts both classifications side by side, and shows how many classifications provided each class, as well as the agreement between the two, as can be seen below.</p>
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -543,7 +573,7 @@ TRUE
 <li><strong>Overall Accuracy</strong> represents the probability that all classes were correctly prediction (TP+TN)/(TP+TN+FP+FN).</li>
 <li><strong>Kappa Coefficient</strong> measures the agreement between the classification and the truth ((TN+FP) (TN+FN) + (FN+TP) (FP+TP)) / (TP+FP+TN+FN)<sup>2</sup></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat =<span class="st"> </span><span class="kw">confusionMAT</span>(reference, prediction)</code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">mat =<span class="st"> </span><span class="kw">compare_confusion_matrix</span>(reference, prediction)</a></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -780,11 +810,13 @@ NA
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -792,12 +824,13 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": false,
+"google": false,
 "instapper": false
 },
 "fontsettings": {
@@ -810,6 +843,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

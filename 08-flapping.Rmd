@@ -8,7 +8,7 @@ knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/e/e3/Upu
 
 
 ```{r echo=FALSE}
-library(PAMLr)
+library(pamlr)
 ```
 
 ## Classifying migratory flapping flight in Hoopoes :The dataset
@@ -32,31 +32,31 @@ start = as.POSIXct("2016-07-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2017-06-01","%Y-%m-%d", tz="UTC")
 
 # Crop the data
-PAM_data= cutPAM(hoopoe,start,end)
+PAM_data= create_crop(hoopoe,start,end)
 ```
 
 ## Visualise data
 
 Sensor images are a good place to start when analysing data, as they can give a rapid overview of the dataset. Darker colors represent lower values, and lighter colors (in this case yellow) represent higher values. Sensor images for **activity** (also known as an actogram), **pitch**, **pressure** and **temperature** are a good place to start. The following code plots this for us:
 
-```{r sensooor, out.width='100%', fig.show='hold', fig.align='center', cache = TRUE}
+```{r sensooor, out.width='100%', fig.show='hold', fig.align='center', cache = FALSE}
 par(mfrow= c(1,4), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
 
-sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, ploty=FALSE,
           PAM_data$acceleration$act, main = "Activity",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$acceleration$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$acceleration$pit,  main="Pitch",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$pressure$obs,  main="Pressure",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$temperature$date, labely=FALSE,
+plot_sensorimage(PAM_data$temperature$date, labely=FALSE,
           PAM_data$temperature$obs,  main="Temperature",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 ```
@@ -68,24 +68,24 @@ Base on this plot, it is possible to see that nightime is the darker areas on th
 This can also be seen by cutting out a period in september are looking at the raw data.
 
 
-```{r out.width='100%', fig.show='hold', fig.align='center', cache = TRUE}
-dygraphPAM(dta = cutPAM(PAM_data, 
+```{r out.width='100%', fig.show='hold', fig.align='center', cache = FALSE}
+plot_interactive_timeseries(dta = create_crop(PAM_data, 
                         as.POSIXct("2016-08-05","%Y-%m-%d", tz="UTC"),
                         as.POSIXct("2016-08-12","%Y-%m-%d", tz="UTC")), 
-           toPLOT = c("pressure", "acceleration")) 
+           to_plot = c("pressure", "acceleration")) 
 ```
 
 ## Performing the classification
 
-Because flapping is widespread in birds, **PAMLr** integrates a pre-defined function `classifyFLAP()` to classify this behaviour.
+Because flapping is widespread in birds, **pamlr** integrates a pre-defined function `classify_flap()` to classify this behaviour.
 
-This function assumes that if the bird has displayed **high activity** for x number of consecutive minutes, then it is flapping. It is therefore important to think about what constitutes high activity and how long this period should be. At the moment, the function uses **k-means clustering** to identify the threshold between high and low activity. Using `toPLOT = TRUE` then allows the user to see where that threshold was drawn. The period of high activity is set by default to `period = 3`. This is because activity is recorded (on this logger) every 5 minutes and we assume that after an hour of high activity, the bird must be flapping. 
+This function assumes that if the bird has displayed **high activity** for x number of consecutive minutes, then it is flapping. It is therefore important to think about what constitutes high activity and how long this period should be. At the moment, the function uses **k-means clustering** to identify the threshold between high and low activity. Using `to_plot = TRUE` then allows the user to see where that threshold was drawn. The period of high activity is set by default to `period = 3`. This is because activity is recorded (on this logger) every 5 minutes and we assume that after an hour of high activity, the bird must be flapping. 
 
 Thus "high activity duration" / "data resolution" = "period" and 60 minutes / 5 minutes = period of 12.
 
-```{r out.width='100%', fig.align='center', cache = TRUE}
+```{r out.width='100%', fig.align='center', cache = FALSE}
 # Classify behaviour
-behaviour = classifyFLAP(dta = PAM_data$acceleration, period = 12)
+behaviour = classify_flap(dta = PAM_data$acceleration, period = 12)
 str(behaviour)
 ```
 
@@ -98,7 +98,7 @@ This classification therefore provides different pieces of infomration.
 Using these information, it's therefore possible to plot the classification:
 
 
-```{r out.width='100%', fig.align='center', cache = TRUE}
+```{r out.width='100%', fig.align='center', cache = FALSE}
 
 # Plot behaviour
 col=col=c("black","royalblue4","brown","gold")
@@ -125,21 +125,21 @@ par(mfrow= c(1,3), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
 
-sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, ploty=FALSE,
           PAM_data$acceleration$act, main = "Activity",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 legend("bottomright",cex=1.2,
    c("No Activity", "Low Activity", "High Activity" ) , fill = c("black","royalblue3", "orange"), xpd = NA)
 
 
-sensorIMG(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+plot_sensorimage(PAM_data$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
           PAM_data$pressure$obs,  main="Pressure",
           col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 legend("bottomright",cex=1.2,
    c("Low Pressure", "High Pressure" ) , fill = c("royalblue3", "orange"), xpd = NA)
 
 
-sensorIMG(PAM_data$acceleration$date, labely=FALSE,
+plot_sensorimage(PAM_data$acceleration$date, labely=FALSE,
           behaviour$classification, 
           main="Classification",
           col=col,

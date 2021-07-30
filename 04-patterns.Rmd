@@ -1,7 +1,7 @@
 # Common data patterns {#patterns}
 
 ```{r echo = FALSE}
-library(PAMLr)
+library(pamlr)
 ```
 
 
@@ -20,9 +20,9 @@ Firstly, **flapping birds** exert high amounts of energy to maintain their wings
 ```{r fig.align='center', fig.width=5, fig.height=7}
 par( mfrow= c(1,1), oma=c(0,2,0,6))
 par(mar =  c(4,2,4,2))
-sensorIMG(hoopoe$acceleration$date,
-          hoopoe$acceleration$act, main = "Activity",
-          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+plot_sensorimage(hoopoe$acceleration$date,
+                 hoopoe$acceleration$act, main = "Activity",
+                 col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
 
 ```
@@ -35,9 +35,9 @@ Secondly, **flap-gliding birds** remain airborne for long periods of time (often
 ```{r fig.align='center', fig.width=5, fig.height=7}
 par( mfrow= c(1,1), oma=c(0,2,0,6))
 par(mar =  c(4,2,4,2))
-sensorIMG(swift$acceleration$date,
-          swift$acceleration$act, main = "Activity",
-          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+plot_sensorimage(swift$acceleration$date,
+                 swift$acceleration$act, main = "Activity",
+                 col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
 ```
 
@@ -51,17 +51,17 @@ par(mfrow= c(1,3), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
 
-sensorIMG(bee_eater$acceleration$date, ploty=FALSE,
-          bee_eater$acceleration$act, main = "Activity",
-          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+plot_sensorimage(bee_eater$acceleration$date, ploty=FALSE,
+                 bee_eater$acceleration$act, main = "Activity",
+                 col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(bee_eater$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
-          bee_eater$pressure$obs,  main="Pressure",
-          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+plot_sensorimage(bee_eater$pressure$date, plotx=TRUE, ploty=FALSE, labely=FALSE,
+                 bee_eater$pressure$obs,  main="Pressure",
+                 col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(bee_eater$light$date, labely=FALSE,
-          bee_eater$light$obs,  main="Light",
-          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+plot_sensorimage(bee_eater$light$date, labely=FALSE,
+                 bee_eater$light$obs,  main="Light",
+                 col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 ```
 
 
@@ -75,16 +75,16 @@ par( mfrow= c(1,2), oma=c(0,2,0,6))
 par(mar =  c(4,2,4,2))
 
 #Subset the data to only the breeding season
-PAM_data = cutPAM(bee_eater,
-                  start = as.POSIXct("2016-05-15","%Y-%m-%d", tz="UTC"),
-                  end = as.POSIXct("2016-07-15","%Y-%m-%d", tz="UTC"))
+PAM_data = create_crop(bee_eater,
+                       start = as.POSIXct("2016-05-15","%Y-%m-%d", tz="UTC"),
+                       end = as.POSIXct("2016-07-15","%Y-%m-%d", tz="UTC"))
 
-sensorIMG(PAM_data$acceleration$date, ploty=FALSE,
-          log(PAM_data$acceleration$act+0.001), main = "Activity",
-          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+plot_sensorimage(PAM_data$acceleration$date, ploty=FALSE,
+                 log(PAM_data$acceleration$act+0.001), main = "Activity",
+                 col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 
-sensorIMG(PAM_data$light$date, labely=FALSE,
-          PAM_data$light$obs,  main="Light",
-          col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
+plot_sensorimage(PAM_data$light$date, labely=FALSE,
+                 PAM_data$light$obs,  main="Light",
+                 col=c("black",viridis::cividis(90)), cex=1.2, cex.main = 2)
 ```
 

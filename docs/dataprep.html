@@ -1,39 +1,38 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>6 Preparing data for analysis | PAMLr Manual</title>
-  <meta name="description" content="6 Preparing data for analysis | PAMLr Manual">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Preparing data for analysis | pamlr Manual</title>
+  <meta name="description" content="6 Preparing data for analysis | pamlr Manual" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Preparing data for analysis | PAMLr Manual" />
+  <meta property="og:title" content="6 Preparing data for analysis | pamlr Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="6 Preparing data for analysis | PAMLr Manual" />
+  <meta property="og:description" content="6 Preparing data for analysis | pamlr Manual" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Preparing data for analysis | PAMLr Manual" />
+  <meta name="twitter:title" content="6 Preparing data for analysis | pamlr Manual" />
   
-  <meta name="twitter:description" content="6 Preparing data for analysis | PAMLr Manual" />
+  <meta name="twitter:description" content="6 Preparing data for analysis | pamlr Manual" />
   
 
-<meta name="author" content="Kiran Dhanjal-Adams">
+<meta name="author" content="Kiran Dhanjal-Adams" />
 
 
-<meta name="date" content="2019-04-25">
+<meta name="date" content="2021-07-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="patterns.html">
-<link rel="next" href="method.html">
+<link rel="prev" href="patterns.html"/>
+<link rel="next" href="method.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,7 +48,11 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
 <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
 <script src="libs/dygraphs-1.1.1/shapes.js"></script>
@@ -59,44 +63,71 @@
 <link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
 <script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
 <script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.19/rglWebGL.js"></script>
+<script src="libs/rglWebGL-binding-0.100.50/rglWebGL.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #0000ff; } /* Keyword */
-code > span.ch { color: #008080; } /* Char */
-code > span.st { color: #008080; } /* String */
-code > span.co { color: #008000; } /* Comment */
-code > span.ot { color: #ff4000; } /* Other */
-code > span.al { color: #ff0000; } /* Alert */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #008000; font-weight: bold; } /* Warning */
-code > span.cn { } /* Constant */
-code > span.sc { color: #008080; } /* SpecialChar */
-code > span.vs { color: #008080; } /* VerbatimString */
-code > span.ss { color: #008080; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { color: #0000ff; } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #ff4000; } /* Preprocessor */
-code > span.do { color: #008000; } /* Documentation */
-code > span.an { color: #008000; } /* Annotation */
-code > span.cv { color: #008000; } /* CommentVar */
-code > span.at { } /* Attribute */
-code > span.in { color: #008000; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -119,12 +150,12 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing PAMLr</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a><ul>
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
-<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load PAMLr</a></li>
+<li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load pamlr</a></li>
 <li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
 <li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
@@ -213,8 +244,7 @@ code > span.in { color: #008000; } /* Information */
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
-<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#find-which-state-is-the-migratory-state"><i class="fa fa-check"></i><b>11.5</b> Find which state is the migratory state</a></li>
-<li class="chapter" data-level="11.6" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.6</b> Plot the classification as a sensor image</a></li>
+<li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
 <li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
@@ -235,7 +265,7 @@ code > span.in { color: #008000; } /* Information */
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PAMLr Manual</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pamlr Manual</a>
           </h1>
         </div>
 
@@ -247,21 +277,21 @@ code > span.in { color: #008000; } /* Information */
 <h1><span class="header-section-number">6</span> Preparing data for analysis</h1>
 <p>There are multiple ways of preparing data for analysis.</p>
 <ul>
-<li><code>reducePAM</code>: The most simple is to merge the data together (at the same resolution).</li>
-<li><code>rollPAM</code>: It’s also possible to derive summary statistics using a rolling window, which progresses across the timeseries to make calculations.</li>
-<li><code>pamPREP</code>: Where there is a particular pattern that need to be extracted from the data such as sustained pressure change or activity, this function derives summary statistics for these periods</li>
+<li><code>create_custom_interpolation</code>: The most simple is to merge the data together (at a specified time resolution) and interpolated or not.</li>
+<li><code>create_rolling_window</code>: It’s also possible to derive summary statistics using a rolling window, which progresses across the timeseries to make calculations.</li>
+<li><code>create_summary_statistics</code>: Where there is a particular pattern that need to be extracted from the data such as sustained pressure change or activity, this function derives summary statistics for these periods</li>
 </ul>
 <div id="merge-sensor-data-together" class="section level2">
 <h2><span class="header-section-number">6.1</span> Merge sensor data together</h2>
 <p>Because data from different sensors are collected at different temporal resolutions (e.g. 5 minutes, 30 mintues or4 hours), <code>reducePAM</code> formats data to the same time intervals as a specified variable (e.g. pressure) by summarising finer resolution data (median, sum or skip) and interpolating (or not) lower resolution data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Crop the data</span>
-start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2015-08-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
-end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-06-21&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)
-PAM_data =<span class="st"> </span><span class="kw">cutPAM</span>(bee_eater, start, end)</code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># Crop the data</span></a>
+<a class="sourceLine" id="cb25-2" title="2">start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2015-08-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
+<a class="sourceLine" id="cb25-3" title="3">end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-06-21&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
+<a class="sourceLine" id="cb25-4" title="4">PAM_data =<span class="st"> </span><span class="kw">create_crop</span>(bee_eater, start, end)</a></code></pre></div>
 <div id="interpolation" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Interpolation</h3>
 <p>Format it for every 30 mins and interpolate data with larger intervals, and provide median for data with smaller intervals.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TOclassify =<span class="st"> </span><span class="kw">reducePAM</span>(PAM_data , <span class="st">&quot;pressure&quot;</span>, <span class="dt">interp =</span> <span class="ot">TRUE</span>, <span class="dt">summary=</span><span class="st">&quot;median&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_custom_interpolation</span>(PAM_data , <span class="st">&quot;pressure&quot;</span>, <span class="dt">interp =</span> <span class="ot">TRUE</span>, <span class="dt">summary=</span><span class="st">&quot;median&quot;</span>)</a></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -543,12 +573,12 @@ mZ
 <div id="no-interpolation" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> No interpolation</h3>
 <p>Format it for every 5 minutes and don’t interpolate anything</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TOclassify =<span class="st"> </span><span class="kw">reducePAM</span>(PAM_data , <span class="st">&quot;acceleration&quot;</span>, <span class="dt">interp =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_custom_interpolation</span>(PAM_data , <span class="st">&quot;acceleration&quot;</span>, <span class="dt">interp =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="rolling-window" class="section level2">
 <h2><span class="header-section-number">6.2</span> Rolling window</h2>
-<p>Interpolation is not always advisable (especially linear), and another alternative for formatting data for analysis is to use a rolling window with <code>rollPAM</code>, which progresses across all the timeseries and creates summary statistics for the data contained within that window of a certain time.</p>
+<p>Interpolation is not always advisable (especially linear), and another alternative for formatting data for analysis is to use a rolling window with <code>create_rolling_window</code>, which progresses across all the timeseries and creates summary statistics for the data contained within that window of a certain time.</p>
 <p>Derived variables include:</p>
 <ul>
 <li><strong>median</strong> : Median</li>
@@ -562,9 +592,9 @@ mZ
 <div id="interpolation-1" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Interpolation</h3>
 <p>Create a 2h window with summary statistics every 15 minutes. Because sensors such as the magnetometer record every 4 hours, we can avoid spaces in the dataset by interpolating between points (linearly) and then calculating summary statistics for these interpolated points.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TOclassify =<span class="st"> </span><span class="kw">rollPAM</span>(PAM_data,
-                     <span class="dt">resolution_out =</span> <span class="dv">15</span> ,
-                     <span class="dt">window =</span> <span class="dv">120</span>)</code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_rolling_window</span>(PAM_data,</a>
+<a class="sourceLine" id="cb28-2" title="2">                                   <span class="dt">resolution_out =</span> <span class="dv">15</span> ,</a>
+<a class="sourceLine" id="cb28-3" title="3">                                   <span class="dt">window =</span> <span class="dv">120</span>)</a></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -2463,35 +2493,35 @@ range_mZ
 <div id="no-interpolation-1" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> No interpolation</h3>
 <p>However, there are many assumpations made with assumptions (i.e. is the data truly linear). One option is either to increase the window to be larger than the greatest data resolution (in this case more than 4 hours). Another is to simply leave the NAs in the data using <code>interp = FALSE</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TOclassify =<span class="st"> </span><span class="kw">rollPAM</span>(PAM_data,
-                     <span class="dt">resolution_out =</span> <span class="dv">15</span> ,
-                     <span class="dt">window =</span> <span class="dv">120</span>,
-                     <span class="dt">interp =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_rolling_window</span>(PAM_data,</a>
+<a class="sourceLine" id="cb29-2" title="2">                                   <span class="dt">resolution_out =</span> <span class="dv">15</span>,</a>
+<a class="sourceLine" id="cb29-3" title="3">                                   <span class="dt">window =</span> <span class="dv">120</span>,</a>
+<a class="sourceLine" id="cb29-4" title="4">                                   <span class="dt">interp =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="extracting-statistics-for-specific-data-patterns" class="section level2">
 <h2><span class="header-section-number">6.3</span> Extracting statistics for specific data patterns</h2>
-<p>If working with bird data, PAMLr offers some predefined functions for classifying behaviour.</p>
+<p>If working with bird data, pamlr offers some predefined functions for classifying behaviour.</p>
 <ul>
 <li><p>Flight bouts can be characterised by:</p>
 <ul>
-<li>continuous high activity which can be extracted from the data using <code>pamPREP( ... ,method = &quot;flap&quot;)</code></li>
-<li>endurance activity using <code>pamPREP( ... ,method = &quot;endurance&quot;)</code></li>
-<li>a pressure change greater than the background pressure changes due to weather using <code>pamPREP( ... ,method = &quot;pressure&quot;)</code></li>
-<li>a period of continuous light using <code>pamPREP( ... ,method = &quot;light&quot;)</code></li>
+<li>continuous high activity which can be extracted from the data using <code>create_summary_statistics( ... ,method = "flap")</code></li>
+<li>endurance activity using <code>create_summary_statistics( ... ,method = "endurance")</code></li>
+<li>a pressure change greater than the background pressure changes due to weather using <code>create_summary_statistics( ... ,method = "pressure")</code></li>
+<li>a period of continuous light using <code>create_summary_statistics( ... ,method = "light")</code></li>
 </ul></li>
 <li><p>Incubation bouts can be characterised by:</p>
 <ul>
-<li>periods of darkness using <code>pamPREP( ... ,method = &quot;darkness&quot;)</code></li>
-<li>periods of resting using <code>pamPREP( ... ,method = &quot;rest&quot;)</code></li>
+<li>periods of darkness using <code>create_summary_statistics( ... ,method = "darkness")</code></li>
+<li>periods of resting using <code>create_summary_statistics( ... ,method = "rest")</code></li>
 </ul></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">twl =<span class="st"> </span>GeoLight<span class="op">::</span><span class="kw">twilightCalc</span>(PAM_data<span class="op">$</span>light<span class="op">$</span>date, PAM_data<span class="op">$</span>light<span class="op">$</span>obs,
-                             <span class="dt">LightThreshold =</span> <span class="dv">2</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)
-
-TOclassify =<span class="st"> </span><span class="kw">pamPREP</span>(<span class="dt">dta =</span> PAM_data,
-                      <span class="dt">method=</span> <span class="st">&quot;flap&quot;</span>,
-                      <span class="dt">twl =</span> twl)</code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">twl =<span class="st"> </span>GeoLight<span class="op">::</span><span class="kw">twilightCalc</span>(PAM_data<span class="op">$</span>light<span class="op">$</span>date, PAM_data<span class="op">$</span>light<span class="op">$</span>obs,</a>
+<a class="sourceLine" id="cb30-2" title="2">                             <span class="dt">LightThreshold =</span> <span class="dv">2</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb30-3" title="3"></a>
+<a class="sourceLine" id="cb30-4" title="4">TOclassify =<span class="st"> </span><span class="kw">create_summary_statistics</span>(<span class="dt">dta =</span> PAM_data,</a>
+<a class="sourceLine" id="cb30-5" title="5">                                       <span class="dt">method=</span> <span class="st">&quot;flap&quot;</span>,</a>
+<a class="sourceLine" id="cb30-6" title="6">                                       <span class="dt">twl =</span> twl)</a></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -3459,11 +3489,13 @@ NA
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -3471,12 +3503,13 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": false,
+"google": false,
 "instapper": false
 },
 "fontsettings": {
@@ -3489,6 +3522,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

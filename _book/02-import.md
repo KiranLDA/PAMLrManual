@@ -64,7 +64,7 @@ It's therefore possible to decide which of these to import. By default, all are 
 
 
 ```r
-PAM_data = importPAM(pathname = "C:/Put/your/path/here",
+PAM_data = create_import(pathname = "C:/Put/your/path/here",
                      measurements = c(".pressure", 
                                       ".glf",
                                       ".acceleration", 
