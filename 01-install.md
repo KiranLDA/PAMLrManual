@@ -5,13 +5,9 @@
 
 To install this package from github, `devtools` must already be installed.
 
-```{r eval = FALSE}
-install.packages("devtools")
-```
-You will also need to install _GeoLight_ which is no longer on CRAN
 
-```{r eval = FALSE}
-devtools::install_github("SLisovski/GeoLight")
+``` r
+install.packages("devtools")
 ```
 
 ## Installing
@@ -19,7 +15,8 @@ devtools::install_github("SLisovski/GeoLight")
 
 _pamlr_ can then be installed from github using the following code:
 
-```{r eval = FALSE}
+
+``` r
 devtools::install_github("KiranLDA/pamlr")
 ```
 
@@ -51,6 +48,7 @@ Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) :
 ```
 Can be dealt with through:
 
-```{r eval= FALSE}
+
+``` r
 install.packages("rlang")
 ```

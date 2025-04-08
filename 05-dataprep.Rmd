@@ -111,10 +111,12 @@ If working with bird data, pamlr offers some predefined functions for classifyin
     + periods of darkness using `create_summary_statistics( ... ,method = "darkness")`
     + periods of resting using `create_summary_statistics( ... ,method = "rest")`
 
- 
+The old _twilightCalc_ function (now deprecated) from GeoLight has been added into pamlr for ease.However, for accurate twilight calculations, please refer to the more updated TwGeos function preProcessLight here: https://geolocationmanual.vogelwarte.ch/twilight.html 
+
 ```{r cache = FALSE}
-twl = GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
-                             LightThreshold = 2, ask = FALSE)
+twl = twilightCalc(PAM_data$light$date, PAM_data$light$obs, 
+                   LightThreshold = 2, ask = FALSE)
+
 
 TOclassify = create_summary_statistics(dta = PAM_data,
                                        method= "flap",
@@ -140,8 +142,8 @@ These include:
 * **start** : Start time and date of the event, `POSIXct` format 
 * **end** :  Time and date that the event finished, `POSIXct` format 
 * **duration** : How long it lasted (in hours)
-* **total_daily_duration** : The total duration of all the events that occured that day (in hours)
-* **total_daily_event_number** : The total number of events which occured that day
+* **total_daily_duration** : The total duration of all the events that occurred that day (in hours)
+* **total_daily_event_number** : The total number of events which occurred that day
 * **cum_pressure_change** : The cumulative change in atmospheric pressure during that event (in hectopascals)
 * **cum_altitude_change** : The cumulative change in altitude during that event (in metres)
 * **cum_altitude_up** : The cumulative number of metres that the bird went upwards during that event 
@@ -156,8 +158,8 @@ These include:
 * **night_P_diff** : The difference between the mean pressures of the night before and the night after the event took place (in hectopascals)
 * **median_activity** : The median activity during that event
 * **sum_activity** : The sum of the activity during that event
-* **prop_resting** : The propotion of time during that event where activity = 0
-* **prop_active** : The propotion of time during that event where activity > 0
+* **prop_resting** : The proportion of time during that event where activity = 0
+* **prop_active** : The proportion of time during that event where activity > 0
 * **mean_night_act** : The mean activity during the night before the event took place
 * **sd_night_act** : The standard deviation of activity the night before the event took place
 * **sum_night_act** : The summed activity during the night before the event took place
@@ -169,9 +171,9 @@ These include:
 * **sd_pitch** : The standard deviation of pitch during that event
 * **median_light** :   The median light recordings during that event
 * **nightime** : Whether or not it was night during the majority of the event (1= night, 0 = day)
-* **median_gX** : Median raw acceledation on the x axis during the event
-* **median_gY** : Median raw acceledation on the y axis during the event
-* **median_gZ** : Median raw acceledation on the z axis during the event
+* **median_gX** : Median raw acceleration on the x axis during the event
+* **median_gY** : Median raw acceleration on the y axis during the event
+* **median_gZ** : Median raw acceleration on the z axis during the event
 * **median_mX** : Median raw magnetic field on the x axis during the event
 * **median_mY** : Median raw magnetic field on the y axis during the event
 * **median_mZ** : Median raw magnetic field on the z axis
