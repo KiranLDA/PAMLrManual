@@ -43,7 +43,7 @@ This is a user manual accompanying the R package **pamlr**, which provides a set
 
 ## Package citation
 
-Dhanjal-Adams K.L., Willener A.S. T. & Liechti F. (201x) **pamlr: a toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R**, *Journal X*
+Dhanjal-Adams K.L., Willener A.S. T. & Liechti F. (2022) **pamlr: a toolbox for analysing animal behaviour using Pressure, Acceleration, Temperature, Magnetic and Light data in R**, *Journal of Animal Ecology*,  https://doi.org/10.1111/1365-2656.13695 
 
 ## License
 
