@@ -1,7 +1,7 @@
 --- 
 title: "pamlr Manual"
 author: "Kiran Dhanjal-Adams"
-date: "2021-07-30"
+date: "2025-04-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

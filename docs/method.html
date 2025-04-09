@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Classification methods | pamlr Manual</title>
   <meta name="description" content="7 Classification methods | pamlr Manual" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Classification methods | pamlr Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="7 Classification methods | pamlr Manual" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Kiran Dhanjal-Adams" />
 
 
-<meta name="date" content="2021-07-30" />
+<meta name="date" content="2025-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,8 @@
   
 <link rel="prev" href="dataprep.html"/>
 <link rel="next" href="accuracy.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,10 +49,11 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
 <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
 <script src="libs/dygraphs-1.1.1/shapes.js"></script>
@@ -60,36 +61,53 @@
 <script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
 <script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
 <script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
-<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
-<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.50/rglWebGL.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/rglWebGL-binding-1.3.18/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-1.3.18/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-1.3.18/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/utils.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/buffer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/shadersrc.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/textures.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/projection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/init.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/draw.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/controls.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/selection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/rglTimer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/pretty.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/axes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/animation.src.js"></script>
+<script src="libs/CanvasMatrix4-1.3.18/CanvasMatrix.src.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -98,9 +116,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; } /* Alert */
 code span.an { color: #008000; } /* Annotation */
@@ -128,6 +146,10 @@ code span.vs { color: #008080; } /* VerbatimString */
 code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -145,18 +167,22 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li><a href="./">PAMLr Manual</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#index"><i class="fa fa-check"></i><b>1.1</b> Index</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load pamlr</a></li>
-<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
 <li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
 <li class="chapter" data-level="3.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba"><i class="fa fa-check"></i><b>3.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
@@ -167,44 +193,53 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.6</b> Cropping the data</a></li>
 <li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.7</b> Table references</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="dataviz.html"><a href="dataviz.html#formatting-data"><i class="fa fa-check"></i><b>4.1</b> Formatting data</a></li>
 <li class="chapter" data-level="4.2" data-path="dataviz.html"><a href="dataviz.html#quick-multiplots"><i class="fa fa-check"></i><b>4.2</b> Quick multiplots</a></li>
 <li class="chapter" data-level="4.3" data-path="dataviz.html"><a href="dataviz.html#interactive-timeseries"><i class="fa fa-check"></i><b>4.3</b> Interactive timeseries</a></li>
 <li class="chapter" data-level="4.4" data-path="dataviz.html"><a href="dataviz.html#sensor-images"><i class="fa fa-check"></i><b>4.4</b> Sensor images</a></li>
 <li class="chapter" data-level="4.5" data-path="dataviz.html"><a href="dataviz.html#histograms-and-three-dimensional-scatterplots"><i class="fa fa-check"></i><b>4.5</b> Histograms and three-dimensional scatterplots</a></li>
-<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a><ul>
+<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a>
+<ul>
 <li class="chapter" data-level="4.6.1" data-path="dataviz.html"><a href="dataviz.html#g-sphere"><i class="fa fa-check"></i><b>4.6.1</b> g-sphere</a></li>
 <li class="chapter" data-level="4.6.2" data-path="dataviz.html"><a href="dataviz.html#m-sphere"><i class="fa fa-check"></i><b>4.6.2</b> m-sphere</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a><ul>
+<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a>
+<ul>
 <li class="chapter" data-level="5.0.1" data-path="patterns.html"><a href="patterns.html#migration"><i class="fa fa-check"></i><b>5.0.1</b> Migration</a></li>
 <li class="chapter" data-level="5.0.2" data-path="patterns.html"><a href="patterns.html#flap-gliding-birds"><i class="fa fa-check"></i><b>5.0.2</b> <em>Flap-gliding birds</em></a></li>
 <li class="chapter" data-level="5.0.3" data-path="patterns.html"><a href="patterns.html#soar-gliding-birds"><i class="fa fa-check"></i><b>5.0.3</b> <em>Soar-gliding birds</em></a></li>
 <li class="chapter" data-level="5.1" data-path="patterns.html"><a href="patterns.html#incubation"><i class="fa fa-check"></i><b>5.1</b> Incubation</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a><ul>
+<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="dataprep.html"><a href="dataprep.html#interpolation"><i class="fa fa-check"></i><b>6.1.1</b> Interpolation</a></li>
 <li class="chapter" data-level="6.1.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation"><i class="fa fa-check"></i><b>6.1.2</b> No interpolation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a><ul>
+<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="dataprep.html"><a href="dataprep.html#interpolation-1"><i class="fa fa-check"></i><b>6.2.1</b> Interpolation</a></li>
 <li class="chapter" data-level="6.2.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation-1"><i class="fa fa-check"></i><b>6.2.2</b> No interpolation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>6.3</b> Extracting statistics for specific data patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a><ul>
+<li class="chapter" data-level="7" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="method.html"><a href="method.html#changepoint"><i class="fa fa-check"></i><b>7.1</b> Changepoint</a></li>
-<li class="chapter" data-level="7.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a><ul>
+<li class="chapter" data-level="7.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="method.html"><a href="method.html#k-means-clustering"><i class="fa fa-check"></i><b>7.2.1</b> k-means clustering</a></li>
 <li class="chapter" data-level="7.2.2" data-path="method.html"><a href="method.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.2.2</b> Hierarchical clustering</a></li>
 <li class="chapter" data-level="7.2.3" data-path="method.html"><a href="method.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>7.2.3</b> Expectation-minimisation binary clustering</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="method.html"><a href="method.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a><ul>
+<li class="chapter" data-level="8" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="accuracy.html"><a href="accuracy.html#classify-migratory-flapping-flight"><i class="fa fa-check"></i><b>8.1</b> Classify migratory flapping flight</a></li>
 <li class="chapter" data-level="8.2" data-path="accuracy.html"><a href="accuracy.html#setup-the-reference-dataset"><i class="fa fa-check"></i><b>8.2</b> Setup the reference dataset</a></li>
 <li class="chapter" data-level="8.3" data-path="accuracy.html"><a href="accuracy.html#setup-the-prediction-data"><i class="fa fa-check"></i><b>8.3</b> Setup the prediction data</a></li>
@@ -212,41 +247,49 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="8.5" data-path="accuracy.html"><a href="accuracy.html#create-a-confusion-matrix"><i class="fa fa-check"></i><b>8.5</b> Create a confusion Matrix</a></li>
 <li class="chapter" data-level="8.6" data-path="accuracy.html"><a href="accuracy.html#overall-accuracy"><i class="fa fa-check"></i><b>8.6</b> Overall accuracy</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Example 1: Flapping</a><ul>
+<li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Example 1: Flapping</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="flapping.html"><a href="flapping.html#classifying-migratory-flapping-flight-in-hoopoes-the-dataset"><i class="fa fa-check"></i><b>9.1</b> Classifying migratory flapping flight in Hoopoes :The dataset</a></li>
 <li class="chapter" data-level="9.2" data-path="flapping.html"><a href="flapping.html#visualise-data"><i class="fa fa-check"></i><b>9.2</b> Visualise data</a></li>
 <li class="chapter" data-level="9.3" data-path="flapping.html"><a href="flapping.html#what-should-we-look-for"><i class="fa fa-check"></i><b>9.3</b> What should we look for?</a></li>
 <li class="chapter" data-level="9.4" data-path="flapping.html"><a href="flapping.html#performing-the-classification"><i class="fa fa-check"></i><b>9.4</b> Performing the classification</a></li>
 <li class="chapter" data-level="9.5" data-path="flapping.html"><a href="flapping.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>9.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>10</b> Example 2: soar-gliding</a><ul>
+<li class="chapter" data-level="10" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>10</b> Example 2: soar-gliding</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="soar.html"><a href="soar.html#classifying-migratory-flight-in-european-bee-eaters-the-dataset"><i class="fa fa-check"></i><b>10.1</b> Classifying migratory flight in European bee-eaters: the dataset</a></li>
 <li class="chapter" data-level="10.2" data-path="soar.html"><a href="soar.html#visualise-data-1"><i class="fa fa-check"></i><b>10.2</b> Visualise data</a></li>
 <li class="chapter" data-level="10.3" data-path="soar.html"><a href="soar.html#what-should-we-look-for-1"><i class="fa fa-check"></i><b>10.3</b> What should we look for?</a></li>
 <li class="chapter" data-level="10.4" data-path="soar.html"><a href="soar.html#what-variables-make-the-most-sense-for-classifying"><i class="fa fa-check"></i><b>10.4</b> What variables make the most sense for classifying?</a></li>
-<li class="chapter" data-level="10.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>10.5</b> Classify using HMM</a><ul>
+<li class="chapter" data-level="10.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>10.5</b> Classify using HMM</a>
+<ul>
 <li class="chapter" data-level="10.5.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable"><i class="fa fa-check"></i><b>10.5.1</b> <em>Translate the classification events into something usable</em></a></li>
 <li class="chapter" data-level="10.5.2" data-path="soar.html"><a href="soar.html#plot-the-classification"><i class="fa fa-check"></i><b>10.5.2</b> <em>Plot the classification</em></a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>10.6</b> Classify using pressure</a><ul>
+<li class="chapter" data-level="10.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>10.6</b> Classify using pressure</a>
+<ul>
 <li class="chapter" data-level="10.6.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable-1"><i class="fa fa-check"></i><b>10.6.1</b> <em>Translate the classification events into something usable</em></a></li>
 <li class="chapter" data-level="10.6.2" data-path="soar.html"><a href="soar.html#plot-the-classification-1"><i class="fa fa-check"></i><b>10.6.2</b> <em>Plot the classification</em></a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="soar.html"><a href="soar.html#classify-using-a-changepoint-analysis"><i class="fa fa-check"></i><b>10.7</b> Classify using a changepoint analysis</a></li>
-<li class="chapter" data-level="10.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>10.8</b> Compare the classifications</a><ul>
+<li class="chapter" data-level="10.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>10.8</b> Compare the classifications</a>
+<ul>
 <li class="chapter" data-level="10.8.1" data-path="soar.html"><a href="soar.html#plot-the-agreement-between-the-migration-classifications"><i class="fa fa-check"></i><b>10.8.1</b> <em>Plot the agreement between the migration classifications</em></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>11</b> Example 3: flap-glide</a><ul>
+<li class="chapter" data-level="11" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>11</b> Example 3: flap-glide</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="swift.html"><a href="swift.html#classifying-migratory-flight-alpine-swifts-the-dataset"><i class="fa fa-check"></i><b>11.1</b> Classifying migratory flight Alpine swifts: The dataset</a></li>
 <li class="chapter" data-level="11.2" data-path="swift.html"><a href="swift.html#visualise-data-2"><i class="fa fa-check"></i><b>11.2</b> Visualise data</a></li>
-<li class="chapter" data-level="11.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>11.3</b> What should we look for?</a><ul>
+<li class="chapter" data-level="11.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>11.3</b> What should we look for?</a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
 <li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
+<li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
 <li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#clock-drift"><i class="fa fa-check"></i><b>12.2</b> Clock drift</a></li>
 <li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.3</b> Using biologically meaningful patterns</a></li>
@@ -273,31 +316,31 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="method" class="section level1">
-<h1><span class="header-section-number">7</span> Classification methods</h1>
+<div id="method" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Classification methods<a href="method.html#method" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Once a behavioural pattern has been identified, there are a number of methods available for separating them from the data. Not all these methods should be used exclusively. Some can be used to complement each other, while others can be used interchangeably. Here we highlight changepoint analyses, principle component analyses, cluster analyses, hidden Markov models,</p>
-<div id="changepoint" class="section level2">
-<h2><span class="header-section-number">7.1</span> Changepoint</h2>
+<div id="changepoint" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Changepoint<a href="method.html#changepoint" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Changepoint analyses can be used to find points in the data series which delineate a difference in variance, in mean or in both. There are a number of available methods for doing this and it is possible to constrain the number of changepoints allowed in the data. In pamlr, the default setting in <code>classify_changepoint()</code> are set for finding differences between migratory and non-migratory periods, but the user can customise these to fit their needs.</p>
 </div>
-<div id="cluster-analysis" class="section level2">
-<h2><span class="header-section-number">7.2</span> Cluster Analysis</h2>
+<div id="cluster-analysis" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Cluster Analysis<a href="method.html#cluster-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Clustering algorithms aim to partition a set of points into a k number of groups. Points are grouped (or clustered) together in a way that all the points in one cluster are more similar with each other, than with points in other clusters. pamlr integrates three types of clustering algorithms, <strong>k-means</strong>, <strong>hierarchical</strong> and <strong>expectation-minimisation binary clustering</strong>.</p>
-<div id="k-means-clustering" class="section level3">
-<h3><span class="header-section-number">7.2.1</span> k-means clustering</h3>
+<div id="k-means-clustering" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> k-means clustering<a href="method.html#k-means-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>k-means clustering minimises the within-cluster sum of squares of the points and is one of the commonly used clustering algorithms (Hartigan &amp; Wong, 1979). It can be implemented by using <code>classify_summary_statistics( … , method= “kmeans”)</code>.</p>
 </div>
-<div id="hierarchical-clustering" class="section level3">
-<h3><span class="header-section-number">7.2.2</span> Hierarchical clustering</h3>
+<div id="hierarchical-clustering" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Hierarchical clustering<a href="method.html#hierarchical-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Hierarchical clustering analyses can either be agglomerative or divisive. The first relies on putting each datapoint in a single cluster and successively merging them until a stopping criterion is satisfied and can be implemented in pamlr using <code>classify_summary_statistics( … , method= “agnes”)</code>. The divisive hierarchical clustering method starts by allocating all datapoints to the same cluster and splitting each cluster until a stopping criterion is met. This can be implemented using <code>classify_summary_statistics( … , method= “diana”)</code>.</p>
 </div>
-<div id="expectation-minimisation-binary-clustering" class="section level3">
-<h3><span class="header-section-number">7.2.3</span> Expectation-minimisation binary clustering</h3>
+<div id="expectation-minimisation-binary-clustering" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Expectation-minimisation binary clustering<a href="method.html#expectation-minimisation-binary-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Expectation-minimisation binary clustering (EMbC), clusters data based on geometry alone. More specifically binary delimiters are used to segregate the data along an axis, forcing centroids to lie within these binary regions. Analysis was undertaken using <code>classify_summary_statistics( … , method= “embc”)</code>.</p>
 </div>
 </div>
-<div id="hidden-markov-models" class="section level2">
-<h2><span class="header-section-number">7.3</span> Hidden Markov Models</h2>
+<div id="hidden-markov-models" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Hidden Markov Models<a href="method.html#hidden-markov-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hidden Markov Models (HMMs) are stochastic time-series models which assume that the observed time series (such as the measured acceleration, temperature or pressure) is driven by an unobservable state process (such as flying or resting behaviour). The unobserved states are allocated in a way that captures as much as possible of the marginal distribution of the observations, while also accounting for the correlation structure of the data. Thus, the probability of the system being in a state at time t depends on the state at time t-1, but is otherwise independent of any previous state. HMMs can be implemented in pamlr using the function <code>classify_summary_statistics( … , method= “hmm”)</code>.</p>
 
 </div>
@@ -312,7 +355,6 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -323,42 +365,45 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": false,
-"google": false,
-"instapper": false
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-},
-"search": true
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false,
+    "google": false,
+    "instapper": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
 });
 });
 </script>

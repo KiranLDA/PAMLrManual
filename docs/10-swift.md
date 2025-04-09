@@ -24,7 +24,7 @@ Alpine swift (*Apus melba*) have been tracked on the their migrations from Switz
 
 
 
-```r
+``` r
 data("swift")
 
 # make sure the cropping period is in the correct date format
@@ -40,7 +40,7 @@ PAM_data= create_crop(swift,start,end)
 Sensor images are a good place to start when analysing data, as they can give a rapid overview of the dataset. Darker colors represent lower values, and lighter colors (in this case yellow) represent higher values. Sensor images for **activity** (also known as an actogram), **pitch**, **pressure** and **temperature** are a good place to start. The following code plots this for us:
 
 
-```r
+``` r
 par(mfrow= c(1,4), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
@@ -75,7 +75,7 @@ Some pattern start to stick out.
 * Temperature is **lower during migration** also indicating higher altitudes
 
 
-```r
+``` r
 TOclassify = create_rolling_window(PAM_data,
                      resolution_out = 30 ,
                      window = 24*60,
@@ -87,7 +87,7 @@ TOclassify = create_rolling_window(PAM_data,
 This helps think about which classifiers show differences for the behaviours we are trying to classify.
 
 
-```r
+``` r
 # choose variables of interest
 varint = c("sd_pit",
            "sd_pressure",
@@ -114,7 +114,7 @@ for (i in 1:length(varint)){
 One of the most difficult aspects of creating a classification is determining how many classes should be used. Here, we increase the number of classes until the behaviour we want to classify is correcly classified. Once this is done, we can extract this classification from the data.
 
 
-```r
+``` r
 # Select the columns to use as predictors in the model
 predictor = TOclassify[, varint]
 
@@ -125,7 +125,13 @@ classification = classify_summary_statistics(predictor,
 ```
 
 ```
-## converged at iteration 45 with logLik: -405139.8
+## converged at iteration 21 with logLik: -404386.6
+```
+
+```
+## Warning in .local(object, ...): Argument 'type' not specified and will default
+## to 'viterbi'. This default may change in future releases of depmixS4. Please
+## see ?posterior for alternative options.
 ```
 
 ##Find which state is the migratory state
@@ -133,7 +139,7 @@ classification = classify_summary_statistics(predictor,
 To do this, we find the state where pressure was the lowest, i.e. the bird was at the highest altitude, making the assumption that this is when the bird migrates.
 
 
-```r
+``` r
 #what is the minimum pressure for each class?
 minP = unlist(lapply(1:length(unique(classification$cluster)),
        function(i) min(TOclassify$median_pressure[classification$cluster==i])))
@@ -150,7 +156,7 @@ mig_classification = ifelse(classification$cluster == mig_state,2,1)
 Another way of looking at a classification is to use a sensor image of the results and to plot it side by side with the raw data to see if the same patterns are being picked out. We can also add (for instance sunset and sunrise events)
 
 
-```r
+``` r
 par(mfrow= c(1,3), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
@@ -172,7 +178,7 @@ plot_sensorimage(TOclassify$date, labely=FALSE,
           cex=1.2, cex.main = 2)
 
 # estimate sunrises and sunsets
-twilights <- GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
+twilights <- twilightCalc(PAM_data$light$date, PAM_data$light$obs,
                                     LightThreshold = 2, ask = FALSE)
 
 # Add sunrises and sunsets

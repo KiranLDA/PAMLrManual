@@ -16,7 +16,7 @@ Firstly, **flapping birds** exert high amounts of energy to maintain their wings
 **In the figure below, this represents the yellow periods in september and march**.
 
 
-```r
+``` r
 par( mfrow= c(1,1), oma=c(0,2,0,6))
 par(mar =  c(4,2,4,2))
 plot_sensorimage(hoopoe$acceleration$date,
@@ -32,7 +32,7 @@ plot_sensorimage(hoopoe$acceleration$date,
 Secondly, **flap-gliding birds** remain airborne for long periods of time (often months) without resting. This migratory strategy is most common in swifts and swallows. Such birds do not show any big changes in behaviour between night and day, or between migration and non-breeding residency. However, during migration they can fly at higher altitudes than at other times of the year, rest less often with longer periods of sustained activity, display a constant pitch, and experience lower temperatures (because of the altitude) – some or all of these patterns can be used to classify such behaviour.
 
 
-```r
+``` r
 par( mfrow= c(1,1), oma=c(0,2,0,6))
 par(mar =  c(4,2,4,2))
 plot_sensorimage(swift$acceleration$date,
@@ -48,7 +48,7 @@ plot_sensorimage(swift$acceleration$date,
 Finally, **soar-gliding birds** take advantage of thermal updrafts to remain airborne and avoid using too much energy beating their wings. This strategy is most commonly observed in raptors, cranes and storks, but also bee-eaters. Because thermal updrafts are only present during the day, such species only migrate during the day. Therefore, patterns of interest include rapid changes in daytime altitude, as well as decreases in resting time and continuous sunlight (particularly for a species which might otherwise spend time under tree canopy). 
 
 
-```r
+``` r
 par(mfrow= c(1,3), # number of panels
     oma=c(0,2,0,6), # outer margin around all panels
     mar =  c(4,1,4,1)) # inner margin around individual fivure
@@ -75,7 +75,7 @@ Patterns are often easy to distinguish in cavity nesting birds. Most commonly, d
 
 
 
-```r
+``` r
 par( mfrow= c(1,2), oma=c(0,2,0,6))
 par(mar =  c(4,2,4,2))
 

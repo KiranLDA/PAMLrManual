@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Preparing data for analysis | pamlr Manual</title>
   <meta name="description" content="6 Preparing data for analysis | pamlr Manual" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Preparing data for analysis | pamlr Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="6 Preparing data for analysis | pamlr Manual" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Kiran Dhanjal-Adams" />
 
 
-<meta name="date" content="2021-07-30" />
+<meta name="date" content="2025-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,8 @@
   
 <link rel="prev" href="patterns.html"/>
 <link rel="next" href="method.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,10 +49,11 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
 <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
 <script src="libs/dygraphs-1.1.1/shapes.js"></script>
@@ -60,36 +61,53 @@
 <script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
 <script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
 <script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
-<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
-<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.50/rglWebGL.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/rglWebGL-binding-1.3.18/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-1.3.18/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-1.3.18/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/utils.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/buffer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/shadersrc.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/textures.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/projection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/init.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/draw.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/controls.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/selection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/rglTimer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/pretty.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/axes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/animation.src.js"></script>
+<script src="libs/CanvasMatrix4-1.3.18/CanvasMatrix.src.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -98,9 +116,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; } /* Alert */
 code span.an { color: #008000; } /* Annotation */
@@ -128,6 +146,10 @@ code span.vs { color: #008080; } /* VerbatimString */
 code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -145,18 +167,22 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li><a href="./">PAMLr Manual</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#index"><i class="fa fa-check"></i><b>1.1</b> Index</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load pamlr</a></li>
-<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
 <li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
 <li class="chapter" data-level="3.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba"><i class="fa fa-check"></i><b>3.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
@@ -167,44 +193,53 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.6</b> Cropping the data</a></li>
 <li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.7</b> Table references</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="dataviz.html"><a href="dataviz.html#formatting-data"><i class="fa fa-check"></i><b>4.1</b> Formatting data</a></li>
 <li class="chapter" data-level="4.2" data-path="dataviz.html"><a href="dataviz.html#quick-multiplots"><i class="fa fa-check"></i><b>4.2</b> Quick multiplots</a></li>
 <li class="chapter" data-level="4.3" data-path="dataviz.html"><a href="dataviz.html#interactive-timeseries"><i class="fa fa-check"></i><b>4.3</b> Interactive timeseries</a></li>
 <li class="chapter" data-level="4.4" data-path="dataviz.html"><a href="dataviz.html#sensor-images"><i class="fa fa-check"></i><b>4.4</b> Sensor images</a></li>
 <li class="chapter" data-level="4.5" data-path="dataviz.html"><a href="dataviz.html#histograms-and-three-dimensional-scatterplots"><i class="fa fa-check"></i><b>4.5</b> Histograms and three-dimensional scatterplots</a></li>
-<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a><ul>
+<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a>
+<ul>
 <li class="chapter" data-level="4.6.1" data-path="dataviz.html"><a href="dataviz.html#g-sphere"><i class="fa fa-check"></i><b>4.6.1</b> g-sphere</a></li>
 <li class="chapter" data-level="4.6.2" data-path="dataviz.html"><a href="dataviz.html#m-sphere"><i class="fa fa-check"></i><b>4.6.2</b> m-sphere</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a><ul>
+<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a>
+<ul>
 <li class="chapter" data-level="5.0.1" data-path="patterns.html"><a href="patterns.html#migration"><i class="fa fa-check"></i><b>5.0.1</b> Migration</a></li>
 <li class="chapter" data-level="5.0.2" data-path="patterns.html"><a href="patterns.html#flap-gliding-birds"><i class="fa fa-check"></i><b>5.0.2</b> <em>Flap-gliding birds</em></a></li>
 <li class="chapter" data-level="5.0.3" data-path="patterns.html"><a href="patterns.html#soar-gliding-birds"><i class="fa fa-check"></i><b>5.0.3</b> <em>Soar-gliding birds</em></a></li>
 <li class="chapter" data-level="5.1" data-path="patterns.html"><a href="patterns.html#incubation"><i class="fa fa-check"></i><b>5.1</b> Incubation</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a><ul>
+<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="dataprep.html"><a href="dataprep.html#interpolation"><i class="fa fa-check"></i><b>6.1.1</b> Interpolation</a></li>
 <li class="chapter" data-level="6.1.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation"><i class="fa fa-check"></i><b>6.1.2</b> No interpolation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a><ul>
+<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="dataprep.html"><a href="dataprep.html#interpolation-1"><i class="fa fa-check"></i><b>6.2.1</b> Interpolation</a></li>
 <li class="chapter" data-level="6.2.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation-1"><i class="fa fa-check"></i><b>6.2.2</b> No interpolation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>6.3</b> Extracting statistics for specific data patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a><ul>
+<li class="chapter" data-level="7" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="method.html"><a href="method.html#changepoint"><i class="fa fa-check"></i><b>7.1</b> Changepoint</a></li>
-<li class="chapter" data-level="7.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a><ul>
+<li class="chapter" data-level="7.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="method.html"><a href="method.html#k-means-clustering"><i class="fa fa-check"></i><b>7.2.1</b> k-means clustering</a></li>
 <li class="chapter" data-level="7.2.2" data-path="method.html"><a href="method.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.2.2</b> Hierarchical clustering</a></li>
 <li class="chapter" data-level="7.2.3" data-path="method.html"><a href="method.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>7.2.3</b> Expectation-minimisation binary clustering</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="method.html"><a href="method.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a><ul>
+<li class="chapter" data-level="8" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="accuracy.html"><a href="accuracy.html#classify-migratory-flapping-flight"><i class="fa fa-check"></i><b>8.1</b> Classify migratory flapping flight</a></li>
 <li class="chapter" data-level="8.2" data-path="accuracy.html"><a href="accuracy.html#setup-the-reference-dataset"><i class="fa fa-check"></i><b>8.2</b> Setup the reference dataset</a></li>
 <li class="chapter" data-level="8.3" data-path="accuracy.html"><a href="accuracy.html#setup-the-prediction-data"><i class="fa fa-check"></i><b>8.3</b> Setup the prediction data</a></li>
@@ -212,41 +247,49 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="8.5" data-path="accuracy.html"><a href="accuracy.html#create-a-confusion-matrix"><i class="fa fa-check"></i><b>8.5</b> Create a confusion Matrix</a></li>
 <li class="chapter" data-level="8.6" data-path="accuracy.html"><a href="accuracy.html#overall-accuracy"><i class="fa fa-check"></i><b>8.6</b> Overall accuracy</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Example 1: Flapping</a><ul>
+<li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Example 1: Flapping</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="flapping.html"><a href="flapping.html#classifying-migratory-flapping-flight-in-hoopoes-the-dataset"><i class="fa fa-check"></i><b>9.1</b> Classifying migratory flapping flight in Hoopoes :The dataset</a></li>
 <li class="chapter" data-level="9.2" data-path="flapping.html"><a href="flapping.html#visualise-data"><i class="fa fa-check"></i><b>9.2</b> Visualise data</a></li>
 <li class="chapter" data-level="9.3" data-path="flapping.html"><a href="flapping.html#what-should-we-look-for"><i class="fa fa-check"></i><b>9.3</b> What should we look for?</a></li>
 <li class="chapter" data-level="9.4" data-path="flapping.html"><a href="flapping.html#performing-the-classification"><i class="fa fa-check"></i><b>9.4</b> Performing the classification</a></li>
 <li class="chapter" data-level="9.5" data-path="flapping.html"><a href="flapping.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>9.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>10</b> Example 2: soar-gliding</a><ul>
+<li class="chapter" data-level="10" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>10</b> Example 2: soar-gliding</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="soar.html"><a href="soar.html#classifying-migratory-flight-in-european-bee-eaters-the-dataset"><i class="fa fa-check"></i><b>10.1</b> Classifying migratory flight in European bee-eaters: the dataset</a></li>
 <li class="chapter" data-level="10.2" data-path="soar.html"><a href="soar.html#visualise-data-1"><i class="fa fa-check"></i><b>10.2</b> Visualise data</a></li>
 <li class="chapter" data-level="10.3" data-path="soar.html"><a href="soar.html#what-should-we-look-for-1"><i class="fa fa-check"></i><b>10.3</b> What should we look for?</a></li>
 <li class="chapter" data-level="10.4" data-path="soar.html"><a href="soar.html#what-variables-make-the-most-sense-for-classifying"><i class="fa fa-check"></i><b>10.4</b> What variables make the most sense for classifying?</a></li>
-<li class="chapter" data-level="10.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>10.5</b> Classify using HMM</a><ul>
+<li class="chapter" data-level="10.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>10.5</b> Classify using HMM</a>
+<ul>
 <li class="chapter" data-level="10.5.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable"><i class="fa fa-check"></i><b>10.5.1</b> <em>Translate the classification events into something usable</em></a></li>
 <li class="chapter" data-level="10.5.2" data-path="soar.html"><a href="soar.html#plot-the-classification"><i class="fa fa-check"></i><b>10.5.2</b> <em>Plot the classification</em></a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>10.6</b> Classify using pressure</a><ul>
+<li class="chapter" data-level="10.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>10.6</b> Classify using pressure</a>
+<ul>
 <li class="chapter" data-level="10.6.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable-1"><i class="fa fa-check"></i><b>10.6.1</b> <em>Translate the classification events into something usable</em></a></li>
 <li class="chapter" data-level="10.6.2" data-path="soar.html"><a href="soar.html#plot-the-classification-1"><i class="fa fa-check"></i><b>10.6.2</b> <em>Plot the classification</em></a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="soar.html"><a href="soar.html#classify-using-a-changepoint-analysis"><i class="fa fa-check"></i><b>10.7</b> Classify using a changepoint analysis</a></li>
-<li class="chapter" data-level="10.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>10.8</b> Compare the classifications</a><ul>
+<li class="chapter" data-level="10.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>10.8</b> Compare the classifications</a>
+<ul>
 <li class="chapter" data-level="10.8.1" data-path="soar.html"><a href="soar.html#plot-the-agreement-between-the-migration-classifications"><i class="fa fa-check"></i><b>10.8.1</b> <em>Plot the agreement between the migration classifications</em></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>11</b> Example 3: flap-glide</a><ul>
+<li class="chapter" data-level="11" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>11</b> Example 3: flap-glide</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="swift.html"><a href="swift.html#classifying-migratory-flight-alpine-swifts-the-dataset"><i class="fa fa-check"></i><b>11.1</b> Classifying migratory flight Alpine swifts: The dataset</a></li>
 <li class="chapter" data-level="11.2" data-path="swift.html"><a href="swift.html#visualise-data-2"><i class="fa fa-check"></i><b>11.2</b> Visualise data</a></li>
-<li class="chapter" data-level="11.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>11.3</b> What should we look for?</a><ul>
+<li class="chapter" data-level="11.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>11.3</b> What should we look for?</a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
 <li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
+<li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
 <li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#clock-drift"><i class="fa fa-check"></i><b>12.2</b> Clock drift</a></li>
 <li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.3</b> Using biologically meaningful patterns</a></li>
@@ -273,29 +316,29 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dataprep" class="section level1">
-<h1><span class="header-section-number">6</span> Preparing data for analysis</h1>
+<div id="dataprep" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Preparing data for analysis<a href="dataprep.html#dataprep" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>There are multiple ways of preparing data for analysis.</p>
 <ul>
 <li><code>create_custom_interpolation</code>: The most simple is to merge the data together (at a specified time resolution) and interpolated or not.</li>
 <li><code>create_rolling_window</code>: It’s also possible to derive summary statistics using a rolling window, which progresses across the timeseries to make calculations.</li>
 <li><code>create_summary_statistics</code>: Where there is a particular pattern that need to be extracted from the data such as sustained pressure change or activity, this function derives summary statistics for these periods</li>
 </ul>
-<div id="merge-sensor-data-together" class="section level2">
-<h2><span class="header-section-number">6.1</span> Merge sensor data together</h2>
+<div id="merge-sensor-data-together" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Merge sensor data together<a href="dataprep.html#merge-sensor-data-together" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Because data from different sensors are collected at different temporal resolutions (e.g. 5 minutes, 30 mintues or4 hours), <code>reducePAM</code> formats data to the same time intervals as a specified variable (e.g. pressure) by summarising finer resolution data (median, sum or skip) and interpolating (or not) lower resolution data.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># Crop the data</span></a>
-<a class="sourceLine" id="cb25-2" title="2">start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2015-08-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
-<a class="sourceLine" id="cb25-3" title="3">end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-06-21&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
-<a class="sourceLine" id="cb25-4" title="4">PAM_data =<span class="st"> </span><span class="kw">create_crop</span>(bee_eater, start, end)</a></code></pre></div>
-<div id="interpolation" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> Interpolation</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="dataprep.html#cb26-1" tabindex="-1"></a><span class="co"># Crop the data</span></span>
+<span id="cb26-2"><a href="dataprep.html#cb26-2" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2015-08-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb26-3"><a href="dataprep.html#cb26-3" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-06-21&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb26-4"><a href="dataprep.html#cb26-4" tabindex="-1"></a>PAM_data <span class="ot">=</span> <span class="fu">create_crop</span>(bee_eater, start, end)</span></code></pre></div>
+<div id="interpolation" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Interpolation<a href="dataprep.html#interpolation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Format it for every 30 mins and interpolate data with larger intervals, and provide median for data with smaller intervals.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_custom_interpolation</span>(PAM_data , <span class="st">&quot;pressure&quot;</span>, <span class="dt">interp =</span> <span class="ot">TRUE</span>, <span class="dt">summary=</span><span class="st">&quot;median&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dataprep.html#cb27-1" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_custom_interpolation</span>(PAM_data , <span class="st">&quot;pressure&quot;</span>, <span class="at">interp =</span> <span class="cn">TRUE</span>, <span class="at">summary=</span><span class="st">&quot;median&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-4">Table 6.1: </span>A table of the first 10 rows of a reducePAM dataset.
+<span id="tab:unnamed-chunk-4">Table 6.1: </span><span id="tab:unnamed-chunk-4">Table 6.2: </span>A table of the first 10 rows of a reducePAM dataset.
 </caption>
 <thead>
 <tr>
@@ -570,14 +613,14 @@ mZ
 </table>
 </div>
 </div>
-<div id="no-interpolation" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> No interpolation</h3>
+<div id="no-interpolation" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> No interpolation<a href="dataprep.html#no-interpolation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Format it for every 5 minutes and don’t interpolate anything</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_custom_interpolation</span>(PAM_data , <span class="st">&quot;acceleration&quot;</span>, <span class="dt">interp =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="dataprep.html#cb28-1" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_custom_interpolation</span>(PAM_data , <span class="st">&quot;acceleration&quot;</span>, <span class="at">interp =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="rolling-window" class="section level2">
-<h2><span class="header-section-number">6.2</span> Rolling window</h2>
+<div id="rolling-window" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Rolling window<a href="dataprep.html#rolling-window" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Interpolation is not always advisable (especially linear), and another alternative for formatting data for analysis is to use a rolling window with <code>create_rolling_window</code>, which progresses across all the timeseries and creates summary statistics for the data contained within that window of a certain time.</p>
 <p>Derived variables include:</p>
 <ul>
@@ -589,16 +632,16 @@ mZ
 <li><strong>range</strong> : Range (i.e. maximum - minimum)</li>
 <li><strong>cumu_diff</strong> : Cumulative difference (i.e. sum of absolute differences)</li>
 </ul>
-<div id="interpolation-1" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Interpolation</h3>
+<div id="interpolation-1" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Interpolation<a href="dataprep.html#interpolation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a 2h window with summary statistics every 15 minutes. Because sensors such as the magnetometer record every 4 hours, we can avoid spaces in the dataset by interpolating between points (linearly) and then calculating summary statistics for these interpolated points.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_rolling_window</span>(PAM_data,</a>
-<a class="sourceLine" id="cb28-2" title="2">                                   <span class="dt">resolution_out =</span> <span class="dv">15</span> ,</a>
-<a class="sourceLine" id="cb28-3" title="3">                                   <span class="dt">window =</span> <span class="dv">120</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dataprep.html#cb29-1" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_rolling_window</span>(PAM_data,</span>
+<span id="cb29-2"><a href="dataprep.html#cb29-2" tabindex="-1"></a>                                   <span class="at">resolution_out =</span> <span class="dv">15</span> ,</span>
+<span id="cb29-3"><a href="dataprep.html#cb29-3" tabindex="-1"></a>                                   <span class="at">window =</span> <span class="dv">120</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-7">Table 6.2: </span>A table of the first 10 rows of a reducePAM dataset.
+<span id="tab:unnamed-chunk-7">Table 6.3: </span><span id="tab:unnamed-chunk-7">Table 6.4: </span>A table of the first 10 rows of a reducePAM dataset.
 </caption>
 <thead>
 <tr>
@@ -2490,17 +2533,17 @@ range_mZ
 </table>
 </div>
 </div>
-<div id="no-interpolation-1" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> No interpolation</h3>
+<div id="no-interpolation-1" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> No interpolation<a href="dataprep.html#no-interpolation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>However, there are many assumpations made with assumptions (i.e. is the data truly linear). One option is either to increase the window to be larger than the greatest data resolution (in this case more than 4 hours). Another is to simply leave the NAs in the data using <code>interp = FALSE</code></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_rolling_window</span>(PAM_data,</a>
-<a class="sourceLine" id="cb29-2" title="2">                                   <span class="dt">resolution_out =</span> <span class="dv">15</span>,</a>
-<a class="sourceLine" id="cb29-3" title="3">                                   <span class="dt">window =</span> <span class="dv">120</span>,</a>
-<a class="sourceLine" id="cb29-4" title="4">                                   <span class="dt">interp =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="dataprep.html#cb30-1" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_rolling_window</span>(PAM_data,</span>
+<span id="cb30-2"><a href="dataprep.html#cb30-2" tabindex="-1"></a>                                   <span class="at">resolution_out =</span> <span class="dv">15</span>,</span>
+<span id="cb30-3"><a href="dataprep.html#cb30-3" tabindex="-1"></a>                                   <span class="at">window =</span> <span class="dv">120</span>,</span>
+<span id="cb30-4"><a href="dataprep.html#cb30-4" tabindex="-1"></a>                                   <span class="at">interp =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="extracting-statistics-for-specific-data-patterns" class="section level2">
-<h2><span class="header-section-number">6.3</span> Extracting statistics for specific data patterns</h2>
+<div id="extracting-statistics-for-specific-data-patterns" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Extracting statistics for specific data patterns<a href="dataprep.html#extracting-statistics-for-specific-data-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If working with bird data, pamlr offers some predefined functions for classifying behaviour.</p>
 <ul>
 <li><p>Flight bouts can be characterised by:</p>
@@ -2516,16 +2559,18 @@ range_mZ
 <li>periods of resting using <code>create_summary_statistics( ... ,method = "rest")</code></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">twl =<span class="st"> </span>GeoLight<span class="op">::</span><span class="kw">twilightCalc</span>(PAM_data<span class="op">$</span>light<span class="op">$</span>date, PAM_data<span class="op">$</span>light<span class="op">$</span>obs,</a>
-<a class="sourceLine" id="cb30-2" title="2">                             <span class="dt">LightThreshold =</span> <span class="dv">2</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb30-3" title="3"></a>
-<a class="sourceLine" id="cb30-4" title="4">TOclassify =<span class="st"> </span><span class="kw">create_summary_statistics</span>(<span class="dt">dta =</span> PAM_data,</a>
-<a class="sourceLine" id="cb30-5" title="5">                                       <span class="dt">method=</span> <span class="st">&quot;flap&quot;</span>,</a>
-<a class="sourceLine" id="cb30-6" title="6">                                       <span class="dt">twl =</span> twl)</a></code></pre></div>
+<p>The old <em>twilightCalc</em> function (now deprecated) from GeoLight has been added into pamlr for ease.However, for accurate twilight calculations, please refer to the more updated TwGeos function preProcessLight here: <a href="https://geolocationmanual.vogelwarte.ch/twilight.html" class="uri">https://geolocationmanual.vogelwarte.ch/twilight.html</a></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="dataprep.html#cb31-1" tabindex="-1"></a>twl <span class="ot">=</span> <span class="fu">twilightCalc</span>(PAM_data<span class="sc">$</span>light<span class="sc">$</span>date, PAM_data<span class="sc">$</span>light<span class="sc">$</span>obs, </span>
+<span id="cb31-2"><a href="dataprep.html#cb31-2" tabindex="-1"></a>                   <span class="at">LightThreshold =</span> <span class="dv">2</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb31-3"><a href="dataprep.html#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="dataprep.html#cb31-4" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="dataprep.html#cb31-5" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_summary_statistics</span>(<span class="at">dta =</span> PAM_data,</span>
+<span id="cb31-6"><a href="dataprep.html#cb31-6" tabindex="-1"></a>                                       <span class="at">method=</span> <span class="st">&quot;flap&quot;</span>,</span>
+<span id="cb31-7"><a href="dataprep.html#cb31-7" tabindex="-1"></a>                                       <span class="at">twl =</span> twl)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-10">Table 6.3: </span>A table of the first 10 rows of a reducePAM dataset.
+<span id="tab:unnamed-chunk-10">Table 6.5: </span><span id="tab:unnamed-chunk-10">Table 6.6: </span>A table of the first 10 rows of a reducePAM dataset.
 </caption>
 <thead>
 <tr>
@@ -3436,8 +3481,8 @@ NA
 <li><strong>start</strong> : Start time and date of the event, <code>POSIXct</code> format</li>
 <li><strong>end</strong> : Time and date that the event finished, <code>POSIXct</code> format</li>
 <li><strong>duration</strong> : How long it lasted (in hours)</li>
-<li><strong>total_daily_duration</strong> : The total duration of all the events that occured that day (in hours)</li>
-<li><strong>total_daily_event_number</strong> : The total number of events which occured that day</li>
+<li><strong>total_daily_duration</strong> : The total duration of all the events that occurred that day (in hours)</li>
+<li><strong>total_daily_event_number</strong> : The total number of events which occurred that day</li>
 <li><strong>cum_pressure_change</strong> : The cumulative change in atmospheric pressure during that event (in hectopascals)</li>
 <li><strong>cum_altitude_change</strong> : The cumulative change in altitude during that event (in metres)</li>
 <li><strong>cum_altitude_up</strong> : The cumulative number of metres that the bird went upwards during that event</li>
@@ -3452,8 +3497,8 @@ NA
 <li><strong>night_P_diff</strong> : The difference between the mean pressures of the night before and the night after the event took place (in hectopascals)</li>
 <li><strong>median_activity</strong> : The median activity during that event</li>
 <li><strong>sum_activity</strong> : The sum of the activity during that event</li>
-<li><strong>prop_resting</strong> : The propotion of time during that event where activity = 0</li>
-<li><strong>prop_active</strong> : The propotion of time during that event where activity &gt; 0</li>
+<li><strong>prop_resting</strong> : The proportion of time during that event where activity = 0</li>
+<li><strong>prop_active</strong> : The proportion of time during that event where activity &gt; 0</li>
 <li><strong>mean_night_act</strong> : The mean activity during the night before the event took place</li>
 <li><strong>sd_night_act</strong> : The standard deviation of activity the night before the event took place</li>
 <li><strong>sum_night_act</strong> : The summed activity during the night before the event took place</li>
@@ -3465,9 +3510,9 @@ NA
 <li><strong>sd_pitch</strong> : The standard deviation of pitch during that event</li>
 <li><strong>median_light</strong> : The median light recordings during that event</li>
 <li><strong>nightime</strong> : Whether or not it was night during the majority of the event (1= night, 0 = day)</li>
-<li><strong>median_gX</strong> : Median raw acceledation on the x axis during the event</li>
-<li><strong>median_gY</strong> : Median raw acceledation on the y axis during the event</li>
-<li><strong>median_gZ</strong> : Median raw acceledation on the z axis during the event</li>
+<li><strong>median_gX</strong> : Median raw acceleration on the x axis during the event</li>
+<li><strong>median_gY</strong> : Median raw acceleration on the y axis during the event</li>
+<li><strong>median_gZ</strong> : Median raw acceleration on the z axis during the event</li>
 <li><strong>median_mX</strong> : Median raw magnetic field on the x axis during the event</li>
 <li><strong>median_mY</strong> : Median raw magnetic field on the y axis during the event</li>
 <li><strong>median_mZ</strong> : Median raw magnetic field on the z axis</li>
@@ -3488,7 +3533,6 @@ NA
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -3499,42 +3543,45 @@ NA
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": false,
-"google": false,
-"instapper": false
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-},
-"search": true
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false,
+    "google": false,
+    "instapper": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
 });
 });
 </script>

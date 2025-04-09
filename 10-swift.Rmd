@@ -159,7 +159,7 @@ plot_sensorimage(TOclassify$date, labely=FALSE,
           cex=1.2, cex.main = 2)
 
 # estimate sunrises and sunsets
-twilights <- GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
+twilights <- twilightCalc(PAM_data$light$date, PAM_data$light$obs,
                                     LightThreshold = 2, ask = FALSE)
 
 # Add sunrises and sunsets

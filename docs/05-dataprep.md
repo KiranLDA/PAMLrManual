@@ -14,7 +14,7 @@ There are multiple ways of preparing data for analysis.
 Because data from different sensors are collected at different temporal resolutions (e.g. 5 minutes, 30 mintues or4 hours), `reducePAM` formats data to the same time intervals as a specified variable (e.g. pressure) by summarising finer resolution data (median, sum or skip) and interpolating (or not) lower resolution data. 
 
 
-```r
+``` r
 # Crop the data
 start = as.POSIXct("2015-08-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2016-06-21","%Y-%m-%d", tz="UTC")
@@ -26,12 +26,12 @@ PAM_data = create_crop(bee_eater, start, end)
 Format it for every 30 mins and interpolate data with larger intervals, and provide median for data with smaller intervals.
 
 
-```r
+``` r
 TOclassify = create_custom_interpolation(PAM_data , "pressure", interp = TRUE, summary="median")
 ```
 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-4)A table of the first 10 rows of a reducePAM dataset.</caption>
+<caption>(\#tab:unnamed-chunk-4)(\#tab:unnamed-chunk-4)A table of the first 10 rows of a reducePAM dataset.</caption>
  <thead>
   <tr>
    <th style="text-align:center;"> date </th>
@@ -141,7 +141,7 @@ TOclassify = create_custom_interpolation(PAM_data , "pressure", interp = TRUE, s
 Format it for every 5 minutes and don't interpolate anything
 
 
-```r
+``` r
 TOclassify = create_custom_interpolation(PAM_data , "acceleration", interp = FALSE)
 ```
 
@@ -165,14 +165,14 @@ Derived variables include:
 Create a 2h window with summary statistics every 15 minutes. Because sensors such as the magnetometer record every 4 hours, we can avoid spaces in the dataset by interpolating between points (linearly) and then calculating summary statistics for these interpolated points.
 
 
-```r
+``` r
 TOclassify = create_rolling_window(PAM_data,
                                    resolution_out = 15 ,
                                    window = 120)
 ```
 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-7)A table of the first 10 rows of a reducePAM dataset.</caption>
+<caption>(\#tab:unnamed-chunk-7)(\#tab:unnamed-chunk-7)A table of the first 10 rows of a reducePAM dataset.</caption>
  <thead>
   <tr>
    <th style="text-align:center;"> date </th>
@@ -821,7 +821,7 @@ TOclassify = create_rolling_window(PAM_data,
 However, there are many assumpations made with assumptions (i.e. is the data truly linear). One option is either to increase the window to be larger than the greatest data resolution (in this case more than 4 hours). Another is to simply leave the NAs in the data using `interp = FALSE`
 
 
-```r
+``` r
 TOclassify = create_rolling_window(PAM_data,
                                    resolution_out = 15,
                                    window = 120,
@@ -844,11 +844,13 @@ If working with bird data, pamlr offers some predefined functions for classifyin
     + periods of darkness using `create_summary_statistics( ... ,method = "darkness")`
     + periods of resting using `create_summary_statistics( ... ,method = "rest")`
 
- 
+The old _twilightCalc_ function (now deprecated) from GeoLight has been added into pamlr for ease.However, for accurate twilight calculations, please refer to the more updated TwGeos function preProcessLight here: https://geolocationmanual.vogelwarte.ch/twilight.html 
 
-```r
-twl = GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
-                             LightThreshold = 2, ask = FALSE)
+
+``` r
+twl = twilightCalc(PAM_data$light$date, PAM_data$light$obs, 
+                   LightThreshold = 2, ask = FALSE)
+
 
 TOclassify = create_summary_statistics(dta = PAM_data,
                                        method= "flap",
@@ -856,7 +858,7 @@ TOclassify = create_summary_statistics(dta = PAM_data,
 ```
 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-10)A table of the first 10 rows of a reducePAM dataset.</caption>
+<caption>(\#tab:unnamed-chunk-10)(\#tab:unnamed-chunk-10)A table of the first 10 rows of a reducePAM dataset.</caption>
  <thead>
   <tr>
    <th style="text-align:center;"> date </th>
@@ -1180,8 +1182,8 @@ These include:
 * **start** : Start time and date of the event, `POSIXct` format 
 * **end** :  Time and date that the event finished, `POSIXct` format 
 * **duration** : How long it lasted (in hours)
-* **total_daily_duration** : The total duration of all the events that occured that day (in hours)
-* **total_daily_event_number** : The total number of events which occured that day
+* **total_daily_duration** : The total duration of all the events that occurred that day (in hours)
+* **total_daily_event_number** : The total number of events which occurred that day
 * **cum_pressure_change** : The cumulative change in atmospheric pressure during that event (in hectopascals)
 * **cum_altitude_change** : The cumulative change in altitude during that event (in metres)
 * **cum_altitude_up** : The cumulative number of metres that the bird went upwards during that event 
@@ -1196,8 +1198,8 @@ These include:
 * **night_P_diff** : The difference between the mean pressures of the night before and the night after the event took place (in hectopascals)
 * **median_activity** : The median activity during that event
 * **sum_activity** : The sum of the activity during that event
-* **prop_resting** : The propotion of time during that event where activity = 0
-* **prop_active** : The propotion of time during that event where activity > 0
+* **prop_resting** : The proportion of time during that event where activity = 0
+* **prop_active** : The proportion of time during that event where activity > 0
 * **mean_night_act** : The mean activity during the night before the event took place
 * **sd_night_act** : The standard deviation of activity the night before the event took place
 * **sum_night_act** : The summed activity during the night before the event took place
@@ -1209,9 +1211,9 @@ These include:
 * **sd_pitch** : The standard deviation of pitch during that event
 * **median_light** :   The median light recordings during that event
 * **nightime** : Whether or not it was night during the majority of the event (1= night, 0 = day)
-* **median_gX** : Median raw acceledation on the x axis during the event
-* **median_gY** : Median raw acceledation on the y axis during the event
-* **median_gZ** : Median raw acceledation on the z axis during the event
+* **median_gX** : Median raw acceleration on the x axis during the event
+* **median_gY** : Median raw acceleration on the y axis during the event
+* **median_gZ** : Median raw acceleration on the z axis during the event
 * **median_mX** : Median raw magnetic field on the x axis during the event
 * **median_mY** : Median raw magnetic field on the y axis during the event
 * **median_mZ** : Median raw magnetic field on the z axis

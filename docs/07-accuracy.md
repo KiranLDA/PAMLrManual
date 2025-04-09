@@ -10,7 +10,7 @@ To illustrate classification accuracy, here we compare two classifications of fl
 Once a classification has been performed (here we use the example of a hoopoe, as it's migratory flight can be prediction using `classify_flap`)
 
 
-```r
+``` r
 data("hoopoe")
 # str(hoopoe)
 
@@ -32,10 +32,10 @@ This creates a timetable of migratory flight events which can be visualised usin
 
 
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-3)Migration timetable (first 10 rows)</caption>
+<caption>(\#tab:unnamed-chunk-3)(\#tab:unnamed-chunk-3)Migration timetable (first 10 rows)</caption>
  <thead>
   <tr>
-   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">  </th>
    <th style="text-align:center;"> start </th>
    <th style="text-align:center;"> end </th>
    <th style="text-align:center;"> Duration (h) </th>
@@ -93,7 +93,7 @@ This classification is pretty accurate and we will use this as a reference datas
 Because the second classification is done using pressure (30 minute data resolution) compared to this classification which was done using activity (5 minute resolution), the activity classification is set to the same resolution as pressure using the `create_merged_classification` function.
 
 
-```r
+``` r
 # Put the classification in the same resolution as pressure
 reference = create_merged_classification(from = classification$timetable$start,
                                to = classification$timetable$end,
@@ -110,7 +110,7 @@ reference = ifelse(reference == 1, "Migration", "Other")
 Hoopoes seems to perform large altitudinal changes during migratory flight, so we preform a very rough classification by specifying that any altitude change greater than 2 hPa is equivalent to a migratory flight (this is for illustrative purposes only, and should not be used as a definite classification method).
 
 
-```r
+``` r
 # Perform another classification using pressure difference
 prediction = c("Other",ifelse(abs(diff(PAM_data$pressure$obs))>2, "Migration", "Other"))
 ```
@@ -120,7 +120,7 @@ prediction = c("Other",ifelse(abs(diff(PAM_data$pressure$obs))>2, "Migration", "
 We can then compare the two classifications point by point using the `compare_classifications` function.
 
 
-```r
+``` r
 # both classes have been converted to the same time intervals as pressure, so use those dates
 date = PAM_data$pressure$date
 
@@ -135,7 +135,7 @@ class_comparison = compare_classifications(date=date,
 This puts both classifications side by side, and shows how many classifications provided each class, as well as the agreement between the two, as can be seen below.
 
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-7)Comparison of both classifications (first 10 rows)</caption>
+<caption>(\#tab:unnamed-chunk-7)(\#tab:unnamed-chunk-7)Comparison of both classifications (first 10 rows)</caption>
  <thead>
   <tr>
    <th style="text-align:center;"> reference </th>
@@ -205,16 +205,16 @@ A confusion matrix uses predicted and reference points and estimate:
 
 
 
-```r
+``` r
 mat = compare_confusion_matrix(reference, prediction)
 ```
 
 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-9)Confusion Matrix</caption>
+<caption>(\#tab:unnamed-chunk-9)(\#tab:unnamed-chunk-9)Confusion Matrix</caption>
  <thead>
   <tr>
-   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">  </th>
    <th style="text-align:center;"> Ref Other </th>
    <th style="text-align:center;"> Ref Migration </th>
    <th style="text-align:center;"> Row_Total </th>

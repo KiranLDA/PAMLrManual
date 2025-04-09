@@ -99,7 +99,7 @@ We start with endurance flights. These can be extracted from the data using the 
 
 ```{r cache = FALSE}
 # get twilights (general geolocator method)
-twl = GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
+twl = twilightCalc(PAM_data$light$date, PAM_data$light$obs,
                              LightThreshold = 2, 
                              ask = FALSE)
 
@@ -263,7 +263,7 @@ legend( PAM_data$pressure$date[id[length(id)-700]],800 ,
 Note from the previous classification where the pressure is very low, and therefore at very high altitudes, yet it was not active. This is because bee-eaters soar glide, and using this strategy, they flap their wings very little. Another way of classifying flight events, is to use a change in pressure greater than what we would expect from weather. In this case, pressure data are collected every 30 minutes, and we wouldn't expect a pressure change greater than 2hPa/30 minutes when the bird is on the ground (you can for instance use nightime when birds do not fly to determine what this threshold should be). Thus we set `Pdiff_thld = 2`. 
 
 ```{r}
-# twl = GeoLight::twilightCalc(PAM_data$light$date, PAM_data$light$obs,
+# twl = twilightCalc(PAM_data$light$date, PAM_data$light$obs,
 #                              LightThreshold = 2, 
 #                              ask = FALSE)
 

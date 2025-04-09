@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11 Example 3: flap-glide | pamlr Manual</title>
   <meta name="description" content="11 Example 3: flap-glide | pamlr Manual" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11 Example 3: flap-glide | pamlr Manual" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="11 Example 3: flap-glide | pamlr Manual" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Kiran Dhanjal-Adams" />
 
 
-<meta name="date" content="2021-07-30" />
+<meta name="date" content="2025-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,8 @@
   
 <link rel="prev" href="soar.html"/>
 <link rel="next" href="outook.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,10 +49,11 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
 <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
 <script src="libs/dygraphs-1.1.1/shapes.js"></script>
@@ -60,36 +61,53 @@
 <script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
 <script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
 <script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
-<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
-<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
-<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
-<script src="libs/rglWebGL-binding-0.100.50/rglWebGL.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/rglWebGL-binding-1.3.18/rglWebGL.js"></script>
+<link href="libs/rglwidgetClass-1.3.18/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-1.3.18/rglClass.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/utils.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/buffer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/subscenes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/shaders.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/shadersrc.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/textures.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/projection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/mouse.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/init.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/pieces.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/draw.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/controls.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/selection.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/rglTimer.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/pretty.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/axes.src.js"></script>
+<script src="libs/rglwidgetClass-1.3.18/animation.src.js"></script>
+<script src="libs/CanvasMatrix4-1.3.18/CanvasMatrix.src.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -98,9 +116,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; } /* Alert */
 code span.an { color: #008000; } /* Annotation */
@@ -128,6 +146,10 @@ code span.vs { color: #008080; } /* VerbatimString */
 code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -145,18 +167,22 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li><a href="./">PAMLr Manual</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#index"><i class="fa fa-check"></i><b>1.1</b> Index</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#package-citation"><i class="fa fa-check"></i><b>1.2</b> Package citation</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Installing pamlr</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="install.html"><a href="install.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="install.html"><a href="install.html#installing"><i class="fa fa-check"></i><b>2.2</b> Installing</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a><ul>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Importing data</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="import.html"><a href="import.html#load-pamlr"><i class="fa fa-check"></i><b>3.1</b> Load pamlr</a></li>
-<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a><ul>
+<li class="chapter" data-level="3.2" data-path="import.html"><a href="import.html#use-existing-data"><i class="fa fa-check"></i><b>3.2</b> Use existing data</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="import.html"><a href="import.html#hoopoe-upupa-epops"><i class="fa fa-check"></i><b>3.2.1</b> Hoopoe (<em>Upupa epops</em>)</a></li>
 <li class="chapter" data-level="3.2.2" data-path="import.html"><a href="import.html#european-bee-eater-merops-apiaster"><i class="fa fa-check"></i><b>3.2.2</b> European Bee-eater (<em>Merops apiaster</em>)</a></li>
 <li class="chapter" data-level="3.2.3" data-path="import.html"><a href="import.html#alpine-swift-apus-melba"><i class="fa fa-check"></i><b>3.2.3</b> Alpine Swift (<em>Apus melba</em>)</a></li>
@@ -167,44 +193,53 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.6</b> Cropping the data</a></li>
 <li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.7</b> Table references</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="dataviz.html"><a href="dataviz.html#formatting-data"><i class="fa fa-check"></i><b>4.1</b> Formatting data</a></li>
 <li class="chapter" data-level="4.2" data-path="dataviz.html"><a href="dataviz.html#quick-multiplots"><i class="fa fa-check"></i><b>4.2</b> Quick multiplots</a></li>
 <li class="chapter" data-level="4.3" data-path="dataviz.html"><a href="dataviz.html#interactive-timeseries"><i class="fa fa-check"></i><b>4.3</b> Interactive timeseries</a></li>
 <li class="chapter" data-level="4.4" data-path="dataviz.html"><a href="dataviz.html#sensor-images"><i class="fa fa-check"></i><b>4.4</b> Sensor images</a></li>
 <li class="chapter" data-level="4.5" data-path="dataviz.html"><a href="dataviz.html#histograms-and-three-dimensional-scatterplots"><i class="fa fa-check"></i><b>4.5</b> Histograms and three-dimensional scatterplots</a></li>
-<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a><ul>
+<li class="chapter" data-level="4.6" data-path="dataviz.html"><a href="dataviz.html#spherical-projections"><i class="fa fa-check"></i><b>4.6</b> Spherical projections</a>
+<ul>
 <li class="chapter" data-level="4.6.1" data-path="dataviz.html"><a href="dataviz.html#g-sphere"><i class="fa fa-check"></i><b>4.6.1</b> g-sphere</a></li>
 <li class="chapter" data-level="4.6.2" data-path="dataviz.html"><a href="dataviz.html#m-sphere"><i class="fa fa-check"></i><b>4.6.2</b> m-sphere</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a><ul>
+<li class="chapter" data-level="5" data-path="patterns.html"><a href="patterns.html"><i class="fa fa-check"></i><b>5</b> Common data patterns</a>
+<ul>
 <li class="chapter" data-level="5.0.1" data-path="patterns.html"><a href="patterns.html#migration"><i class="fa fa-check"></i><b>5.0.1</b> Migration</a></li>
 <li class="chapter" data-level="5.0.2" data-path="patterns.html"><a href="patterns.html#flap-gliding-birds"><i class="fa fa-check"></i><b>5.0.2</b> <em>Flap-gliding birds</em></a></li>
 <li class="chapter" data-level="5.0.3" data-path="patterns.html"><a href="patterns.html#soar-gliding-birds"><i class="fa fa-check"></i><b>5.0.3</b> <em>Soar-gliding birds</em></a></li>
 <li class="chapter" data-level="5.1" data-path="patterns.html"><a href="patterns.html#incubation"><i class="fa fa-check"></i><b>5.1</b> Incubation</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a><ul>
+<li class="chapter" data-level="6" data-path="dataprep.html"><a href="dataprep.html"><i class="fa fa-check"></i><b>6</b> Preparing data for analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dataprep.html"><a href="dataprep.html#merge-sensor-data-together"><i class="fa fa-check"></i><b>6.1</b> Merge sensor data together</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="dataprep.html"><a href="dataprep.html#interpolation"><i class="fa fa-check"></i><b>6.1.1</b> Interpolation</a></li>
 <li class="chapter" data-level="6.1.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation"><i class="fa fa-check"></i><b>6.1.2</b> No interpolation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a><ul>
+<li class="chapter" data-level="6.2" data-path="dataprep.html"><a href="dataprep.html#rolling-window"><i class="fa fa-check"></i><b>6.2</b> Rolling window</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="dataprep.html"><a href="dataprep.html#interpolation-1"><i class="fa fa-check"></i><b>6.2.1</b> Interpolation</a></li>
 <li class="chapter" data-level="6.2.2" data-path="dataprep.html"><a href="dataprep.html#no-interpolation-1"><i class="fa fa-check"></i><b>6.2.2</b> No interpolation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataprep.html"><a href="dataprep.html#extracting-statistics-for-specific-data-patterns"><i class="fa fa-check"></i><b>6.3</b> Extracting statistics for specific data patterns</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a><ul>
+<li class="chapter" data-level="7" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>7</b> Classification methods</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="method.html"><a href="method.html#changepoint"><i class="fa fa-check"></i><b>7.1</b> Changepoint</a></li>
-<li class="chapter" data-level="7.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a><ul>
+<li class="chapter" data-level="7.2" data-path="method.html"><a href="method.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="method.html"><a href="method.html#k-means-clustering"><i class="fa fa-check"></i><b>7.2.1</b> k-means clustering</a></li>
 <li class="chapter" data-level="7.2.2" data-path="method.html"><a href="method.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.2.2</b> Hierarchical clustering</a></li>
 <li class="chapter" data-level="7.2.3" data-path="method.html"><a href="method.html#expectation-minimisation-binary-clustering"><i class="fa fa-check"></i><b>7.2.3</b> Expectation-minimisation binary clustering</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="method.html"><a href="method.html#hidden-markov-models"><i class="fa fa-check"></i><b>7.3</b> Hidden Markov Models</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a><ul>
+<li class="chapter" data-level="8" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>8</b> Classification accuracy</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="accuracy.html"><a href="accuracy.html#classify-migratory-flapping-flight"><i class="fa fa-check"></i><b>8.1</b> Classify migratory flapping flight</a></li>
 <li class="chapter" data-level="8.2" data-path="accuracy.html"><a href="accuracy.html#setup-the-reference-dataset"><i class="fa fa-check"></i><b>8.2</b> Setup the reference dataset</a></li>
 <li class="chapter" data-level="8.3" data-path="accuracy.html"><a href="accuracy.html#setup-the-prediction-data"><i class="fa fa-check"></i><b>8.3</b> Setup the prediction data</a></li>
@@ -212,41 +247,49 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="8.5" data-path="accuracy.html"><a href="accuracy.html#create-a-confusion-matrix"><i class="fa fa-check"></i><b>8.5</b> Create a confusion Matrix</a></li>
 <li class="chapter" data-level="8.6" data-path="accuracy.html"><a href="accuracy.html#overall-accuracy"><i class="fa fa-check"></i><b>8.6</b> Overall accuracy</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Example 1: Flapping</a><ul>
+<li class="chapter" data-level="9" data-path="flapping.html"><a href="flapping.html"><i class="fa fa-check"></i><b>9</b> Example 1: Flapping</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="flapping.html"><a href="flapping.html#classifying-migratory-flapping-flight-in-hoopoes-the-dataset"><i class="fa fa-check"></i><b>9.1</b> Classifying migratory flapping flight in Hoopoes :The dataset</a></li>
 <li class="chapter" data-level="9.2" data-path="flapping.html"><a href="flapping.html#visualise-data"><i class="fa fa-check"></i><b>9.2</b> Visualise data</a></li>
 <li class="chapter" data-level="9.3" data-path="flapping.html"><a href="flapping.html#what-should-we-look-for"><i class="fa fa-check"></i><b>9.3</b> What should we look for?</a></li>
 <li class="chapter" data-level="9.4" data-path="flapping.html"><a href="flapping.html#performing-the-classification"><i class="fa fa-check"></i><b>9.4</b> Performing the classification</a></li>
 <li class="chapter" data-level="9.5" data-path="flapping.html"><a href="flapping.html#plot-the-classification-as-a-sensor-image"><i class="fa fa-check"></i><b>9.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>10</b> Example 2: soar-gliding</a><ul>
+<li class="chapter" data-level="10" data-path="soar.html"><a href="soar.html"><i class="fa fa-check"></i><b>10</b> Example 2: soar-gliding</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="soar.html"><a href="soar.html#classifying-migratory-flight-in-european-bee-eaters-the-dataset"><i class="fa fa-check"></i><b>10.1</b> Classifying migratory flight in European bee-eaters: the dataset</a></li>
 <li class="chapter" data-level="10.2" data-path="soar.html"><a href="soar.html#visualise-data-1"><i class="fa fa-check"></i><b>10.2</b> Visualise data</a></li>
 <li class="chapter" data-level="10.3" data-path="soar.html"><a href="soar.html#what-should-we-look-for-1"><i class="fa fa-check"></i><b>10.3</b> What should we look for?</a></li>
 <li class="chapter" data-level="10.4" data-path="soar.html"><a href="soar.html#what-variables-make-the-most-sense-for-classifying"><i class="fa fa-check"></i><b>10.4</b> What variables make the most sense for classifying?</a></li>
-<li class="chapter" data-level="10.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>10.5</b> Classify using HMM</a><ul>
+<li class="chapter" data-level="10.5" data-path="soar.html"><a href="soar.html#classify-using-hmm"><i class="fa fa-check"></i><b>10.5</b> Classify using HMM</a>
+<ul>
 <li class="chapter" data-level="10.5.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable"><i class="fa fa-check"></i><b>10.5.1</b> <em>Translate the classification events into something usable</em></a></li>
 <li class="chapter" data-level="10.5.2" data-path="soar.html"><a href="soar.html#plot-the-classification"><i class="fa fa-check"></i><b>10.5.2</b> <em>Plot the classification</em></a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>10.6</b> Classify using pressure</a><ul>
+<li class="chapter" data-level="10.6" data-path="soar.html"><a href="soar.html#classify-using-pressure"><i class="fa fa-check"></i><b>10.6</b> Classify using pressure</a>
+<ul>
 <li class="chapter" data-level="10.6.1" data-path="soar.html"><a href="soar.html#translate-the-classification-events-into-something-usable-1"><i class="fa fa-check"></i><b>10.6.1</b> <em>Translate the classification events into something usable</em></a></li>
 <li class="chapter" data-level="10.6.2" data-path="soar.html"><a href="soar.html#plot-the-classification-1"><i class="fa fa-check"></i><b>10.6.2</b> <em>Plot the classification</em></a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="soar.html"><a href="soar.html#classify-using-a-changepoint-analysis"><i class="fa fa-check"></i><b>10.7</b> Classify using a changepoint analysis</a></li>
-<li class="chapter" data-level="10.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>10.8</b> Compare the classifications</a><ul>
+<li class="chapter" data-level="10.8" data-path="soar.html"><a href="soar.html#compare-the-classifications"><i class="fa fa-check"></i><b>10.8</b> Compare the classifications</a>
+<ul>
 <li class="chapter" data-level="10.8.1" data-path="soar.html"><a href="soar.html#plot-the-agreement-between-the-migration-classifications"><i class="fa fa-check"></i><b>10.8.1</b> <em>Plot the agreement between the migration classifications</em></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>11</b> Example 3: flap-glide</a><ul>
+<li class="chapter" data-level="11" data-path="swift.html"><a href="swift.html"><i class="fa fa-check"></i><b>11</b> Example 3: flap-glide</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="swift.html"><a href="swift.html#classifying-migratory-flight-alpine-swifts-the-dataset"><i class="fa fa-check"></i><b>11.1</b> Classifying migratory flight Alpine swifts: The dataset</a></li>
 <li class="chapter" data-level="11.2" data-path="swift.html"><a href="swift.html#visualise-data-2"><i class="fa fa-check"></i><b>11.2</b> Visualise data</a></li>
-<li class="chapter" data-level="11.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>11.3</b> What should we look for?</a><ul>
+<li class="chapter" data-level="11.3" data-path="swift.html"><a href="swift.html#what-should-we-look-for-2"><i class="fa fa-check"></i><b>11.3</b> What should we look for?</a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="swift.html"><a href="swift.html#plot-the-classifiers"><i class="fa fa-check"></i><b>11.3.1</b> Plot the classifiers</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="swift.html"><a href="swift.html#classify-migration-using-a-hidden-markov-model"><i class="fa fa-check"></i><b>11.4</b> Classify migration using a hidden markov model</a></li>
 <li class="chapter" data-level="11.5" data-path="swift.html"><a href="swift.html#plot-the-classification-as-a-sensor-image-1"><i class="fa fa-check"></i><b>11.5</b> Plot the classification as a sensor image</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a><ul>
+<li class="chapter" data-level="12" data-path="outook.html"><a href="outook.html"><i class="fa fa-check"></i><b>12</b> A few last things to think about</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="outook.html"><a href="outook.html#cutting-the-data"><i class="fa fa-check"></i><b>12.1</b> Cutting the data</a></li>
 <li class="chapter" data-level="12.2" data-path="outook.html"><a href="outook.html#clock-drift"><i class="fa fa-check"></i><b>12.2</b> Clock drift</a></li>
 <li class="chapter" data-level="12.3" data-path="outook.html"><a href="outook.html#using-biologically-meaningful-patterns"><i class="fa fa-check"></i><b>12.3</b> Using biologically meaningful patterns</a></li>
@@ -273,16 +316,16 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="swift" class="section level1">
-<h1><span class="header-section-number">11</span> Example 3: flap-glide</h1>
-<div class="figure" style="text-align: center"><span id="fig:appuuuuus"></span>
+<div id="swift" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Example 3: flap-glide<a href="swift.html#swift" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:appuuuuus"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Tachymarptis_melba_-Spain_-collage-8.jpg" alt="Photograph by Pau Artigas, (c) creative commons" width="100%" />
 <p class="caption">
 Figure 11.1: Photograph by Pau Artigas, (c) creative commons
 </p>
 </div>
-<div id="classifying-migratory-flight-alpine-swifts-the-dataset" class="section level2">
-<h2><span class="header-section-number">11.1</span> Classifying migratory flight Alpine swifts: The dataset</h2>
+<div id="classifying-migratory-flight-alpine-swifts-the-dataset" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Classifying migratory flight Alpine swifts: The dataset<a href="swift.html#classifying-migratory-flight-alpine-swifts-the-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Alpine swift (<em>Apus melba</em>) have been tracked on the their migrations from Switzerland to sub-Saharan Africa using SOI-GDL3pam loggers.</p>
 <ul>
 <li><strong>Pressure</strong> is recorded every 15 minutes</li>
@@ -293,41 +336,41 @@ Figure 11.1: Photograph by Pau Artigas, (c) creative commons
 <li><strong>Tri-axial acceleration</strong> is recorded every 4 hours</li>
 <li><strong>Tri-axial magnetic field</strong> is recorded every 4 hours</li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">data</span>(<span class="st">&quot;swift&quot;</span>)</a>
-<a class="sourceLine" id="cb62-2" title="2"></a>
-<a class="sourceLine" id="cb62-3" title="3"><span class="co"># make sure the cropping period is in the correct date format</span></a>
-<a class="sourceLine" id="cb62-4" title="4">start =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2016-09-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
-<a class="sourceLine" id="cb62-5" title="5">end =<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2017-04-10&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>)</a>
-<a class="sourceLine" id="cb62-6" title="6"></a>
-<a class="sourceLine" id="cb62-7" title="7"><span class="co"># Crop the data</span></a>
-<a class="sourceLine" id="cb62-8" title="8">PAM_data=<span class="st"> </span><span class="kw">create_crop</span>(swift,start,end)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="swift.html#cb65-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swift&quot;</span>)</span>
+<span id="cb65-2"><a href="swift.html#cb65-2" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="swift.html#cb65-3" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
+<span id="cb65-4"><a href="swift.html#cb65-4" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-09-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb65-5"><a href="swift.html#cb65-5" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-04-10&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb65-6"><a href="swift.html#cb65-6" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="swift.html#cb65-7" tabindex="-1"></a><span class="co"># Crop the data</span></span>
+<span id="cb65-8"><a href="swift.html#cb65-8" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(swift,start,end)</span></code></pre></div>
 </div>
-<div id="visualise-data-2" class="section level2">
-<h2><span class="header-section-number">11.2</span> Visualise data</h2>
+<div id="visualise-data-2" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Visualise data<a href="swift.html#visualise-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sensor images are a good place to start when analysing data, as they can give a rapid overview of the dataset. Darker colors represent lower values, and lighter colors (in this case yellow) represent higher values. Sensor images for <strong>activity</strong> (also known as an actogram), <strong>pitch</strong>, <strong>pressure</strong> and <strong>temperature</strong> are a good place to start. The following code plots this for us:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="co"># number of panels</span></a>
-<a class="sourceLine" id="cb63-2" title="2">    <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></a>
-<a class="sourceLine" id="cb63-3" title="3">    <span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></a>
-<a class="sourceLine" id="cb63-4" title="4"></a>
-<a class="sourceLine" id="cb63-5" title="5"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">ploty=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb63-6" title="6">          PAM_data<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,</a>
-<a class="sourceLine" id="cb63-7" title="7">          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb63-8" title="8"></a>
-<a class="sourceLine" id="cb63-9" title="9"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">plotx=</span><span class="ot">TRUE</span>, <span class="dt">ploty=</span><span class="ot">FALSE</span>, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb63-10" title="10">          PAM_data<span class="op">$</span>acceleration<span class="op">$</span>pit,  <span class="dt">main=</span><span class="st">&quot;Pitch&quot;</span>,</a>
-<a class="sourceLine" id="cb63-11" title="11">          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb63-12" title="12"></a>
-<a class="sourceLine" id="cb63-13" title="13"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>pressure<span class="op">$</span>date, <span class="dt">plotx=</span><span class="ot">TRUE</span>, <span class="dt">ploty=</span><span class="ot">FALSE</span>, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb63-14" title="14">          PAM_data<span class="op">$</span>pressure<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Pressure&quot;</span>,</a>
-<a class="sourceLine" id="cb63-15" title="15">          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb63-16" title="16"></a>
-<a class="sourceLine" id="cb63-17" title="17"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>temperature<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb63-18" title="18">          PAM_data<span class="op">$</span>temperature<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Temperature&quot;</span>,</a>
-<a class="sourceLine" id="cb63-19" title="19">          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="swift.html#cb66-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="co"># number of panels</span></span>
+<span id="cb66-2"><a href="swift.html#cb66-2" tabindex="-1"></a>    <span class="at">oma=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></span>
+<span id="cb66-3"><a href="swift.html#cb66-3" tabindex="-1"></a>    <span class="at">mar =</span>  <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></span>
+<span id="cb66-4"><a href="swift.html#cb66-4" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="swift.html#cb66-5" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">ploty=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-6"><a href="swift.html#cb66-6" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>act, <span class="at">main =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb66-7"><a href="swift.html#cb66-7" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb66-8"><a href="swift.html#cb66-8" tabindex="-1"></a></span>
+<span id="cb66-9"><a href="swift.html#cb66-9" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-10"><a href="swift.html#cb66-10" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>pit,  <span class="at">main=</span><span class="st">&quot;Pitch&quot;</span>,</span>
+<span id="cb66-11"><a href="swift.html#cb66-11" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb66-12"><a href="swift.html#cb66-12" tabindex="-1"></a></span>
+<span id="cb66-13"><a href="swift.html#cb66-13" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-14"><a href="swift.html#cb66-14" tabindex="-1"></a>          PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Pressure&quot;</span>,</span>
+<span id="cb66-15"><a href="swift.html#cb66-15" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb66-16"><a href="swift.html#cb66-16" tabindex="-1"></a></span>
+<span id="cb66-17"><a href="swift.html#cb66-17" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>temperature<span class="sc">$</span>date, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-18"><a href="swift.html#cb66-18" tabindex="-1"></a>          PAM_data<span class="sc">$</span>temperature<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Temperature&quot;</span>,</span>
+<span id="cb66-19"><a href="swift.html#cb66-19" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="10-swift_files/figure-html/sensooor3-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="what-should-we-look-for-2" class="section level2">
-<h2><span class="header-section-number">11.3</span> What should we look for?</h2>
+<div id="what-should-we-look-for-2" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> What should we look for?<a href="swift.html#what-should-we-look-for-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Some pattern start to stick out.</p>
 <ul>
 <li><strong>Migration appears very short</strong></li>
@@ -335,89 +378,92 @@ Figure 11.1: Photograph by Pau Artigas, (c) creative commons
 <li>Pressure is <strong>lower during migration</strong> indicating higher altitude flights, <strong>particularly during night</strong></li>
 <li>Temperature is <strong>lower during migration</strong> also indicating higher altitudes</li>
 </ul>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">TOclassify =<span class="st"> </span><span class="kw">create_rolling_window</span>(PAM_data,</a>
-<a class="sourceLine" id="cb64-2" title="2">                     <span class="dt">resolution_out =</span> <span class="dv">30</span> ,</a>
-<a class="sourceLine" id="cb64-3" title="3">                     <span class="dt">window =</span> <span class="dv">24</span><span class="op">*</span><span class="dv">60</span>,</a>
-<a class="sourceLine" id="cb64-4" title="4">                     <span class="dt">interp =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<div id="plot-the-classifiers" class="section level3">
-<h3><span class="header-section-number">11.3.1</span> Plot the classifiers</h3>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="swift.html#cb67-1" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_rolling_window</span>(PAM_data,</span>
+<span id="cb67-2"><a href="swift.html#cb67-2" tabindex="-1"></a>                     <span class="at">resolution_out =</span> <span class="dv">30</span> ,</span>
+<span id="cb67-3"><a href="swift.html#cb67-3" tabindex="-1"></a>                     <span class="at">window =</span> <span class="dv">24</span><span class="sc">*</span><span class="dv">60</span>,</span>
+<span id="cb67-4"><a href="swift.html#cb67-4" tabindex="-1"></a>                     <span class="at">interp =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="plot-the-classifiers" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Plot the classifiers<a href="swift.html#plot-the-classifiers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This helps think about which classifiers show differences for the behaviours we are trying to classify.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="co"># choose variables of interest</span></a>
-<a class="sourceLine" id="cb65-2" title="2">varint =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;sd_pit&quot;</span>,</a>
-<a class="sourceLine" id="cb65-3" title="3">           <span class="st">&quot;sd_pressure&quot;</span>,</a>
-<a class="sourceLine" id="cb65-4" title="4">           <span class="st">&quot;median_temperature&quot;</span>,</a>
-<a class="sourceLine" id="cb65-5" title="5">           <span class="st">&quot;min_gZ&quot;</span>,</a>
-<a class="sourceLine" id="cb65-6" title="6">           <span class="st">&quot;max_act&quot;</span>,</a>
-<a class="sourceLine" id="cb65-7" title="7">           <span class="st">&quot;median_pressure&quot;</span>,</a>
-<a class="sourceLine" id="cb65-8" title="8">           <span class="st">&quot;median_mY&quot;</span>,</a>
-<a class="sourceLine" id="cb65-9" title="9">           <span class="st">&quot;sd_mZ&quot;</span>)</a>
-<a class="sourceLine" id="cb65-10" title="10"></a>
-<a class="sourceLine" id="cb65-11" title="11"></a>
-<a class="sourceLine" id="cb65-12" title="12"><span class="co">#plot these variables of interest</span></a>
-<a class="sourceLine" id="cb65-13" title="13"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>))</a>
-<a class="sourceLine" id="cb65-14" title="14"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(varint)){</a>
-<a class="sourceLine" id="cb65-15" title="15">  <span class="kw">plot</span>(TOclassify<span class="op">$</span>date, TOclassify[,varint[i]], </a>
-<a class="sourceLine" id="cb65-16" title="16">       <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Date&quot;</span>, <span class="dt">ylab =</span> varint[i])</a>
-<a class="sourceLine" id="cb65-17" title="17">}</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="swift.html#cb68-1" tabindex="-1"></a><span class="co"># choose variables of interest</span></span>
+<span id="cb68-2"><a href="swift.html#cb68-2" tabindex="-1"></a>varint <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;sd_pit&quot;</span>,</span>
+<span id="cb68-3"><a href="swift.html#cb68-3" tabindex="-1"></a>           <span class="st">&quot;sd_pressure&quot;</span>,</span>
+<span id="cb68-4"><a href="swift.html#cb68-4" tabindex="-1"></a>           <span class="st">&quot;median_temperature&quot;</span>,</span>
+<span id="cb68-5"><a href="swift.html#cb68-5" tabindex="-1"></a>           <span class="st">&quot;min_gZ&quot;</span>,</span>
+<span id="cb68-6"><a href="swift.html#cb68-6" tabindex="-1"></a>           <span class="st">&quot;max_act&quot;</span>,</span>
+<span id="cb68-7"><a href="swift.html#cb68-7" tabindex="-1"></a>           <span class="st">&quot;median_pressure&quot;</span>,</span>
+<span id="cb68-8"><a href="swift.html#cb68-8" tabindex="-1"></a>           <span class="st">&quot;median_mY&quot;</span>,</span>
+<span id="cb68-9"><a href="swift.html#cb68-9" tabindex="-1"></a>           <span class="st">&quot;sd_mZ&quot;</span>)</span>
+<span id="cb68-10"><a href="swift.html#cb68-10" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="swift.html#cb68-11" tabindex="-1"></a></span>
+<span id="cb68-12"><a href="swift.html#cb68-12" tabindex="-1"></a><span class="co">#plot these variables of interest</span></span>
+<span id="cb68-13"><a href="swift.html#cb68-13" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>))</span>
+<span id="cb68-14"><a href="swift.html#cb68-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(varint)){</span>
+<span id="cb68-15"><a href="swift.html#cb68-15" tabindex="-1"></a>  <span class="fu">plot</span>(TOclassify<span class="sc">$</span>date, TOclassify[,varint[i]], </span>
+<span id="cb68-16"><a href="swift.html#cb68-16" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Date&quot;</span>, <span class="at">ylab =</span> varint[i])</span>
+<span id="cb68-17"><a href="swift.html#cb68-17" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="10-swift_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="10-swift_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 </div>
 </div>
-<div id="classify-migration-using-a-hidden-markov-model" class="section level2">
-<h2><span class="header-section-number">11.4</span> Classify migration using a hidden markov model</h2>
+<div id="classify-migration-using-a-hidden-markov-model" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Classify migration using a hidden markov model<a href="swift.html#classify-migration-using-a-hidden-markov-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the most difficult aspects of creating a classification is determining how many classes should be used. Here, we increase the number of classes until the behaviour we want to classify is correcly classified. Once this is done, we can extract this classification from the data.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># Select the columns to use as predictors in the model</span></a>
-<a class="sourceLine" id="cb66-2" title="2">predictor =<span class="st"> </span>TOclassify[, varint]</a>
-<a class="sourceLine" id="cb66-3" title="3"></a>
-<a class="sourceLine" id="cb66-4" title="4"><span class="co"># Perform the classification</span></a>
-<a class="sourceLine" id="cb66-5" title="5">classification =<span class="st"> </span><span class="kw">classify_summary_statistics</span>(predictor,</a>
-<a class="sourceLine" id="cb66-6" title="6">                             <span class="dt">states =</span> <span class="dv">7</span>,</a>
-<a class="sourceLine" id="cb66-7" title="7">                             <span class="dt">method =</span> <span class="st">&quot;hmm&quot;</span>)</a></code></pre></div>
-<pre><code>## converged at iteration 45 with logLik: -405139.8</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="swift.html#cb69-1" tabindex="-1"></a><span class="co"># Select the columns to use as predictors in the model</span></span>
+<span id="cb69-2"><a href="swift.html#cb69-2" tabindex="-1"></a>predictor <span class="ot">=</span> TOclassify[, varint]</span>
+<span id="cb69-3"><a href="swift.html#cb69-3" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="swift.html#cb69-4" tabindex="-1"></a><span class="co"># Perform the classification</span></span>
+<span id="cb69-5"><a href="swift.html#cb69-5" tabindex="-1"></a>classification <span class="ot">=</span> <span class="fu">classify_summary_statistics</span>(predictor,</span>
+<span id="cb69-6"><a href="swift.html#cb69-6" tabindex="-1"></a>                             <span class="at">states =</span> <span class="dv">7</span>,</span>
+<span id="cb69-7"><a href="swift.html#cb69-7" tabindex="-1"></a>                             <span class="at">method =</span> <span class="st">&quot;hmm&quot;</span>)</span></code></pre></div>
+<pre><code>## converged at iteration 21 with logLik: -404386.6</code></pre>
+<pre><code>## Warning in .local(object, ...): Argument &#39;type&#39; not specified and will default
+## to &#39;viterbi&#39;. This default may change in future releases of depmixS4. Please
+## see ?posterior for alternative options.</code></pre>
 <p>##Find which state is the migratory state</p>
 <p>To do this, we find the state where pressure was the lowest, i.e. the bird was at the highest altitude, making the assumption that this is when the bird migrates.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="co">#what is the minimum pressure for each class?</span></a>
-<a class="sourceLine" id="cb68-2" title="2">minP =<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(<span class="kw">unique</span>(classification<span class="op">$</span>cluster)),</a>
-<a class="sourceLine" id="cb68-3" title="3">       <span class="cf">function</span>(i) <span class="kw">min</span>(TOclassify<span class="op">$</span>median_pressure[classification<span class="op">$</span>cluster<span class="op">==</span>i])))</a>
-<a class="sourceLine" id="cb68-4" title="4"></a>
-<a class="sourceLine" id="cb68-5" title="5"><span class="co"># which class has the smallest minimum pressure</span></a>
-<a class="sourceLine" id="cb68-6" title="6">mig_state =<span class="st"> </span><span class="kw">which</span>(minP <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(minP))</a>
-<a class="sourceLine" id="cb68-7" title="7"></a>
-<a class="sourceLine" id="cb68-8" title="8"><span class="co"># create a new classification which is just migration, non-migration</span></a>
-<a class="sourceLine" id="cb68-9" title="9">mig_classification =<span class="st"> </span><span class="kw">ifelse</span>(classification<span class="op">$</span>cluster <span class="op">==</span><span class="st"> </span>mig_state,<span class="dv">2</span>,<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="swift.html#cb72-1" tabindex="-1"></a><span class="co">#what is the minimum pressure for each class?</span></span>
+<span id="cb72-2"><a href="swift.html#cb72-2" tabindex="-1"></a>minP <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(classification<span class="sc">$</span>cluster)),</span>
+<span id="cb72-3"><a href="swift.html#cb72-3" tabindex="-1"></a>       <span class="cf">function</span>(i) <span class="fu">min</span>(TOclassify<span class="sc">$</span>median_pressure[classification<span class="sc">$</span>cluster<span class="sc">==</span>i])))</span>
+<span id="cb72-4"><a href="swift.html#cb72-4" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="swift.html#cb72-5" tabindex="-1"></a><span class="co"># which class has the smallest minimum pressure</span></span>
+<span id="cb72-6"><a href="swift.html#cb72-6" tabindex="-1"></a>mig_state <span class="ot">=</span> <span class="fu">which</span>(minP <span class="sc">==</span> <span class="fu">min</span>(minP))</span>
+<span id="cb72-7"><a href="swift.html#cb72-7" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="swift.html#cb72-8" tabindex="-1"></a><span class="co"># create a new classification which is just migration, non-migration</span></span>
+<span id="cb72-9"><a href="swift.html#cb72-9" tabindex="-1"></a>mig_classification <span class="ot">=</span> <span class="fu">ifelse</span>(classification<span class="sc">$</span>cluster <span class="sc">==</span> mig_state,<span class="dv">2</span>,<span class="dv">1</span>)</span></code></pre></div>
 </div>
-<div id="plot-the-classification-as-a-sensor-image-1" class="section level2">
-<h2><span class="header-section-number">11.5</span> Plot the classification as a sensor image</h2>
+<div id="plot-the-classification-as-a-sensor-image-1" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Plot the classification as a sensor image<a href="swift.html#plot-the-classification-as-a-sensor-image-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Another way of looking at a classification is to use a sensor image of the results and to plot it side by side with the raw data to see if the same patterns are being picked out. We can also add (for instance sunset and sunrise events)</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="co"># number of panels</span></a>
-<a class="sourceLine" id="cb69-2" title="2">    <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></a>
-<a class="sourceLine" id="cb69-3" title="3">    <span class="dt">mar =</span>  <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></a>
-<a class="sourceLine" id="cb69-4" title="4"></a>
-<a class="sourceLine" id="cb69-5" title="5">col=<span class="kw">c</span>(<span class="st">&quot;royalblue3&quot;</span>, <span class="st">&quot;orange&quot;</span>)</a>
-<a class="sourceLine" id="cb69-6" title="6"></a>
-<a class="sourceLine" id="cb69-7" title="7"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>acceleration<span class="op">$</span>date, <span class="dt">ploty=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb69-8" title="8">          PAM_data<span class="op">$</span>acceleration<span class="op">$</span>act, <span class="dt">main =</span> <span class="st">&quot;Activity&quot;</span>,</a>
-<a class="sourceLine" id="cb69-9" title="9">          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb69-10" title="10"></a>
-<a class="sourceLine" id="cb69-11" title="11"><span class="kw">plot_sensorimage</span>(PAM_data<span class="op">$</span>pressure<span class="op">$</span>date, <span class="dt">plotx=</span><span class="ot">TRUE</span>, <span class="dt">ploty=</span><span class="ot">FALSE</span>, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb69-12" title="12">          PAM_data<span class="op">$</span>pressure<span class="op">$</span>obs,  <span class="dt">main=</span><span class="st">&quot;Pressure&quot;</span>,</a>
-<a class="sourceLine" id="cb69-13" title="13">          <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="op">::</span><span class="kw">cividis</span>(<span class="dv">90</span>)), <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb69-14" title="14"></a>
-<a class="sourceLine" id="cb69-15" title="15"><span class="kw">plot_sensorimage</span>(TOclassify<span class="op">$</span>date, <span class="dt">labely=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb69-16" title="16">          mig_classification, </a>
-<a class="sourceLine" id="cb69-17" title="17">          <span class="dt">main=</span><span class="st">&quot;Classification&quot;</span>,</a>
-<a class="sourceLine" id="cb69-18" title="18">          <span class="dt">col=</span>col,</a>
-<a class="sourceLine" id="cb69-19" title="19">          <span class="dt">cex=</span><span class="fl">1.2</span>, <span class="dt">cex.main =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb69-20" title="20"></a>
-<a class="sourceLine" id="cb69-21" title="21"><span class="co"># estimate sunrises and sunsets</span></a>
-<a class="sourceLine" id="cb69-22" title="22">twilights &lt;-<span class="st"> </span>GeoLight<span class="op">::</span><span class="kw">twilightCalc</span>(PAM_data<span class="op">$</span>light<span class="op">$</span>date, PAM_data<span class="op">$</span>light<span class="op">$</span>obs,</a>
-<a class="sourceLine" id="cb69-23" title="23">                                    <span class="dt">LightThreshold =</span> <span class="dv">2</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb69-24" title="24"></a>
-<a class="sourceLine" id="cb69-25" title="25"><span class="co"># Add sunrises and sunsets</span></a>
-<a class="sourceLine" id="cb69-26" title="26"><span class="kw">plot_sensorimage_twilight</span>(twilights<span class="op">$</span>tFirst,</a>
-<a class="sourceLine" id="cb69-27" title="27">       <span class="dt">offset=</span><span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb69-28" title="28">       <span class="dt">col=</span> <span class="kw">ifelse</span>(twilights<span class="op">$</span>type <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb69-29" title="29">                   <span class="st">&quot;grey&quot;</span>,<span class="st">&quot;black&quot;</span>),</a>
-<a class="sourceLine" id="cb69-30" title="30">       <span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">cex=</span><span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="swift.html#cb73-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="co"># number of panels</span></span>
+<span id="cb73-2"><a href="swift.html#cb73-2" tabindex="-1"></a>    <span class="at">oma=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></span>
+<span id="cb73-3"><a href="swift.html#cb73-3" tabindex="-1"></a>    <span class="at">mar =</span>  <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></span>
+<span id="cb73-4"><a href="swift.html#cb73-4" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="swift.html#cb73-5" tabindex="-1"></a>col<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;royalblue3&quot;</span>, <span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb73-6"><a href="swift.html#cb73-6" tabindex="-1"></a></span>
+<span id="cb73-7"><a href="swift.html#cb73-7" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">ploty=</span><span class="cn">FALSE</span>,</span>
+<span id="cb73-8"><a href="swift.html#cb73-8" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>act, <span class="at">main =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb73-9"><a href="swift.html#cb73-9" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb73-10"><a href="swift.html#cb73-10" tabindex="-1"></a></span>
+<span id="cb73-11"><a href="swift.html#cb73-11" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb73-12"><a href="swift.html#cb73-12" tabindex="-1"></a>          PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Pressure&quot;</span>,</span>
+<span id="cb73-13"><a href="swift.html#cb73-13" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb73-14"><a href="swift.html#cb73-14" tabindex="-1"></a></span>
+<span id="cb73-15"><a href="swift.html#cb73-15" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(TOclassify<span class="sc">$</span>date, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb73-16"><a href="swift.html#cb73-16" tabindex="-1"></a>          mig_classification, </span>
+<span id="cb73-17"><a href="swift.html#cb73-17" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Classification&quot;</span>,</span>
+<span id="cb73-18"><a href="swift.html#cb73-18" tabindex="-1"></a>          <span class="at">col=</span>col,</span>
+<span id="cb73-19"><a href="swift.html#cb73-19" tabindex="-1"></a>          <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb73-20"><a href="swift.html#cb73-20" tabindex="-1"></a></span>
+<span id="cb73-21"><a href="swift.html#cb73-21" tabindex="-1"></a><span class="co"># estimate sunrises and sunsets</span></span>
+<span id="cb73-22"><a href="swift.html#cb73-22" tabindex="-1"></a>twilights <span class="ot">&lt;-</span> <span class="fu">twilightCalc</span>(PAM_data<span class="sc">$</span>light<span class="sc">$</span>date, PAM_data<span class="sc">$</span>light<span class="sc">$</span>obs,</span>
+<span id="cb73-23"><a href="swift.html#cb73-23" tabindex="-1"></a>                                    <span class="at">LightThreshold =</span> <span class="dv">2</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb73-24"><a href="swift.html#cb73-24" tabindex="-1"></a></span>
+<span id="cb73-25"><a href="swift.html#cb73-25" tabindex="-1"></a><span class="co"># Add sunrises and sunsets</span></span>
+<span id="cb73-26"><a href="swift.html#cb73-26" tabindex="-1"></a><span class="fu">plot_sensorimage_twilight</span>(twilights<span class="sc">$</span>tFirst,</span>
+<span id="cb73-27"><a href="swift.html#cb73-27" tabindex="-1"></a>       <span class="at">offset=</span><span class="dv">0</span>,</span>
+<span id="cb73-28"><a href="swift.html#cb73-28" tabindex="-1"></a>       <span class="at">col=</span> <span class="fu">ifelse</span>(twilights<span class="sc">$</span>type <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb73-29"><a href="swift.html#cb73-29" tabindex="-1"></a>                   <span class="st">&quot;grey&quot;</span>,<span class="st">&quot;black&quot;</span>),</span>
+<span id="cb73-30"><a href="swift.html#cb73-30" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">16</span>, <span class="at">cex=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="10-swift_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
@@ -432,7 +478,6 @@ Figure 11.1: Photograph by Pau Artigas, (c) creative commons
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -443,42 +488,45 @@ Figure 11.1: Photograph by Pau Artigas, (c) creative commons
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": false,
-"google": false,
-"instapper": false
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-},
-"search": true
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false,
+    "google": false,
+    "instapper": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
 });
 });
 </script>

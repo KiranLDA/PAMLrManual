@@ -3,7 +3,7 @@
 ## Load pamlr
 
 
-```r
+``` r
 library(pamlr)
 ```
 
@@ -14,7 +14,7 @@ pamlr has three integrated datasets for exploring the code. These include:
 ### Hoopoe (_Upupa epops_) 
 
 
-```r
+``` r
 data("hoopoe")
 ```
 
@@ -26,7 +26,7 @@ data("hoopoe")
 ### European Bee-eater (_Merops apiaster_)
 
 
-```r
+``` r
 data("bee_eater")
 ```
 
@@ -39,7 +39,7 @@ data("bee_eater")
 ### Alpine Swift (_Apus melba_)
 
 
-```r
+``` r
 data("swift")
 ```
 
@@ -63,7 +63,7 @@ Importing data is easy with pamlr. All data files should be found within the sam
 It's therefore possible to decide which of these to import. By default, all are imported.
 
 
-```r
+``` r
 PAM_data = create_import(pathname = "C:/Put/your/path/here",
                      measurements = c(".pressure", 
                                       ".glf",
@@ -77,7 +77,7 @@ PAM_data = create_import(pathname = "C:/Put/your/path/here",
 Once the PAM data are imported, they are stored as a nested list - with each element in the list containing a dataframe of measurements per date. For more details on the format of the data, use:
 
 
-```r
+``` r
 PAM_data = hoopoe
 str(PAM_data)
 ```
@@ -160,7 +160,7 @@ CLA = Cornell Laboratory of Ornithology
 
 Note that very often, a logger continues to record data before and after it is removed from a bird. For example, it might be transported in a rucksack or left in a laboratory until data are downloaded. It's therefore important to remove these incorrect datapoints. This can be done using `cutPAM`.
 
-```r
+``` r
 # make sure the cropping period is in the correct date format
 start = as.POSIXct("2016-07-01","%Y-%m-%d", tz="UTC")
 end = as.POSIXct("2017-06-01","%Y-%m-%d", tz="UTC")
