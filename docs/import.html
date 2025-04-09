@@ -190,8 +190,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="3.3" data-path="import.html"><a href="import.html#import-your-own-data"><i class="fa fa-check"></i><b>3.3</b> Import your own data</a></li>
 <li class="chapter" data-level="3.4" data-path="import.html"><a href="import.html#data-details"><i class="fa fa-check"></i><b>3.4</b> Data details</a></li>
 <li class="chapter" data-level="3.5" data-path="import.html"><a href="import.html#temporal-resolution-of-data"><i class="fa fa-check"></i><b>3.5</b> Temporal resolution of data</a></li>
-<li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.6</b> Cropping the data</a></li>
-<li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.7</b> Table references</a></li>
+<li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#working-with-migrate-tech"><i class="fa fa-check"></i><b>3.6</b> Working with Migrate Tech?</a></li>
+<li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.7</b> Cropping the data</a></li>
+<li class="chapter" data-level="3.8" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.8</b> Table references</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a>
 <ul>
@@ -547,18 +548,49 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <p>CAMR = Centre for Animal Movement Research</p>
 <p>CLA = Cornell Laboratory of Ornithology</p>
 </div>
-<div id="cropping-the-data" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Cropping the data<a href="import.html#cropping-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Note that very often, a logger continues to record data before and after it is removed from a bird. For example, it might be transported in a rucksack or left in a laboratory until data are downloaded. It’s therefore important to remove these incorrect datapoints. This can be done using <code>cutPAM</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="import.html#cb12-1" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
-<span id="cb12-2"><a href="import.html#cb12-2" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb12-3"><a href="import.html#cb12-3" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb12-4"><a href="import.html#cb12-4" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="import.html#cb12-5" tabindex="-1"></a><span class="co"># Crop the data</span></span>
-<span id="cb12-6"><a href="import.html#cb12-6" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(hoopoe,start,end)</span></code></pre></div>
+<div id="working-with-migrate-tech" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Working with Migrate Tech?<a href="import.html#working-with-migrate-tech" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Although package was not developped for these tags specifically, it is still possible to import the data in the package using the following code:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="import.html#cb12-1" tabindex="-1"></a>pathname <span class="ot">=</span> <span class="st">&quot;path/where/both/files/stored/&quot;</span> <span class="co"># this is assuming each individual is kept in it’s own folders</span></span>
+<span id="cb12-2"><a href="import.html#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="import.html#cb12-3" tabindex="-1"></a>dta<span class="ot">=</span><span class="fu">list</span>()</span>
+<span id="cb12-4"><a href="import.html#cb12-4" tabindex="-1"></a>dta<span class="sc">$</span>id <span class="ot">=</span> <span class="st">&quot;ID00&quot;</span> <span class="co"># put your own id code here</span></span>
+<span id="cb12-5"><a href="import.html#cb12-5" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="import.html#cb12-6" tabindex="-1"></a><span class="co"># import light</span></span>
+<span id="cb12-7"><a href="import.html#cb12-7" tabindex="-1"></a>light <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="fu">list.files</span>(pathname,<span class="at">pattern=</span><span class="st">&quot;.lux&quot;</span>,<span class="at">full.names =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>],</span>
+<span id="cb12-8"><a href="import.html#cb12-8" tabindex="-1"></a>                              <span class="at">skip=</span><span class="dv">20</span>, <span class="co"># this is the number of lines skipped, you may need to change it (same for temperature and pressure)</span></span>
+<span id="cb12-9"><a href="import.html#cb12-9" tabindex="-1"></a>                              <span class="at">sep=</span><span class="st">&quot;&quot;</span>,<span class="at">header =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-10"><a href="import.html#cb12-10" tabindex="-1"></a>light <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">date=</span><span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(<span class="fu">paste</span>(light[,<span class="dv">1</span>],light[,<span class="dv">2</span>]),</span>
+<span id="cb12-11"><a href="import.html#cb12-11" tabindex="-1"></a>                                                    <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>,<span class="at">format=</span><span class="st">&quot;%d/%m/%Y %H:%M:%S&quot;</span>)),<span class="at">obs=</span>light[,<span class="dv">3</span>]))</span>
+<span id="cb12-12"><a href="import.html#cb12-12" tabindex="-1"></a>dta<span class="sc">$</span>light <span class="ot">=</span> light</span>
+<span id="cb12-13"><a href="import.html#cb12-13" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="import.html#cb12-14" tabindex="-1"></a><span class="co"># import temperature</span></span>
+<span id="cb12-15"><a href="import.html#cb12-15" tabindex="-1"></a>temperature <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="fu">list.files</span>(pathname,<span class="at">pattern=</span><span class="st">&quot;.deg&quot;</span>,<span class="at">full.names =</span> <span class="cn">TRUE</span>),<span class="at">skip=</span><span class="dv">20</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>,<span class="at">header =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-16"><a href="import.html#cb12-16" tabindex="-1"></a>temperature <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">date=</span><span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(<span class="fu">paste</span>(temperature[,<span class="dv">1</span>],temperature[,<span class="dv">2</span>]),</span>
+<span id="cb12-17"><a href="import.html#cb12-17" tabindex="-1"></a>                                                          <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>,<span class="at">format=</span><span class="st">&quot;%d/%m/%Y %H:%M:%S&quot;</span>)),<span class="at">obs=</span>temperature[,<span class="dv">3</span>]))</span>
+<span id="cb12-18"><a href="import.html#cb12-18" tabindex="-1"></a>dta<span class="sc">$</span>temperature <span class="ot">=</span> temperature</span>
+<span id="cb12-19"><a href="import.html#cb12-19" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="import.html#cb12-20" tabindex="-1"></a><span class="co"># import pressure</span></span>
+<span id="cb12-21"><a href="import.html#cb12-21" tabindex="-1"></a>pressure <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="fu">list.files</span>(pathname,<span class="at">pattern=</span><span class="st">&quot;.deg&quot;</span>,<span class="at">full.names =</span> <span class="cn">TRUE</span>),<span class="at">skip=</span><span class="dv">20</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>,<span class="at">header =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-22"><a href="import.html#cb12-22" tabindex="-1"></a>pressure <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">date=</span><span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(<span class="fu">paste</span>(pressure[,<span class="dv">1</span>],pressure[,<span class="dv">2</span>]),</span>
+<span id="cb12-23"><a href="import.html#cb12-23" tabindex="-1"></a>                                                          <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>,<span class="at">format=</span><span class="st">&quot;%d/%m/%Y %H:%M:%S&quot;</span>)),<span class="at">obs=</span>pressure[,<span class="dv">4</span>]))</span>
+<span id="cb12-24"><a href="import.html#cb12-24" tabindex="-1"></a>dta<span class="sc">$</span>pressure <span class="ot">=</span> pressure</span>
+<span id="cb12-25"><a href="import.html#cb12-25" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="import.html#cb12-26" tabindex="-1"></a><span class="co"># this is just to rename it so it works with examples in the user manual</span></span>
+<span id="cb12-27"><a href="import.html#cb12-27" tabindex="-1"></a>PAM_data<span class="ot">=</span>dta</span></code></pre></div>
 </div>
-<div id="table-references" class="section level2 hasAnchor" number="3.7">
-<h2><span class="header-section-number">3.7</span> Table references<a href="import.html#table-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cropping-the-data" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Cropping the data<a href="import.html#cropping-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Note that very often, a logger continues to record data before and after it is removed from a bird. For example, it might be transported in a rucksack or left in a laboratory until data are downloaded. It’s therefore important to remove these incorrect datapoints. This can be done using <code>cutPAM</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="import.html#cb13-1" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
+<span id="cb13-2"><a href="import.html#cb13-2" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb13-3"><a href="import.html#cb13-3" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb13-4"><a href="import.html#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="import.html#cb13-5" tabindex="-1"></a><span class="co"># Crop the data</span></span>
+<span id="cb13-6"><a href="import.html#cb13-6" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(hoopoe,start,end)</span></code></pre></div>
+</div>
+<div id="table-references" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Table references<a href="import.html#table-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Bäckman, J., Andersson, A., Alerstam, T., Pedersen, L., Sjöberg, S., Thorup, K., &amp; Tøttrup, A. P. (2017). Activity and migratory flights of individual free-flying songbirds throughout the annual cycle: method and first case study. Journal of Avian Biology, 48(2), 309–319. <a href="doi:10.1111/jav.01068" class="uri">doi:10.1111/jav.01068</a></p>
 <p>Dhanjal-Adams, K. L., Bauer, S., Emmenegger, T., Hahn, S., Lisovski, S., &amp; Liechti, F. (2018). Spatiotemporal Group Dynamics in a Long-Distance Migratory Bird. Current Biology, 28(17), 2824–2830.e3. <a href="doi:10.1016/j.cub.2018.06.054" class="uri">doi:10.1016/j.cub.2018.06.054</a></p>
 <p>Dreelin, R. A., Shipley, J. R., &amp; Winkler, D. W. (2018). Flight Behavior of Individual Aerial Insectivores Revealed by Novel Altitudinal Dataloggers. Frontiers in Ecology and Evolution, 6, 182. <a href="doi:10.3389/fevo.2018.00182" class="uri">doi:10.3389/fevo.2018.00182</a></p>

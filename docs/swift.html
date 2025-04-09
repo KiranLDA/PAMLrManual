@@ -190,8 +190,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="3.3" data-path="import.html"><a href="import.html#import-your-own-data"><i class="fa fa-check"></i><b>3.3</b> Import your own data</a></li>
 <li class="chapter" data-level="3.4" data-path="import.html"><a href="import.html#data-details"><i class="fa fa-check"></i><b>3.4</b> Data details</a></li>
 <li class="chapter" data-level="3.5" data-path="import.html"><a href="import.html#temporal-resolution-of-data"><i class="fa fa-check"></i><b>3.5</b> Temporal resolution of data</a></li>
-<li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.6</b> Cropping the data</a></li>
-<li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.7</b> Table references</a></li>
+<li class="chapter" data-level="3.6" data-path="import.html"><a href="import.html#working-with-migrate-tech"><i class="fa fa-check"></i><b>3.6</b> Working with Migrate Tech?</a></li>
+<li class="chapter" data-level="3.7" data-path="import.html"><a href="import.html#cropping-the-data"><i class="fa fa-check"></i><b>3.7</b> Cropping the data</a></li>
+<li class="chapter" data-level="3.8" data-path="import.html"><a href="import.html#table-references"><i class="fa fa-check"></i><b>3.8</b> Table references</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>4</b> Data Visualisation</a>
 <ul>
@@ -336,37 +337,37 @@ Figure 11.1: Photograph by Pau Artigas, (c) creative commons
 <li><strong>Tri-axial acceleration</strong> is recorded every 4 hours</li>
 <li><strong>Tri-axial magnetic field</strong> is recorded every 4 hours</li>
 </ul>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="swift.html#cb64-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swift&quot;</span>)</span>
-<span id="cb64-2"><a href="swift.html#cb64-2" tabindex="-1"></a></span>
-<span id="cb64-3"><a href="swift.html#cb64-3" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
-<span id="cb64-4"><a href="swift.html#cb64-4" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-09-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb64-5"><a href="swift.html#cb64-5" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-04-10&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb64-6"><a href="swift.html#cb64-6" tabindex="-1"></a></span>
-<span id="cb64-7"><a href="swift.html#cb64-7" tabindex="-1"></a><span class="co"># Crop the data</span></span>
-<span id="cb64-8"><a href="swift.html#cb64-8" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(swift,start,end)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="swift.html#cb65-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swift&quot;</span>)</span>
+<span id="cb65-2"><a href="swift.html#cb65-2" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="swift.html#cb65-3" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
+<span id="cb65-4"><a href="swift.html#cb65-4" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-09-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb65-5"><a href="swift.html#cb65-5" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-04-10&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb65-6"><a href="swift.html#cb65-6" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="swift.html#cb65-7" tabindex="-1"></a><span class="co"># Crop the data</span></span>
+<span id="cb65-8"><a href="swift.html#cb65-8" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(swift,start,end)</span></code></pre></div>
 </div>
 <div id="visualise-data-2" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> Visualise data<a href="swift.html#visualise-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sensor images are a good place to start when analysing data, as they can give a rapid overview of the dataset. Darker colors represent lower values, and lighter colors (in this case yellow) represent higher values. Sensor images for <strong>activity</strong> (also known as an actogram), <strong>pitch</strong>, <strong>pressure</strong> and <strong>temperature</strong> are a good place to start. The following code plots this for us:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="swift.html#cb65-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="co"># number of panels</span></span>
-<span id="cb65-2"><a href="swift.html#cb65-2" tabindex="-1"></a>    <span class="at">oma=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></span>
-<span id="cb65-3"><a href="swift.html#cb65-3" tabindex="-1"></a>    <span class="at">mar =</span>  <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></span>
-<span id="cb65-4"><a href="swift.html#cb65-4" tabindex="-1"></a></span>
-<span id="cb65-5"><a href="swift.html#cb65-5" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">ploty=</span><span class="cn">FALSE</span>,</span>
-<span id="cb65-6"><a href="swift.html#cb65-6" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>act, <span class="at">main =</span> <span class="st">&quot;Activity&quot;</span>,</span>
-<span id="cb65-7"><a href="swift.html#cb65-7" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
-<span id="cb65-8"><a href="swift.html#cb65-8" tabindex="-1"></a></span>
-<span id="cb65-9"><a href="swift.html#cb65-9" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
-<span id="cb65-10"><a href="swift.html#cb65-10" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>pit,  <span class="at">main=</span><span class="st">&quot;Pitch&quot;</span>,</span>
-<span id="cb65-11"><a href="swift.html#cb65-11" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
-<span id="cb65-12"><a href="swift.html#cb65-12" tabindex="-1"></a></span>
-<span id="cb65-13"><a href="swift.html#cb65-13" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
-<span id="cb65-14"><a href="swift.html#cb65-14" tabindex="-1"></a>          PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Pressure&quot;</span>,</span>
-<span id="cb65-15"><a href="swift.html#cb65-15" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
-<span id="cb65-16"><a href="swift.html#cb65-16" tabindex="-1"></a></span>
-<span id="cb65-17"><a href="swift.html#cb65-17" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>temperature<span class="sc">$</span>date, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
-<span id="cb65-18"><a href="swift.html#cb65-18" tabindex="-1"></a>          PAM_data<span class="sc">$</span>temperature<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Temperature&quot;</span>,</span>
-<span id="cb65-19"><a href="swift.html#cb65-19" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="swift.html#cb66-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="co"># number of panels</span></span>
+<span id="cb66-2"><a href="swift.html#cb66-2" tabindex="-1"></a>    <span class="at">oma=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></span>
+<span id="cb66-3"><a href="swift.html#cb66-3" tabindex="-1"></a>    <span class="at">mar =</span>  <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></span>
+<span id="cb66-4"><a href="swift.html#cb66-4" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="swift.html#cb66-5" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">ploty=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-6"><a href="swift.html#cb66-6" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>act, <span class="at">main =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb66-7"><a href="swift.html#cb66-7" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb66-8"><a href="swift.html#cb66-8" tabindex="-1"></a></span>
+<span id="cb66-9"><a href="swift.html#cb66-9" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-10"><a href="swift.html#cb66-10" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>pit,  <span class="at">main=</span><span class="st">&quot;Pitch&quot;</span>,</span>
+<span id="cb66-11"><a href="swift.html#cb66-11" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb66-12"><a href="swift.html#cb66-12" tabindex="-1"></a></span>
+<span id="cb66-13"><a href="swift.html#cb66-13" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-14"><a href="swift.html#cb66-14" tabindex="-1"></a>          PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Pressure&quot;</span>,</span>
+<span id="cb66-15"><a href="swift.html#cb66-15" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb66-16"><a href="swift.html#cb66-16" tabindex="-1"></a></span>
+<span id="cb66-17"><a href="swift.html#cb66-17" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>temperature<span class="sc">$</span>date, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb66-18"><a href="swift.html#cb66-18" tabindex="-1"></a>          PAM_data<span class="sc">$</span>temperature<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Temperature&quot;</span>,</span>
+<span id="cb66-19"><a href="swift.html#cb66-19" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="10-swift_files/figure-html/sensooor3-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="what-should-we-look-for-2" class="section level2 hasAnchor" number="11.3">
@@ -378,92 +379,92 @@ Figure 11.1: Photograph by Pau Artigas, (c) creative commons
 <li>Pressure is <strong>lower during migration</strong> indicating higher altitude flights, <strong>particularly during night</strong></li>
 <li>Temperature is <strong>lower during migration</strong> also indicating higher altitudes</li>
 </ul>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="swift.html#cb66-1" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_rolling_window</span>(PAM_data,</span>
-<span id="cb66-2"><a href="swift.html#cb66-2" tabindex="-1"></a>                     <span class="at">resolution_out =</span> <span class="dv">30</span> ,</span>
-<span id="cb66-3"><a href="swift.html#cb66-3" tabindex="-1"></a>                     <span class="at">window =</span> <span class="dv">24</span><span class="sc">*</span><span class="dv">60</span>,</span>
-<span id="cb66-4"><a href="swift.html#cb66-4" tabindex="-1"></a>                     <span class="at">interp =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="swift.html#cb67-1" tabindex="-1"></a>TOclassify <span class="ot">=</span> <span class="fu">create_rolling_window</span>(PAM_data,</span>
+<span id="cb67-2"><a href="swift.html#cb67-2" tabindex="-1"></a>                     <span class="at">resolution_out =</span> <span class="dv">30</span> ,</span>
+<span id="cb67-3"><a href="swift.html#cb67-3" tabindex="-1"></a>                     <span class="at">window =</span> <span class="dv">24</span><span class="sc">*</span><span class="dv">60</span>,</span>
+<span id="cb67-4"><a href="swift.html#cb67-4" tabindex="-1"></a>                     <span class="at">interp =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div id="plot-the-classifiers" class="section level3 hasAnchor" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> Plot the classifiers<a href="swift.html#plot-the-classifiers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This helps think about which classifiers show differences for the behaviours we are trying to classify.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="swift.html#cb67-1" tabindex="-1"></a><span class="co"># choose variables of interest</span></span>
-<span id="cb67-2"><a href="swift.html#cb67-2" tabindex="-1"></a>varint <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;sd_pit&quot;</span>,</span>
-<span id="cb67-3"><a href="swift.html#cb67-3" tabindex="-1"></a>           <span class="st">&quot;sd_pressure&quot;</span>,</span>
-<span id="cb67-4"><a href="swift.html#cb67-4" tabindex="-1"></a>           <span class="st">&quot;median_temperature&quot;</span>,</span>
-<span id="cb67-5"><a href="swift.html#cb67-5" tabindex="-1"></a>           <span class="st">&quot;min_gZ&quot;</span>,</span>
-<span id="cb67-6"><a href="swift.html#cb67-6" tabindex="-1"></a>           <span class="st">&quot;max_act&quot;</span>,</span>
-<span id="cb67-7"><a href="swift.html#cb67-7" tabindex="-1"></a>           <span class="st">&quot;median_pressure&quot;</span>,</span>
-<span id="cb67-8"><a href="swift.html#cb67-8" tabindex="-1"></a>           <span class="st">&quot;median_mY&quot;</span>,</span>
-<span id="cb67-9"><a href="swift.html#cb67-9" tabindex="-1"></a>           <span class="st">&quot;sd_mZ&quot;</span>)</span>
-<span id="cb67-10"><a href="swift.html#cb67-10" tabindex="-1"></a></span>
-<span id="cb67-11"><a href="swift.html#cb67-11" tabindex="-1"></a></span>
-<span id="cb67-12"><a href="swift.html#cb67-12" tabindex="-1"></a><span class="co">#plot these variables of interest</span></span>
-<span id="cb67-13"><a href="swift.html#cb67-13" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>))</span>
-<span id="cb67-14"><a href="swift.html#cb67-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(varint)){</span>
-<span id="cb67-15"><a href="swift.html#cb67-15" tabindex="-1"></a>  <span class="fu">plot</span>(TOclassify<span class="sc">$</span>date, TOclassify[,varint[i]], </span>
-<span id="cb67-16"><a href="swift.html#cb67-16" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Date&quot;</span>, <span class="at">ylab =</span> varint[i])</span>
-<span id="cb67-17"><a href="swift.html#cb67-17" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="swift.html#cb68-1" tabindex="-1"></a><span class="co"># choose variables of interest</span></span>
+<span id="cb68-2"><a href="swift.html#cb68-2" tabindex="-1"></a>varint <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;sd_pit&quot;</span>,</span>
+<span id="cb68-3"><a href="swift.html#cb68-3" tabindex="-1"></a>           <span class="st">&quot;sd_pressure&quot;</span>,</span>
+<span id="cb68-4"><a href="swift.html#cb68-4" tabindex="-1"></a>           <span class="st">&quot;median_temperature&quot;</span>,</span>
+<span id="cb68-5"><a href="swift.html#cb68-5" tabindex="-1"></a>           <span class="st">&quot;min_gZ&quot;</span>,</span>
+<span id="cb68-6"><a href="swift.html#cb68-6" tabindex="-1"></a>           <span class="st">&quot;max_act&quot;</span>,</span>
+<span id="cb68-7"><a href="swift.html#cb68-7" tabindex="-1"></a>           <span class="st">&quot;median_pressure&quot;</span>,</span>
+<span id="cb68-8"><a href="swift.html#cb68-8" tabindex="-1"></a>           <span class="st">&quot;median_mY&quot;</span>,</span>
+<span id="cb68-9"><a href="swift.html#cb68-9" tabindex="-1"></a>           <span class="st">&quot;sd_mZ&quot;</span>)</span>
+<span id="cb68-10"><a href="swift.html#cb68-10" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="swift.html#cb68-11" tabindex="-1"></a></span>
+<span id="cb68-12"><a href="swift.html#cb68-12" tabindex="-1"></a><span class="co">#plot these variables of interest</span></span>
+<span id="cb68-13"><a href="swift.html#cb68-13" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>))</span>
+<span id="cb68-14"><a href="swift.html#cb68-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(varint)){</span>
+<span id="cb68-15"><a href="swift.html#cb68-15" tabindex="-1"></a>  <span class="fu">plot</span>(TOclassify<span class="sc">$</span>date, TOclassify[,varint[i]], </span>
+<span id="cb68-16"><a href="swift.html#cb68-16" tabindex="-1"></a>       <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Date&quot;</span>, <span class="at">ylab =</span> varint[i])</span>
+<span id="cb68-17"><a href="swift.html#cb68-17" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="10-swift_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="10-swift_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 </div>
 </div>
 <div id="classify-migration-using-a-hidden-markov-model" class="section level2 hasAnchor" number="11.4">
 <h2><span class="header-section-number">11.4</span> Classify migration using a hidden markov model<a href="swift.html#classify-migration-using-a-hidden-markov-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the most difficult aspects of creating a classification is determining how many classes should be used. Here, we increase the number of classes until the behaviour we want to classify is correcly classified. Once this is done, we can extract this classification from the data.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="swift.html#cb68-1" tabindex="-1"></a><span class="co"># Select the columns to use as predictors in the model</span></span>
-<span id="cb68-2"><a href="swift.html#cb68-2" tabindex="-1"></a>predictor <span class="ot">=</span> TOclassify[, varint]</span>
-<span id="cb68-3"><a href="swift.html#cb68-3" tabindex="-1"></a></span>
-<span id="cb68-4"><a href="swift.html#cb68-4" tabindex="-1"></a><span class="co"># Perform the classification</span></span>
-<span id="cb68-5"><a href="swift.html#cb68-5" tabindex="-1"></a>classification <span class="ot">=</span> <span class="fu">classify_summary_statistics</span>(predictor,</span>
-<span id="cb68-6"><a href="swift.html#cb68-6" tabindex="-1"></a>                             <span class="at">states =</span> <span class="dv">7</span>,</span>
-<span id="cb68-7"><a href="swift.html#cb68-7" tabindex="-1"></a>                             <span class="at">method =</span> <span class="st">&quot;hmm&quot;</span>)</span></code></pre></div>
-<pre><code>## converged at iteration 45 with logLik: -404572.4</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="swift.html#cb69-1" tabindex="-1"></a><span class="co"># Select the columns to use as predictors in the model</span></span>
+<span id="cb69-2"><a href="swift.html#cb69-2" tabindex="-1"></a>predictor <span class="ot">=</span> TOclassify[, varint]</span>
+<span id="cb69-3"><a href="swift.html#cb69-3" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="swift.html#cb69-4" tabindex="-1"></a><span class="co"># Perform the classification</span></span>
+<span id="cb69-5"><a href="swift.html#cb69-5" tabindex="-1"></a>classification <span class="ot">=</span> <span class="fu">classify_summary_statistics</span>(predictor,</span>
+<span id="cb69-6"><a href="swift.html#cb69-6" tabindex="-1"></a>                             <span class="at">states =</span> <span class="dv">7</span>,</span>
+<span id="cb69-7"><a href="swift.html#cb69-7" tabindex="-1"></a>                             <span class="at">method =</span> <span class="st">&quot;hmm&quot;</span>)</span></code></pre></div>
+<pre><code>## converged at iteration 49 with logLik: -404648.9</code></pre>
 <pre><code>## Warning in .local(object, ...): Argument &#39;type&#39; not specified and will default
 ## to &#39;viterbi&#39;. This default may change in future releases of depmixS4. Please
 ## see ?posterior for alternative options.</code></pre>
 <p>##Find which state is the migratory state</p>
 <p>To do this, we find the state where pressure was the lowest, i.e. the bird was at the highest altitude, making the assumption that this is when the bird migrates.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="swift.html#cb71-1" tabindex="-1"></a><span class="co">#what is the minimum pressure for each class?</span></span>
-<span id="cb71-2"><a href="swift.html#cb71-2" tabindex="-1"></a>minP <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(classification<span class="sc">$</span>cluster)),</span>
-<span id="cb71-3"><a href="swift.html#cb71-3" tabindex="-1"></a>       <span class="cf">function</span>(i) <span class="fu">min</span>(TOclassify<span class="sc">$</span>median_pressure[classification<span class="sc">$</span>cluster<span class="sc">==</span>i])))</span>
-<span id="cb71-4"><a href="swift.html#cb71-4" tabindex="-1"></a></span>
-<span id="cb71-5"><a href="swift.html#cb71-5" tabindex="-1"></a><span class="co"># which class has the smallest minimum pressure</span></span>
-<span id="cb71-6"><a href="swift.html#cb71-6" tabindex="-1"></a>mig_state <span class="ot">=</span> <span class="fu">which</span>(minP <span class="sc">==</span> <span class="fu">min</span>(minP))</span>
-<span id="cb71-7"><a href="swift.html#cb71-7" tabindex="-1"></a></span>
-<span id="cb71-8"><a href="swift.html#cb71-8" tabindex="-1"></a><span class="co"># create a new classification which is just migration, non-migration</span></span>
-<span id="cb71-9"><a href="swift.html#cb71-9" tabindex="-1"></a>mig_classification <span class="ot">=</span> <span class="fu">ifelse</span>(classification<span class="sc">$</span>cluster <span class="sc">==</span> mig_state,<span class="dv">2</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="swift.html#cb72-1" tabindex="-1"></a><span class="co">#what is the minimum pressure for each class?</span></span>
+<span id="cb72-2"><a href="swift.html#cb72-2" tabindex="-1"></a>minP <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(classification<span class="sc">$</span>cluster)),</span>
+<span id="cb72-3"><a href="swift.html#cb72-3" tabindex="-1"></a>       <span class="cf">function</span>(i) <span class="fu">min</span>(TOclassify<span class="sc">$</span>median_pressure[classification<span class="sc">$</span>cluster<span class="sc">==</span>i])))</span>
+<span id="cb72-4"><a href="swift.html#cb72-4" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="swift.html#cb72-5" tabindex="-1"></a><span class="co"># which class has the smallest minimum pressure</span></span>
+<span id="cb72-6"><a href="swift.html#cb72-6" tabindex="-1"></a>mig_state <span class="ot">=</span> <span class="fu">which</span>(minP <span class="sc">==</span> <span class="fu">min</span>(minP))</span>
+<span id="cb72-7"><a href="swift.html#cb72-7" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="swift.html#cb72-8" tabindex="-1"></a><span class="co"># create a new classification which is just migration, non-migration</span></span>
+<span id="cb72-9"><a href="swift.html#cb72-9" tabindex="-1"></a>mig_classification <span class="ot">=</span> <span class="fu">ifelse</span>(classification<span class="sc">$</span>cluster <span class="sc">==</span> mig_state,<span class="dv">2</span>,<span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="plot-the-classification-as-a-sensor-image-1" class="section level2 hasAnchor" number="11.5">
 <h2><span class="header-section-number">11.5</span> Plot the classification as a sensor image<a href="swift.html#plot-the-classification-as-a-sensor-image-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Another way of looking at a classification is to use a sensor image of the results and to plot it side by side with the raw data to see if the same patterns are being picked out. We can also add (for instance sunset and sunrise events)</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="swift.html#cb72-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="co"># number of panels</span></span>
-<span id="cb72-2"><a href="swift.html#cb72-2" tabindex="-1"></a>    <span class="at">oma=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></span>
-<span id="cb72-3"><a href="swift.html#cb72-3" tabindex="-1"></a>    <span class="at">mar =</span>  <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></span>
-<span id="cb72-4"><a href="swift.html#cb72-4" tabindex="-1"></a></span>
-<span id="cb72-5"><a href="swift.html#cb72-5" tabindex="-1"></a>col<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;royalblue3&quot;</span>, <span class="st">&quot;orange&quot;</span>)</span>
-<span id="cb72-6"><a href="swift.html#cb72-6" tabindex="-1"></a></span>
-<span id="cb72-7"><a href="swift.html#cb72-7" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">ploty=</span><span class="cn">FALSE</span>,</span>
-<span id="cb72-8"><a href="swift.html#cb72-8" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>act, <span class="at">main =</span> <span class="st">&quot;Activity&quot;</span>,</span>
-<span id="cb72-9"><a href="swift.html#cb72-9" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
-<span id="cb72-10"><a href="swift.html#cb72-10" tabindex="-1"></a></span>
-<span id="cb72-11"><a href="swift.html#cb72-11" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
-<span id="cb72-12"><a href="swift.html#cb72-12" tabindex="-1"></a>          PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Pressure&quot;</span>,</span>
-<span id="cb72-13"><a href="swift.html#cb72-13" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
-<span id="cb72-14"><a href="swift.html#cb72-14" tabindex="-1"></a></span>
-<span id="cb72-15"><a href="swift.html#cb72-15" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(TOclassify<span class="sc">$</span>date, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
-<span id="cb72-16"><a href="swift.html#cb72-16" tabindex="-1"></a>          mig_classification, </span>
-<span id="cb72-17"><a href="swift.html#cb72-17" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Classification&quot;</span>,</span>
-<span id="cb72-18"><a href="swift.html#cb72-18" tabindex="-1"></a>          <span class="at">col=</span>col,</span>
-<span id="cb72-19"><a href="swift.html#cb72-19" tabindex="-1"></a>          <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
-<span id="cb72-20"><a href="swift.html#cb72-20" tabindex="-1"></a></span>
-<span id="cb72-21"><a href="swift.html#cb72-21" tabindex="-1"></a><span class="co"># estimate sunrises and sunsets</span></span>
-<span id="cb72-22"><a href="swift.html#cb72-22" tabindex="-1"></a>twilights <span class="ot">&lt;-</span> <span class="fu">twilightCalc</span>(PAM_data<span class="sc">$</span>light<span class="sc">$</span>date, PAM_data<span class="sc">$</span>light<span class="sc">$</span>obs,</span>
-<span id="cb72-23"><a href="swift.html#cb72-23" tabindex="-1"></a>                                    <span class="at">LightThreshold =</span> <span class="dv">2</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb72-24"><a href="swift.html#cb72-24" tabindex="-1"></a></span>
-<span id="cb72-25"><a href="swift.html#cb72-25" tabindex="-1"></a><span class="co"># Add sunrises and sunsets</span></span>
-<span id="cb72-26"><a href="swift.html#cb72-26" tabindex="-1"></a><span class="fu">plot_sensorimage_twilight</span>(twilights<span class="sc">$</span>tFirst,</span>
-<span id="cb72-27"><a href="swift.html#cb72-27" tabindex="-1"></a>       <span class="at">offset=</span><span class="dv">0</span>,</span>
-<span id="cb72-28"><a href="swift.html#cb72-28" tabindex="-1"></a>       <span class="at">col=</span> <span class="fu">ifelse</span>(twilights<span class="sc">$</span>type <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb72-29"><a href="swift.html#cb72-29" tabindex="-1"></a>                   <span class="st">&quot;grey&quot;</span>,<span class="st">&quot;black&quot;</span>),</span>
-<span id="cb72-30"><a href="swift.html#cb72-30" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">16</span>, <span class="at">cex=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="swift.html#cb73-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="co"># number of panels</span></span>
+<span id="cb73-2"><a href="swift.html#cb73-2" tabindex="-1"></a>    <span class="at">oma=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">6</span>), <span class="co"># outer margin around all panels</span></span>
+<span id="cb73-3"><a href="swift.html#cb73-3" tabindex="-1"></a>    <span class="at">mar =</span>  <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>)) <span class="co"># inner margin around individual fivure</span></span>
+<span id="cb73-4"><a href="swift.html#cb73-4" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="swift.html#cb73-5" tabindex="-1"></a>col<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;royalblue3&quot;</span>, <span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb73-6"><a href="swift.html#cb73-6" tabindex="-1"></a></span>
+<span id="cb73-7"><a href="swift.html#cb73-7" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>date, <span class="at">ploty=</span><span class="cn">FALSE</span>,</span>
+<span id="cb73-8"><a href="swift.html#cb73-8" tabindex="-1"></a>          PAM_data<span class="sc">$</span>acceleration<span class="sc">$</span>act, <span class="at">main =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb73-9"><a href="swift.html#cb73-9" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb73-10"><a href="swift.html#cb73-10" tabindex="-1"></a></span>
+<span id="cb73-11"><a href="swift.html#cb73-11" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date, <span class="at">plotx=</span><span class="cn">TRUE</span>, <span class="at">ploty=</span><span class="cn">FALSE</span>, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb73-12"><a href="swift.html#cb73-12" tabindex="-1"></a>          PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs,  <span class="at">main=</span><span class="st">&quot;Pressure&quot;</span>,</span>
+<span id="cb73-13"><a href="swift.html#cb73-13" tabindex="-1"></a>          <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,viridis<span class="sc">::</span><span class="fu">cividis</span>(<span class="dv">90</span>)), <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb73-14"><a href="swift.html#cb73-14" tabindex="-1"></a></span>
+<span id="cb73-15"><a href="swift.html#cb73-15" tabindex="-1"></a><span class="fu">plot_sensorimage</span>(TOclassify<span class="sc">$</span>date, <span class="at">labely=</span><span class="cn">FALSE</span>,</span>
+<span id="cb73-16"><a href="swift.html#cb73-16" tabindex="-1"></a>          mig_classification, </span>
+<span id="cb73-17"><a href="swift.html#cb73-17" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Classification&quot;</span>,</span>
+<span id="cb73-18"><a href="swift.html#cb73-18" tabindex="-1"></a>          <span class="at">col=</span>col,</span>
+<span id="cb73-19"><a href="swift.html#cb73-19" tabindex="-1"></a>          <span class="at">cex=</span><span class="fl">1.2</span>, <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb73-20"><a href="swift.html#cb73-20" tabindex="-1"></a></span>
+<span id="cb73-21"><a href="swift.html#cb73-21" tabindex="-1"></a><span class="co"># estimate sunrises and sunsets</span></span>
+<span id="cb73-22"><a href="swift.html#cb73-22" tabindex="-1"></a>twilights <span class="ot">&lt;-</span> <span class="fu">twilightCalc</span>(PAM_data<span class="sc">$</span>light<span class="sc">$</span>date, PAM_data<span class="sc">$</span>light<span class="sc">$</span>obs,</span>
+<span id="cb73-23"><a href="swift.html#cb73-23" tabindex="-1"></a>                                    <span class="at">LightThreshold =</span> <span class="dv">2</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb73-24"><a href="swift.html#cb73-24" tabindex="-1"></a></span>
+<span id="cb73-25"><a href="swift.html#cb73-25" tabindex="-1"></a><span class="co"># Add sunrises and sunsets</span></span>
+<span id="cb73-26"><a href="swift.html#cb73-26" tabindex="-1"></a><span class="fu">plot_sensorimage_twilight</span>(twilights<span class="sc">$</span>tFirst,</span>
+<span id="cb73-27"><a href="swift.html#cb73-27" tabindex="-1"></a>       <span class="at">offset=</span><span class="dv">0</span>,</span>
+<span id="cb73-28"><a href="swift.html#cb73-28" tabindex="-1"></a>       <span class="at">col=</span> <span class="fu">ifelse</span>(twilights<span class="sc">$</span>type <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb73-29"><a href="swift.html#cb73-29" tabindex="-1"></a>                   <span class="st">&quot;grey&quot;</span>,<span class="st">&quot;black&quot;</span>),</span>
+<span id="cb73-30"><a href="swift.html#cb73-30" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">16</span>, <span class="at">cex=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="10-swift_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
