@@ -320,14 +320,14 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <h1><span class="header-section-number">3</span> Importing data<a href="import.html#import" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="load-pamlr" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Load pamlr<a href="import.html#load-pamlr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="import.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(pamlr)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="import.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(pamlr)</span></code></pre></div>
 </div>
 <div id="use-existing-data" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Use existing data<a href="import.html#use-existing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>pamlr has three integrated datasets for exploring the code. These include:</p>
 <div id="hoopoe-upupa-epops" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Hoopoe (<em>Upupa epops</em>)<a href="import.html#hoopoe-upupa-epops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="import.html#cb7-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="import.html#cb6-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:hoopoe"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Common_Hoopoe_%28Upupa_epops%29_Photograph_by_Shantanu_Kuveskar.jpg" alt="Photograph by Shantanu Kuveskar, (c) creative commons" width="40%" />
 <p class="caption">
@@ -337,7 +337,7 @@ Figure 3.1: Photograph by Shantanu Kuveskar, (c) creative commons
 </div>
 <div id="european-bee-eater-merops-apiaster" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> European Bee-eater (<em>Merops apiaster</em>)<a href="import.html#european-bee-eater-merops-apiaster" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="import.html#cb8-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;bee_eater&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="import.html#cb7-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;bee_eater&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:beeeater"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Gu%C3%AApier_d%27Europe_Merops_apiaster_-_European_Bee-eater_%28parc_national_de_l%27Ichkeul%29_02.jpg" alt="Photograph by El Golli Mohamed, (c) creative commons" width="40%" />
 <p class="caption">
@@ -347,7 +347,7 @@ Figure 3.2: Photograph by El Golli Mohamed, (c) creative commons
 </div>
 <div id="alpine-swift-apus-melba" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Alpine Swift (<em>Apus melba</em>)<a href="import.html#alpine-swift-apus-melba" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="import.html#cb9-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swift&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="import.html#cb8-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;swift&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:swift"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Alpine_Swift-2719.jpg" alt="Photograph by Rudraksha Chodankar, (c) creative commons" width="40%" />
 <p class="caption">
@@ -368,18 +368,18 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <li>“.magnetic”</li>
 </ul>
 <p>It’s therefore possible to decide which of these to import. By default, all are imported.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="import.html#cb10-1" tabindex="-1"></a>PAM_data <span class="ot">=</span> <span class="fu">create_import</span>(<span class="at">pathname =</span> <span class="st">&quot;C:/Put/your/path/here&quot;</span>,</span>
-<span id="cb10-2"><a href="import.html#cb10-2" tabindex="-1"></a>                     <span class="at">measurements =</span> <span class="fu">c</span>(<span class="st">&quot;.pressure&quot;</span>, </span>
-<span id="cb10-3"><a href="import.html#cb10-3" tabindex="-1"></a>                                      <span class="st">&quot;.glf&quot;</span>,</span>
-<span id="cb10-4"><a href="import.html#cb10-4" tabindex="-1"></a>                                      <span class="st">&quot;.acceleration&quot;</span>, </span>
-<span id="cb10-5"><a href="import.html#cb10-5" tabindex="-1"></a>                                      <span class="st">&quot;.temperature&quot;</span>, </span>
-<span id="cb10-6"><a href="import.html#cb10-6" tabindex="-1"></a>                                      <span class="st">&quot;.magnetic&quot;</span>)<span class="st">`</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="import.html#cb9-1" tabindex="-1"></a>PAM_data <span class="ot">=</span> <span class="fu">create_import</span>(<span class="at">pathname =</span> <span class="st">&quot;C:/Put/your/path/here&quot;</span>,</span>
+<span id="cb9-2"><a href="import.html#cb9-2" tabindex="-1"></a>                     <span class="at">measurements =</span> <span class="fu">c</span>(<span class="st">&quot;.pressure&quot;</span>, </span>
+<span id="cb9-3"><a href="import.html#cb9-3" tabindex="-1"></a>                                      <span class="st">&quot;.glf&quot;</span>,</span>
+<span id="cb9-4"><a href="import.html#cb9-4" tabindex="-1"></a>                                      <span class="st">&quot;.acceleration&quot;</span>, </span>
+<span id="cb9-5"><a href="import.html#cb9-5" tabindex="-1"></a>                                      <span class="st">&quot;.temperature&quot;</span>, </span>
+<span id="cb9-6"><a href="import.html#cb9-6" tabindex="-1"></a>                                      <span class="st">&quot;.magnetic&quot;</span>)<span class="st">`</span></span></code></pre></div>
 </div>
 <div id="data-details" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Data details<a href="import.html#data-details" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once the PAM data are imported, they are stored as a nested list - with each element in the list containing a dataframe of measurements per date. For more details on the format of the data, use:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="import.html#cb11-1" tabindex="-1"></a>PAM_data <span class="ot">=</span> hoopoe</span>
-<span id="cb11-2"><a href="import.html#cb11-2" tabindex="-1"></a><span class="fu">str</span>(PAM_data)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="import.html#cb10-1" tabindex="-1"></a>PAM_data <span class="ot">=</span> hoopoe</span>
+<span id="cb10-2"><a href="import.html#cb10-2" tabindex="-1"></a><span class="fu">str</span>(PAM_data)</span></code></pre></div>
 <pre><code>## List of 6
 ##  $ id          : chr &quot;16AJ&quot;
 ##  $ pressure    :&#39;data.frame&#39;:    37412 obs. of  2 variables:
@@ -550,12 +550,12 @@ Figure 3.3: Photograph by Rudraksha Chodankar, (c) creative commons
 <div id="cropping-the-data" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Cropping the data<a href="import.html#cropping-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Note that very often, a logger continues to record data before and after it is removed from a bird. For example, it might be transported in a rucksack or left in a laboratory until data are downloaded. It’s therefore important to remove these incorrect datapoints. This can be done using <code>cutPAM</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="import.html#cb13-1" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
-<span id="cb13-2"><a href="import.html#cb13-2" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb13-3"><a href="import.html#cb13-3" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb13-4"><a href="import.html#cb13-4" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="import.html#cb13-5" tabindex="-1"></a><span class="co"># Crop the data</span></span>
-<span id="cb13-6"><a href="import.html#cb13-6" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(hoopoe,start,end)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="import.html#cb12-1" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
+<span id="cb12-2"><a href="import.html#cb12-2" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb12-3"><a href="import.html#cb12-3" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb12-4"><a href="import.html#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="import.html#cb12-5" tabindex="-1"></a><span class="co"># Crop the data</span></span>
+<span id="cb12-6"><a href="import.html#cb12-6" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(hoopoe,start,end)</span></code></pre></div>
 </div>
 <div id="table-references" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Table references<a href="import.html#table-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>

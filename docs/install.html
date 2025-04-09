@@ -322,13 +322,11 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <h2><span class="header-section-number">2.1</span> Prerequisites<a href="install.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To install this package from github, <code>devtools</code> must already be installed.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="install.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span></code></pre></div>
-<p>You will also need to install <em>GeoLight</em> which is no longer on CRAN</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="install.html#cb2-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;SLisovski/GeoLight&quot;</span>)</span></code></pre></div>
 </div>
 <div id="installing" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Installing<a href="install.html#installing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>pamlr</em> can then be installed from github using the following code:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="install.html#cb3-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;KiranLDA/pamlr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="install.html#cb2-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;KiranLDA/pamlr&quot;</span>)</span></code></pre></div>
 <p>Note that if there are any problems with installing <em>pamlr</em>, it is worth checking that the packages that <em>pamlr</em> relies on are correctly installed (using <code>install.packages()</code>). These include:</p>
 <ul>
 <li>changepoint</li>
@@ -338,10 +336,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li>dplyr</li>
 <li>dygraphs</li>
 <li>EMbC</li>
-<li>GeoLight</li>
 <li>graphics</li>
 <li>grDevices</li>
 <li>htmltools</li>
+<li>lubridate</li>
 <li>raster</li>
 <li>rgl</li>
 <li>viridis</li>
@@ -352,7 +350,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <pre><code>Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
   there is no package called ‘rlang’</code></pre>
 <p>Can be dealt with through:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="install.html#cb5-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rlang&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="install.html#cb4-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rlang&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>

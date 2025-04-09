@@ -125,7 +125,7 @@ classification = classify_summary_statistics(predictor,
 ```
 
 ```
-## converged at iteration 48 with logLik: -406990.5
+## converged at iteration 45 with logLik: -404572.4
 ```
 
 ```

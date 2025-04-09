@@ -322,19 +322,19 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <div id="classify-migratory-flapping-flight" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Classify migratory flapping flight<a href="accuracy.html#classify-migratory-flapping-flight" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once a classification has been performed (here we use the example of a hoopoe, as it’s migratory flight can be prediction using <code>classify_flap</code>)</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="accuracy.html#cb32-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</span>
-<span id="cb32-2"><a href="accuracy.html#cb32-2" tabindex="-1"></a><span class="co"># str(hoopoe)</span></span>
-<span id="cb32-3"><a href="accuracy.html#cb32-3" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="accuracy.html#cb32-4" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
-<span id="cb32-5"><a href="accuracy.html#cb32-5" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb32-6"><a href="accuracy.html#cb32-6" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
-<span id="cb32-7"><a href="accuracy.html#cb32-7" tabindex="-1"></a></span>
-<span id="cb32-8"><a href="accuracy.html#cb32-8" tabindex="-1"></a><span class="co"># Crop the data</span></span>
-<span id="cb32-9"><a href="accuracy.html#cb32-9" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(hoopoe,start,end)</span>
-<span id="cb32-10"><a href="accuracy.html#cb32-10" tabindex="-1"></a></span>
-<span id="cb32-11"><a href="accuracy.html#cb32-11" tabindex="-1"></a></span>
-<span id="cb32-12"><a href="accuracy.html#cb32-12" tabindex="-1"></a><span class="co"># perform one classification using classify_flap</span></span>
-<span id="cb32-13"><a href="accuracy.html#cb32-13" tabindex="-1"></a>classification <span class="ot">=</span> <span class="fu">classify_flap</span>(<span class="at">dta =</span> PAM_data<span class="sc">$</span>acceleration, <span class="at">period =</span> <span class="dv">12</span>, <span class="at">to_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="accuracy.html#cb31-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;hoopoe&quot;</span>)</span>
+<span id="cb31-2"><a href="accuracy.html#cb31-2" tabindex="-1"></a><span class="co"># str(hoopoe)</span></span>
+<span id="cb31-3"><a href="accuracy.html#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="accuracy.html#cb31-4" tabindex="-1"></a><span class="co"># make sure the cropping period is in the correct date format</span></span>
+<span id="cb31-5"><a href="accuracy.html#cb31-5" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2016-07-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb31-6"><a href="accuracy.html#cb31-6" tabindex="-1"></a>end <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2017-06-01&quot;</span>,<span class="st">&quot;%Y-%m-%d&quot;</span>, <span class="at">tz=</span><span class="st">&quot;UTC&quot;</span>)</span>
+<span id="cb31-7"><a href="accuracy.html#cb31-7" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="accuracy.html#cb31-8" tabindex="-1"></a><span class="co"># Crop the data</span></span>
+<span id="cb31-9"><a href="accuracy.html#cb31-9" tabindex="-1"></a>PAM_data<span class="ot">=</span> <span class="fu">create_crop</span>(hoopoe,start,end)</span>
+<span id="cb31-10"><a href="accuracy.html#cb31-10" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="accuracy.html#cb31-11" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="accuracy.html#cb31-12" tabindex="-1"></a><span class="co"># perform one classification using classify_flap</span></span>
+<span id="cb31-13"><a href="accuracy.html#cb31-13" tabindex="-1"></a>classification <span class="ot">=</span> <span class="fu">classify_flap</span>(<span class="at">dta =</span> PAM_data<span class="sc">$</span>acceleration, <span class="at">period =</span> <span class="dv">12</span>, <span class="at">to_plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>This creates a timetable of migratory flight events which can be visualised using <code>classification$timetable</code>, as seen below:</p>
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -447,34 +447,34 @@ Duration (h)
 <div id="setup-the-reference-dataset" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Setup the reference dataset<a href="accuracy.html#setup-the-reference-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Because the second classification is done using pressure (30 minute data resolution) compared to this classification which was done using activity (5 minute resolution), the activity classification is set to the same resolution as pressure using the <code>create_merged_classification</code> function.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="accuracy.html#cb33-1" tabindex="-1"></a><span class="co"># Put the classification in the same resolution as pressure</span></span>
-<span id="cb33-2"><a href="accuracy.html#cb33-2" tabindex="-1"></a>reference <span class="ot">=</span> <span class="fu">create_merged_classification</span>(<span class="at">from =</span> classification<span class="sc">$</span>timetable<span class="sc">$</span>start,</span>
-<span id="cb33-3"><a href="accuracy.html#cb33-3" tabindex="-1"></a>                               <span class="at">to =</span> classification<span class="sc">$</span>timetable<span class="sc">$</span>end,</span>
-<span id="cb33-4"><a href="accuracy.html#cb33-4" tabindex="-1"></a>                               <span class="at">classification =</span> <span class="fu">rep_len</span>(<span class="dv">1</span>,<span class="fu">length</span>(classification<span class="sc">$</span>timetable<span class="sc">$</span>end)),</span>
-<span id="cb33-5"><a href="accuracy.html#cb33-5" tabindex="-1"></a>                               <span class="at">add_to =</span> PAM_data<span class="sc">$</span>pressure,</span>
-<span id="cb33-6"><a href="accuracy.html#cb33-6" tabindex="-1"></a>                               <span class="at">missing =</span> <span class="dv">0</span>)</span>
-<span id="cb33-7"><a href="accuracy.html#cb33-7" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="accuracy.html#cb33-8" tabindex="-1"></a><span class="co"># Convert to categories</span></span>
-<span id="cb33-9"><a href="accuracy.html#cb33-9" tabindex="-1"></a>reference <span class="ot">=</span> <span class="fu">ifelse</span>(reference <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="accuracy.html#cb32-1" tabindex="-1"></a><span class="co"># Put the classification in the same resolution as pressure</span></span>
+<span id="cb32-2"><a href="accuracy.html#cb32-2" tabindex="-1"></a>reference <span class="ot">=</span> <span class="fu">create_merged_classification</span>(<span class="at">from =</span> classification<span class="sc">$</span>timetable<span class="sc">$</span>start,</span>
+<span id="cb32-3"><a href="accuracy.html#cb32-3" tabindex="-1"></a>                               <span class="at">to =</span> classification<span class="sc">$</span>timetable<span class="sc">$</span>end,</span>
+<span id="cb32-4"><a href="accuracy.html#cb32-4" tabindex="-1"></a>                               <span class="at">classification =</span> <span class="fu">rep_len</span>(<span class="dv">1</span>,<span class="fu">length</span>(classification<span class="sc">$</span>timetable<span class="sc">$</span>end)),</span>
+<span id="cb32-5"><a href="accuracy.html#cb32-5" tabindex="-1"></a>                               <span class="at">add_to =</span> PAM_data<span class="sc">$</span>pressure,</span>
+<span id="cb32-6"><a href="accuracy.html#cb32-6" tabindex="-1"></a>                               <span class="at">missing =</span> <span class="dv">0</span>)</span>
+<span id="cb32-7"><a href="accuracy.html#cb32-7" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="accuracy.html#cb32-8" tabindex="-1"></a><span class="co"># Convert to categories</span></span>
+<span id="cb32-9"><a href="accuracy.html#cb32-9" tabindex="-1"></a>reference <span class="ot">=</span> <span class="fu">ifelse</span>(reference <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>)</span></code></pre></div>
 </div>
 <div id="setup-the-prediction-data" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Setup the prediction data<a href="accuracy.html#setup-the-prediction-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hoopoes seems to perform large altitudinal changes during migratory flight, so we preform a very rough classification by specifying that any altitude change greater than 2 hPa is equivalent to a migratory flight (this is for illustrative purposes only, and should not be used as a definite classification method).</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="accuracy.html#cb34-1" tabindex="-1"></a><span class="co"># Perform another classification using pressure difference</span></span>
-<span id="cb34-2"><a href="accuracy.html#cb34-2" tabindex="-1"></a>prediction <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="fu">ifelse</span>(<span class="fu">abs</span>(<span class="fu">diff</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs))<span class="sc">&gt;</span><span class="dv">2</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="accuracy.html#cb33-1" tabindex="-1"></a><span class="co"># Perform another classification using pressure difference</span></span>
+<span id="cb33-2"><a href="accuracy.html#cb33-2" tabindex="-1"></a>prediction <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Other&quot;</span>,<span class="fu">ifelse</span>(<span class="fu">abs</span>(<span class="fu">diff</span>(PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>obs))<span class="sc">&gt;</span><span class="dv">2</span>, <span class="st">&quot;Migration&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span></code></pre></div>
 </div>
 <div id="compare-the-two-classifications" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Compare the two classifications<a href="accuracy.html#compare-the-two-classifications" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can then compare the two classifications point by point using the <code>compare_classifications</code> function.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="accuracy.html#cb35-1" tabindex="-1"></a><span class="co"># both classes have been converted to the same time intervals as pressure, so use those dates</span></span>
-<span id="cb35-2"><a href="accuracy.html#cb35-2" tabindex="-1"></a>date <span class="ot">=</span> PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date</span>
-<span id="cb35-3"><a href="accuracy.html#cb35-3" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="accuracy.html#cb35-4" tabindex="-1"></a><span class="co"># Combine the classifications into a dataframe</span></span>
-<span id="cb35-5"><a href="accuracy.html#cb35-5" tabindex="-1"></a>classifications <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">reference=</span> reference, <span class="co"># flapping classification</span></span>
-<span id="cb35-6"><a href="accuracy.html#cb35-6" tabindex="-1"></a>                             <span class="at">prediction =</span> prediction) <span class="co"># pressure difference classification</span></span>
-<span id="cb35-7"><a href="accuracy.html#cb35-7" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="accuracy.html#cb35-8" tabindex="-1"></a>class_comparison <span class="ot">=</span> <span class="fu">compare_classifications</span>(<span class="at">date=</span>date,</span>
-<span id="cb35-9"><a href="accuracy.html#cb35-9" tabindex="-1"></a>                                <span class="at">classifications=</span>classifications)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="accuracy.html#cb34-1" tabindex="-1"></a><span class="co"># both classes have been converted to the same time intervals as pressure, so use those dates</span></span>
+<span id="cb34-2"><a href="accuracy.html#cb34-2" tabindex="-1"></a>date <span class="ot">=</span> PAM_data<span class="sc">$</span>pressure<span class="sc">$</span>date</span>
+<span id="cb34-3"><a href="accuracy.html#cb34-3" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="accuracy.html#cb34-4" tabindex="-1"></a><span class="co"># Combine the classifications into a dataframe</span></span>
+<span id="cb34-5"><a href="accuracy.html#cb34-5" tabindex="-1"></a>classifications <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">reference=</span> reference, <span class="co"># flapping classification</span></span>
+<span id="cb34-6"><a href="accuracy.html#cb34-6" tabindex="-1"></a>                             <span class="at">prediction =</span> prediction) <span class="co"># pressure difference classification</span></span>
+<span id="cb34-7"><a href="accuracy.html#cb34-7" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="accuracy.html#cb34-8" tabindex="-1"></a>class_comparison <span class="ot">=</span> <span class="fu">compare_classifications</span>(<span class="at">date=</span>date,</span>
+<span id="cb34-9"><a href="accuracy.html#cb34-9" tabindex="-1"></a>                                <span class="at">classifications=</span>classifications)</span></code></pre></div>
 <p>This puts both classifications side by side, and shows how many classifications provided each class, as well as the agreement between the two, as can be seen below.</p>
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -616,7 +616,7 @@ TRUE
 <li><strong>Overall Accuracy</strong> represents the probability that all classes were correctly prediction (TP+TN)/(TP+TN+FP+FN).</li>
 <li><strong>Kappa Coefficient</strong> measures the agreement between the classification and the truth ((TN+FP) (TN+FN) + (FN+TP) (FP+TP)) / (TP+FP+TN+FN)<sup>2</sup></li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="accuracy.html#cb36-1" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">compare_confusion_matrix</span>(reference, prediction)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="accuracy.html#cb35-1" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">compare_confusion_matrix</span>(reference, prediction)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>

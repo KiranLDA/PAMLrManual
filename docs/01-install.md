@@ -9,12 +9,6 @@ To install this package from github, `devtools` must already be installed.
 ``` r
 install.packages("devtools")
 ```
-You will also need to install _GeoLight_ which is no longer on CRAN
-
-
-``` r
-devtools::install_github("SLisovski/GeoLight")
-```
 
 ## Installing
 
@@ -36,10 +30,10 @@ Note that if there are any problems with installing _pamlr_, it is worth checkin
 * dplyr
 * dygraphs 
 * EMbC 
-* GeoLight 
 * graphics 
 * grDevices 
 * htmltools 
+* lubridate
 * raster
 * rgl 
 * viridis
